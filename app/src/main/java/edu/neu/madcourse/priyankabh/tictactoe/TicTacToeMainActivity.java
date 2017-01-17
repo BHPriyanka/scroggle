@@ -11,6 +11,7 @@ package edu.neu.madcourse.priyankabh.tictactoe;
 import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.Window;
 
 import edu.neu.madcourse.priyankabh.R;
 
@@ -21,23 +22,8 @@ public class TicTacToeMainActivity extends Activity {
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
+      //getActionBar().hide();
       setContentView(R.layout.activity_main_tictactoe);
    }
 
-   @Override
-   protected void onResume() {
-      super.onResume();
-      mMediaPlayer = MediaPlayer.create(this, R.raw.a_guy_1_epicbuilduploop);
-      mMediaPlayer.setVolume(0.5f, 0.5f);
-      mMediaPlayer.setLooping(true);
-      mMediaPlayer.start();
-   }
-
-   @Override
-   protected void onPause() {
-      super.onPause();
-      mMediaPlayer.stop();
-      mMediaPlayer.reset();
-      mMediaPlayer.release();
-   }
 }

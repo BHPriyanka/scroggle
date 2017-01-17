@@ -24,16 +24,16 @@
     <string name="quit_label">Quit</string>
     <string name="about_me">
         \n\
-        Name: B H Priyanka
+        <b>Name: </b> B H Priyanka
         \n\
-        Email: BHPriyanka@ccs.neu.edu
+        <b>Email: </b> BHPriyanka@ccs.neu.edu
         \n\
-        Year in School: 2nd year MS
+        <b>Year in School: </b>  2nd year MS
         \n\
-        Degree Program: MS in CS
+        <b>Degree Program: </b> MS in CS
         \n\
-        IMEI Id:
-</string>
+        <b>IMEI Id:</b>
+    </string>
     <string name="about_text">
         This game is played just like
 regular Tic Tac Toe with one difference: to win a tile

@@ -10,6 +10,6 @@
 <resources>
    <!-- Base application theme. -->
    <style name="AppTheme"
-          parent="android:Theme.Material.Light.NoActionBar.Fullscreen">
+          parent="android:Theme.Material.Light">
    </style>
 </resources>

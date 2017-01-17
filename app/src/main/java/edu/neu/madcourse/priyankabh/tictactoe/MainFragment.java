@@ -16,7 +16,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
 
 public class MainFragment extends Fragment {
@@ -26,8 +28,9 @@ public class MainFragment extends Fragment {
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                             Bundle savedInstanceState) {
-      View rootView =
+      final View rootView =
               inflater.inflate(R.layout.fragment_main, container, false);
+
       // Handle buttons here...
       View newButton = rootView.findViewById(R.id.new_button);
       View continueButton = rootView.findViewById(R.id.continue_button);
@@ -63,15 +66,8 @@ public class MainFragment extends Fragment {
             mDialog = builder.show();
          }
       });
+
       return rootView;
    }
 
-   @Override
-   public void onPause() {
-      super.onPause();
-
-      // Get rid of the about dialog if it's still up
-      if (mDialog != null)
-         mDialog.dismiss();
-   }
 }
