@@ -95,7 +95,7 @@ public class GameActivity extends Activity {
    @Override
    protected void onResume() {
       super.onResume();
-      mMediaPlayer = MediaPlayer.create(this, R.raw.frankum_loop001e);
+      mMediaPlayer = MediaPlayer.create(this, R.raw.minor2go_premium_beat_6_i_dream_of_you_full_exampl);
       mMediaPlayer.setLooping(true);
       mMediaPlayer.start();
    }

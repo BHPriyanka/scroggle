@@ -19,10 +19,10 @@
         </activity>
         <activity
             android:name="edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
         </activity>
         <activity android:name=".tictactoe.GameActivity"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
         </activity>
     </application>
 

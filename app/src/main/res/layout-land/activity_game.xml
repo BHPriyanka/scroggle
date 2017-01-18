@@ -28,14 +28,14 @@
 
       <fragment
          android:id="@+id/fragment_game"
-         class="org.example.tictactoe.GameFragment"
+         class="edu.neu.madcourse.priyankabh.tictactoe.GameFragment"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          tools:layout="@layout/fragment_game"/>
 
       <fragment
          android:id="@+id/fragment_game_controls"
-         class="org.example.tictactoe.ControlFragment"
+         class="edu.neu.madcourse.priyankabh.tictactoe.ControlFragment"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          tools:layout="@layout/fragment_control"/>

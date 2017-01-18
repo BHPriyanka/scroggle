@@ -26,4 +26,22 @@ public class TicTacToeMainActivity extends Activity {
       setContentView(R.layout.activity_main_tictactoe);
    }
 
+
+   @Override
+   protected void onResume() {
+      super.onResume();
+      mMediaPlayer = MediaPlayer.create(this, R.raw.siknoiz_presence_drums);
+      mMediaPlayer.setVolume(0.5f, 0.5f);
+      mMediaPlayer.setLooping(true);
+      mMediaPlayer.start();
+   }
+
+   @Override
+   protected void onPause() {
+      super.onPause();
+      mMediaPlayer.stop();
+      mMediaPlayer.reset();
+      mMediaPlayer.release();
+   }
+
 }
