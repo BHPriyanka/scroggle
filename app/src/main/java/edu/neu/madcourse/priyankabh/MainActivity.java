@@ -4,26 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.service.quicksettings.Tile;
 import android.telephony.TelephonyManager;
-import android.text.SpannableString;
-import android.text.style.StyleSpan;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Random;
-
-import edu.neu.madcourse.priyankabh.R;
-import edu.neu.madcourse.priyankabh.tictactoe.GameActivity;
 import edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity;
 
 import static edu.neu.madcourse.priyankabh.R.layout.activity_main;
@@ -44,7 +32,7 @@ public class MainActivity extends Activity {
                 //set up dialog
                 final Dialog mDialog = new Dialog(MainActivity.this);
                 mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                mDialog.setContentView(R.layout.home_fragment_main);
+                mDialog.setContentView(R.layout.about_me);
                 mDialog.setCancelable(true);
 
                 // set up imei id-generate a 16 digit id

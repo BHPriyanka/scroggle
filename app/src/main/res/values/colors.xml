@@ -16,5 +16,6 @@
    <color name="gray_color">#bfbfbf</color>
    <color name="purple_color">#7f007f</color>
    <color name="red_color">#ff7f7f</color>
+   <color name="black_color">#000000</color>
    <color name="thinking_background_color">#cfdfdfdf</color>
 </resources>
