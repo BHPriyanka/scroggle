@@ -12,6 +12,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
 import edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity;
 
 import static edu.neu.madcourse.priyankabh.R.layout.activity_main;
@@ -73,10 +74,17 @@ public class MainActivity extends Activity {
         tictactoeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = getIntent();
-                //startActivityForResult(intent, 1);
-                //setContentView(R.layout.activity_main_tictactoe);
                 Intent intent = new Intent(MainActivity.this, TicTacToeMainActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
+        Button dictionaryButton = (Button) findViewById(R.id.dictionary_button);
+        dictionaryButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TestDictionary.class);
                 MainActivity.this.startActivity(intent);
             }
         });

@@ -24,6 +24,9 @@
         <activity android:name=".tictactoe.GameActivity"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
         </activity>
+        <activity android:name=".dictionary.TestDictionary"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+        </activity>
     </application>
 
 </manifest>

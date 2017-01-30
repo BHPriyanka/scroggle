@@ -48,6 +48,16 @@
         android:background="@color/gray_color"/>
 
     <Button
+        android:id="@+id/dictionary_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:padding="10dp"
+        android:text="@string/dictionary_label"
+        android:background="@color/gray_color"/>
+
+    <Button
         android:id="@+id/quit_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

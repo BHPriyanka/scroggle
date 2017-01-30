@@ -22,6 +22,11 @@
     <string name="tictactoe_label">TicTacToe</string>
     <string name="generate_error_label">Generate Error</string>
     <string name="quit_label">Quit</string>
+    <string name="dictionary_label">Dictionary</string>
+    <string name="text_entry">Enter Word</string>
+    <string name="ack_label">Acknowledgement</string>
+    <string name="return_menu_label">Return to Menu</string>
+    <string name="clear_label">Clear</string>
     <string name="about_me">
         \n\
         <b>Name: </b> B H Priyanka
