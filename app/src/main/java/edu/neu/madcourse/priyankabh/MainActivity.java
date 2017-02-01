@@ -7,16 +7,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-
 import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
 import edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity;
 
 import static edu.neu.madcourse.priyankabh.R.layout.activity_main;
-
 public class MainActivity extends Activity {
 
     @Override
