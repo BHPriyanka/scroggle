@@ -43,6 +43,7 @@ public class TestDictionary extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dictionary_test);
+        this.setTitle("Test Dictionary");
 
         EditText editText = (EditText) findViewById(R.id.word_entry);
         editText.addTextChangedListener(new TextWatcher() {
@@ -53,7 +54,6 @@ public class TestDictionary extends Activity{
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Log.d("WORD", charSequence.toString());
                 boolean seen = false;
                 String word = charSequence.toString();
 
@@ -62,7 +62,7 @@ public class TestDictionary extends Activity{
                 }
 
                 if(word.length() >=3){
-                seen = searchWordLessThan12Char(word.toLowerCase());
+                  seen = searchWordLessThan12Char(word.toLowerCase());
                 }
 
                 if(seen){
@@ -183,7 +183,7 @@ public class TestDictionary extends Activity{
                 while(sc.hasNextLine()){
                     String word = sc.nextLine();
                     globalVariable.list.add(word);
-                    Log.d("TAG", word);
+                    //Log.d("TAG", word);
                 }
 
                 Collections.sort(globalVariable.list);
