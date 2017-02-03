@@ -5,18 +5,31 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
 import edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity;
-
 import static edu.neu.madcourse.priyankabh.R.layout.activity_main;
+
 public class MainActivity extends Activity {
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +49,7 @@ public class MainActivity extends Activity {
                 mDialog.setCancelable(true);
 
                 // set up imei id-generate a 16 digit id
-                TelephonyManager manager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+                TelephonyManager manager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
                 String imei = manager.getDeviceId();
 
                 //set up text
@@ -45,11 +58,11 @@ public class MainActivity extends Activity {
                 text.append(imei);
 
                 Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
-                ok_button.setOnClickListener(new View.OnClickListener(){
+                ok_button.setOnClickListener(new View.OnClickListener() {
 
                     @Override
-                    public void onClick(View v){
-                        if(mDialog != null)
+                    public void onClick(View v) {
+                        if (mDialog != null)
                             mDialog.dismiss();
                     }
                 });
@@ -66,6 +79,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 //invoke an object without initializing to crash the app
                 alertDialog.show();
+                MainActivity.this.finish();
             }
         });
 
@@ -79,7 +93,7 @@ public class MainActivity extends Activity {
         });
 
         Button dictionaryButton = (Button) findViewById(R.id.dictionary_button);
-        dictionaryButton.setOnClickListener(new View.OnClickListener(){
+        dictionaryButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -95,6 +109,45 @@ public class MainActivity extends Activity {
                 finish();
             }
         });
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Main Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
     }
 
 }

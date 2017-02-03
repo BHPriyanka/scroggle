@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/main_background"
+    android:background="@drawable/background"
     android:elevation="@dimen/elevation_high"
     android:orientation="vertical"
     android:padding="@dimen/menu_padding"
@@ -25,7 +25,8 @@
         android:layout_margin="@dimen/menu_button_margin"
         android:padding="@dimen/menu_button_padding"
         android:text="@string/about_label"
-        android:background="@color/gray_color"/>
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
 
     <Button
         android:id="@+id/generate_error_button"
@@ -35,7 +36,8 @@
         android:layout_margin="@dimen/menu_button_margin"
         android:padding="@dimen/menu_button_padding"
         android:text="@string/generate_error_label"
-        android:background="@color/gray_color"/>
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
 
     <Button
         android:id="@+id/tictactoe_button"
@@ -45,7 +47,8 @@
         android:layout_margin="@dimen/menu_button_margin"
         android:padding="@dimen/menu_button_padding"
         android:text="@string/tictactoe_label"
-        android:background="@color/gray_color"/>
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
 
     <Button
         android:id="@+id/dictionary_button"
@@ -55,7 +58,8 @@
         android:layout_margin="4dp"
         android:padding="10dp"
         android:text="@string/dictionary_label"
-        android:background="@color/gray_color"/>
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
 
     <Button
         android:id="@+id/quit_button"
@@ -65,6 +69,7 @@
         android:layout_margin="@dimen/menu_button_margin"
         android:padding="@dimen/menu_button_padding"
         android:text="@string/quit_label"
-        android:background="@color/gray_color"/>
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
 
 </LinearLayout>

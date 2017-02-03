@@ -50,4 +50,29 @@ both sides in the larger game.
 
     </string>
     <string name="my_name">B H Priyanka</string>
-</resources>
+    <string name="acknowledgement">
+        <b>Strategy:</b>
+        \n\
+        <p>Required alphabets are 1-26, which can be done with 5 bits of information because 2^5 = 32. Each letter of the word
+        will be represented by 5 bits and the entire word will be a single long (64 bits) (handles a word up to 12 characters long).
+        The long value is put in a ArrayList of longs and the entire sorted arraylist is stored in a file as a serialized object.
+        The pre-proessed file will be used for the app, which reads the file content, deserializes into a Arraylist object.
+        All words up to 12 characters long will use 8 bytes to store. The new word is checked whether it is in the list by converting the keyword to lowercase,
+        encoding the word using the above technique</p>
+        \n\
+        \n\
+    <b>Sources/Links:</b>
+        \n\
+        <b>1. </b>http://softwareengineering.stackexchange.com/questions/118759/how-to-quickly-search-through-a-very-large-list-of-strings-records-on-a-databa
+        \n\
+        <b>2.</b> http://stackoverflow.com/questions/2276641/way-to-store-a-large-dictionary-with-low-memory-footprint-fast-lookups-on-and
+        \n\
+        \n\
+
+     <b>Help</b>
+        \n\
+        <b>1. </b> Class discussion and piazza post by Professor.
+        \n\
+        <b>2. </b> Help/Hack sessions: Discussion with TAs an other students
+    </string>
+    </resources>
