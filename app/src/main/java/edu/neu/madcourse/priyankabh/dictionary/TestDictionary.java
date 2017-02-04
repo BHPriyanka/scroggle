@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -123,15 +124,15 @@ public class TestDictionary extends Activity{
 
                 while (sc.hasNextLine()) {
                     String word = sc.nextLine();
-                    Boolean present = globalVariable.list.containsKey(word.substring(0, 2));
+                    Boolean present = globalVariable.list.containsKey(word.toLowerCase().substring(0, 2));
                     if (present) {
-                        ArrayList<String> ll = globalVariable.list.get(word.substring(0, 2));
-                            ll.add(word);
+                        ArrayList<String> ll = globalVariable.list.get(word.toLowerCase().substring(0, 2));
+                            ll.add(word.toLowerCase());
                     }
                     else{
                         ArrayList<String> ll = new ArrayList<String>();
-                        ll.add(word);
-                        globalVariable.list.put(word.substring(0,2), ll);
+                        ll.add(word.toLowerCase());
+                        globalVariable.list.put(word.toLowerCase().substring(0,2), ll);
                     }
                 }
 
@@ -161,7 +162,7 @@ public class TestDictionary extends Activity{
     public Boolean searchWordInMap(String word) {
         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
 
-        if(globalVariable.list.get(word.substring(0,2)).contains(word)){
+        if(globalVariable.list.get(word.toLowerCase().substring(0,2)).contains(word.toLowerCase())){
             return true;
         }
 

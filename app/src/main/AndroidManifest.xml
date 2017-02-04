@@ -29,7 +29,7 @@
             android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".dictionary.Acknowledgement"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+            android:theme="@style/AppTheme">
         </activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data

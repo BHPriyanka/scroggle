@@ -17,7 +17,6 @@
         android:layout_height="30dp"
         android:hint="@string/text_entry"
         android:inputType="text"
-        android:layout_marginBottom="20dp"
         android:background="@color/white"
         android:longClickable="false"/>
 
@@ -25,11 +24,9 @@
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="fill_parent"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"/>
-
+        android:layout_gravity="center" />
 
     <ScrollView
         android:id="@+id/ScrollView01"
@@ -38,21 +35,21 @@
         android:background="@color/thinking_background_color"
         android:layout_marginBottom="20dp">
 
-    <TextView
-        android:id="@+id/view_words"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black_color"
-        android:textSize="15dp" />
+        <TextView
+            android:id="@+id/view_words"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_color"
+            android:textSize="15dp" />
     </ScrollView>
+
 
     <Button
         android:id="@+id/clear_button"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_margin="2dp"
-        android:padding="@dimen/menu_button_padding"
+        android:layout_margin="@dimen/menu_button_margin"
         android:text="@string/clear_label"
         android:textColor="@color/gray_color"
         android:background="@color/black_color" />
@@ -60,10 +57,9 @@
     <Button
         android:id="@+id/menu_button"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_margin="2dp"
-        android:padding="@dimen/menu_button_padding"
+        android:layout_margin="@dimen/menu_button_margin"
         android:text="@string/return_menu_label"
         android:textColor="@color/gray_color"
         android:background="@color/black_color"/>
@@ -71,10 +67,9 @@
     <Button
         android:id="@+id/ack_button"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_margin="2dp"
-        android:padding="@dimen/menu_button_padding"
+        android:layout_margin="@dimen/menu_button_margin"
         android:text="@string/ack_label"
         android:textColor="@color/gray_color"
         android:background="@color/black_color" />
