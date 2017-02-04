@@ -18,6 +18,7 @@ public class Acknowledgement extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acknowledge_dict);
+        this.setTitle("Acknowledgement");
 
         TextView textView = (TextView) findViewById(R.id.ack_view);
         textView.setText(R.string.acknowledgement);

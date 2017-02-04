@@ -18,7 +18,8 @@
         android:hint="@string/text_entry"
         android:inputType="text"
         android:layout_marginBottom="20dp"
-        android:background="@color/white"/>
+        android:background="@color/white"
+        android:longClickable="false"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
