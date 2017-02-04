@@ -53,20 +53,30 @@ both sides in the larger game.
     <string name="acknowledgement">
         <b>Strategy:</b>
         \n\
-        <p>Required alphabets are 1-26, which can be done with 5 bits of information because 2^5 = 32. Each letter of the word
-        will be represented by 5 bits and the entire word will be a single long (64 bits) (handles a word up to 12 characters long).
-        The long value is put in a ArrayList of longs and the entire sorted arraylist is stored in a file as a serialized object.
-        The pre-proessed file will be used for the app, which reads the file content, deserializes into a Arraylist object.
-        All words up to 12 characters long will use 8 bytes to store. The new word is checked whether it is in the list by converting the keyword to lowercase,
-        encoding the word using the above technique</p>
+        <p>
+            Wordlist.txt is placed in assets folder as it is. In the Test Dictionary activity,  while calling onCreate , the AsyncTask
+            class is used to run the loading of the wordlist in the background. A HashMap{String,ArrayList{String}} is created in the
+            GlobalClass. This data structure is used to map the words from the wordlist. The loop iterates over the file line by line,
+            considers the first two characters of the string, and adds it as the HashMap Key to the HashMap if its not already present.
+            And then add the word to the Value of the corresponding key. </p>
+        <p>
+            If the key is already present in the HashMap, add the current word to the ArrayList value of the key represented by its first
+            characters. And for the search process, check the key by considering the input word\'s first two characters, once
+            it maps, check if its present in the corresponding ArrayList. Return true if its present, otherwise false.
+        </p>
         \n\
         \n\
     <b>Sources/Links:</b>
         \n\
-        <b>1. </b>http://softwareengineering.stackexchange.com/questions/118759/how-to-quickly-search-through-a-very-large-list-of-strings-records-on-a-databa
+        <b>1. </b>First Approach tried: http://softwareengineering.stackexchange.com/questions/118759/how-to-quickly-search-through-a-very-large-list-of-strings-records-on-a-databa
         \n\
-        <b>2.</b> http://stackoverflow.com/questions/2276641/way-to-store-a-large-dictionary-with-low-memory-footprint-fast-lookups-on-and
+        <b>2.</b> First approach tried: http://stackoverflow.com/questions/2276641/way-to-store-a-large-dictionary-with-low-memory-footprint-fast-lookups-on-and
         \n\
+        <b>3.</b> Sound for beep: http://www.soundjig.com/pages/soundfx/beeps.html
+        \n\
+        <b>4. </b>Android Developer Guide for AsyncTask implementation:https://developer.android.com/reference/android/os/AsyncTask.html
+        \n\
+        No Images used
         \n\
 
      <b>Help</b>
