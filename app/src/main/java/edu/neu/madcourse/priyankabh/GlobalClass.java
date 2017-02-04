@@ -5,6 +5,8 @@ package edu.neu.madcourse.priyankabh;
  */
 
 import android.app.Application;
+import android.widget.ArrayAdapter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +17,8 @@ public class GlobalClass extends Application{
     public static List<Long> leftLong = new ArrayList<Long>();
     public static List<Long> rightLong = new ArrayList<Long>();
     public static List<Long> strLong = new ArrayList<Long>();
-    public static List<String> list = new ArrayList<String>();
+
+    public static Map<String,ArrayList<String>> list = new HashMap<String,ArrayList<String>>();
 
     /*public static Map<Long,String> leftLong = new HashMap<Long,String>();
     public static Map<Long,String> rightLong = new HashMap<Long,String>();
