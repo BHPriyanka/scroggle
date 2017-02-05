@@ -109,10 +109,13 @@ public class MainActivity extends Activity {
         quitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                globalVariable.list.clear();
+
             }
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.

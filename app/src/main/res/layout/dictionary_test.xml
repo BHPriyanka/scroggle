@@ -21,29 +21,30 @@
         android:background="@color/white"
         android:longClickable="false"/>
 
-    <ProgressBar
+    <!--ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"/-->
 
 
     <ScrollView
         android:id="@+id/ScrollView01"
-        android:layout_height="40dp"
+        android:layout_height="70dp"
         android:layout_width="fill_parent"
         android:background="@color/thinking_background_color"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="50dp"
+        android:fadeScrollbars="false">
 
     <TextView
         android:id="@+id/view_words"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black_color"
-        android:textSize="15dp" />
+        android:textSize="20dp" />
     </ScrollView>
 
     <Button
@@ -51,7 +52,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="2dp"
+        android:layout_margin="4dp"
         android:padding="@dimen/menu_button_padding"
         android:text="@string/clear_label"
         android:textColor="@color/gray_color"
@@ -62,7 +63,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="2dp"
+        android:layout_margin="4dp"
         android:padding="@dimen/menu_button_padding"
         android:text="@string/return_menu_label"
         android:textColor="@color/gray_color"
@@ -73,10 +74,11 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="2dp"
+        android:layout_margin="4dp"
         android:padding="@dimen/menu_button_padding"
         android:text="@string/ack_label"
         android:textColor="@color/gray_color"
-        android:background="@color/black_color" />
+        android:background="@color/black_color"
+        android:layout_weight="0.02" />
 
 </LinearLayout>

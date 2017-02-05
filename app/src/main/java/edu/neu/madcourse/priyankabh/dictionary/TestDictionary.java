@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
@@ -16,9 +18,14 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import junit.framework.Test;
+
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
@@ -30,18 +37,23 @@ public class TestDictionary extends Activity{
     private static final String TAG = TestDictionary.class.getSimpleName();
 
     MediaPlayer mMediaPlayer;
-    private ProgressBar progressBar;
-    Integer count=1;
+   // private ProgressBar progressBar;
+   ProgressDialog progressDialog;
+   // Integer count=1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dictionary_test);
         this.setTitle("Test Dictionary");
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        progressBar.setMax(10);
-        progressBar.setVisibility(View.VISIBLE);
-        progressBar.setProgress(0);
+        //progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        //progressBar.setVisibility(View.VISIBLE);
+        progressDialog = new ProgressDialog(TestDictionary.this);
+        progressDialog.setMax(100);
+        progressDialog.setMessage("Please wait....");
+        progressDialog.setTitle("Loading Dictionary");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.show();
 
         new LoadWordList().execute();
 
@@ -106,10 +118,22 @@ public class TestDictionary extends Activity{
         returnMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                 Intent intent = new Intent(TestDictionary.this, MainActivity.class);
                 TestDictionary.this.startActivity(intent);
+                globalVariable.list.clear();
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+        globalVariable.list.clear();
+        // code here to show dialog
+        super.onBackPressed();  // optional depending on your needs
 
     }
 
@@ -119,43 +143,38 @@ public class TestDictionary extends Activity{
         protected Void doInBackground(Void... params) {
             final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
             try {
-                InputStream strF = getResources().getAssets().open("wordlist.txt");
-                Scanner sc = new Scanner(strF);
+                InputStream strF = getResources().getAssets().open("hashmap");
+                ObjectInputStream ois=new ObjectInputStream(strF);
 
-                while (sc.hasNextLine()) {
-                    String word = sc.nextLine();
-                    Boolean present = globalVariable.list.containsKey(word.toLowerCase().substring(0, 2));
-                    if (present) {
-                        ArrayList<String> ll = globalVariable.list.get(word.toLowerCase().substring(0, 2));
-                            ll.add(word.toLowerCase());
-                    }
-                    else{
-                        ArrayList<String> ll = new ArrayList<String>();
-                        ll.add(word.toLowerCase());
-                        globalVariable.list.put(word.toLowerCase().substring(0,2), ll);
-                    }
-                }
+                globalVariable.list = (HashMap<String,ArrayList<String>>)ois.readObject();
 
-                publishProgress(count);
+                ois.close();
 
-                try {////this should let "Please wait for sometime" appears for 2 secs
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
 
-                Log.d("TestDictionary", "Loading done");
             } catch (IOException e) {
                 System.err.print(e);
-            }            return null;
+            }catch(ClassNotFoundException ce){
+                System.err.print(ce);
+            }
+            return null;
         }
 
         protected void onProgressUpdate(Integer... params) {
-            progressBar.setProgress(params[0]);
+            try {
+                while (progressDialog.getProgress() <= progressDialog.getMax()) {
+                    Thread.sleep(200);
+                    handle.sendMessage(handle.obtainMessage());
+                }
+            }catch(InterruptedException ie){
+                System.err.print(ie);
+            }
         }
 
         protected void onPostExecute(Void v) {
-            progressBar.setVisibility(View.GONE);
+            if (progressDialog != null && progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+
         }
     }
 
@@ -170,4 +189,11 @@ public class TestDictionary extends Activity{
 
     }
 
+    Handler handle = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            progressDialog.incrementProgressBy(2);
+        }
+    };
 }
