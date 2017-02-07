@@ -149,7 +149,16 @@ public class TestDictionary extends Activity{
                 globalVariable.list = (HashMap<String,ArrayList<String>>)ois.readObject();
 
                 ois.close();
-
+                int count = 0;
+                try {
+                    while(count<100) {
+                        Thread.sleep(200);
+                        count +=2;
+                        publishProgress(count);
+                    }
+                }catch(InterruptedException ie){
+                    System.err.print(ie);
+                }
 
             } catch (IOException e) {
                 System.err.print(e);
@@ -160,14 +169,7 @@ public class TestDictionary extends Activity{
         }
 
         protected void onProgressUpdate(Integer... params) {
-            try {
-                while (progressDialog.getProgress() <= progressDialog.getMax()) {
-                    Thread.sleep(200);
-                    handle.sendMessage(handle.obtainMessage());
-                }
-            }catch(InterruptedException ie){
-                System.err.print(ie);
-            }
+                progressDialog.setProgress(params[0]);
         }
 
         protected void onPostExecute(Void v) {
@@ -189,11 +191,4 @@ public class TestDictionary extends Activity{
 
     }
 
-    Handler handle = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            progressDialog.incrementProgressBy(2);
-        }
-    };
 }

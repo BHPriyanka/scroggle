@@ -7,8 +7,8 @@ android {
         applicationId "edu.neu.madcourse.priyankabh.numad17s_priyankabh"
         minSdkVersion 14
         targetSdkVersion 25
-        versionCode 10
-        versionName "2.6"
+        versionCode 11
+        versionName "2.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
