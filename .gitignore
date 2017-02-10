@@ -8,6 +8,6 @@
 /captures
 .externalNativeBuild
 /.idea
-app/app-release.apk
-app/proguard-rules.pro
-app/.gitignore
+/app/app-release.apk
+/app/proguard-rules.pro
+/app/.gitignore
