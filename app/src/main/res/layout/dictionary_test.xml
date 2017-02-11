@@ -17,27 +17,16 @@
         android:layout_height="30dp"
         android:hint="@string/text_entry"
         android:inputType="text"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="50dp"
         android:background="@color/white"
         android:longClickable="false"/>
-
-    <!--ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"/-->
-
 
     <ScrollView
         android:id="@+id/ScrollView01"
         android:layout_height="70dp"
         android:layout_width="fill_parent"
         android:background="@color/thinking_background_color"
-        android:layout_marginBottom="50dp"
-        android:fadeScrollbars="false">
+        android:layout_marginBottom="50dp">
 
     <TextView
         android:id="@+id/view_words"

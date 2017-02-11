@@ -62,6 +62,17 @@
         android:background="@color/black_color"/>
 
     <Button
+        android:id="@+id/new_game_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:padding="10dp"
+        android:text="@string/new_game_label"
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
+
+    <Button
         android:id="@+id/quit_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

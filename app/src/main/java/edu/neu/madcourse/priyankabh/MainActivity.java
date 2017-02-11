@@ -3,6 +3,7 @@ package edu.neu.madcourse.priyankabh;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -19,7 +20,15 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
+import edu.neu.madcourse.priyankabh.scroggle.ScroggleGameActivity;
 import edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity;
 import static edu.neu.madcourse.priyankabh.R.layout.activity_main;
 
@@ -101,6 +110,15 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TestDictionary.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
+        Button newGameButton = (Button) findViewById(R.id.new_game_button);
+        newGameButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, ScroggleGameActivity.class);
                 MainActivity.this.startActivity(intent);
             }
         });

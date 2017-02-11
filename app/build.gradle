@@ -5,10 +5,10 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "edu.neu.madcourse.priyankabh.numad17s_priyankabh"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 25
-        versionCode 11
-        versionName "2.7"
+        versionCode 12
+        versionName "2.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

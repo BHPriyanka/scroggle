@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.renderscript.ScriptGroup;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
@@ -36,26 +37,29 @@ import edu.neu.madcourse.priyankabh.R;
 public class TestDictionary extends Activity{
     private static final String TAG = TestDictionary.class.getSimpleName();
 
+    ProgressDialog progressDialog;
     MediaPlayer mMediaPlayer;
-   // private ProgressBar progressBar;
-   ProgressDialog progressDialog;
-   // Integer count=1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dictionary_test);
         this.setTitle("Test Dictionary");
-        //progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        //progressBar.setVisibility(View.VISIBLE);
-        progressDialog = new ProgressDialog(TestDictionary.this);
-        progressDialog.setMax(100);
-        progressDialog.setMessage("Please wait....");
-        progressDialog.setTitle("Loading Dictionary");
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressDialog.show();
 
-        new LoadWordList().execute();
+        Log.d("TestDictionary","Before calling asynctask" + globalVariable.list.isEmpty());
+        if(globalVariable.list.isEmpty()) {
+            Log.d("TestDictionary","After check.. calling asynctask" + globalVariable.list.isEmpty());
+
+            progressDialog = new ProgressDialog(TestDictionary.this);
+            progressDialog.setMax(100);
+            progressDialog.setMessage("Please wait....");
+            progressDialog.setTitle("Loading Dictionary");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressDialog.show();
+
+            new LoadWordList().execute();
+        }
 
         EditText editText = (EditText) findViewById(R.id.word_entry);
         editText.addTextChangedListener(new TextWatcher() {
@@ -121,7 +125,7 @@ public class TestDictionary extends Activity{
                 final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                 Intent intent = new Intent(TestDictionary.this, MainActivity.class);
                 TestDictionary.this.startActivity(intent);
-                globalVariable.list.clear();
+                //globalVariable.list.clear();
             }
         });
 
@@ -131,11 +135,24 @@ public class TestDictionary extends Activity{
     public void onBackPressed()
     {
         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
-        globalVariable.list.clear();
+      //  globalVariable.list.clear();
+      //  System.gc();
         // code here to show dialog
         super.onBackPressed();  // optional depending on your needs
 
     }
+
+    public Boolean searchWordInMap(String word) {
+        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+
+        if(globalVariable.list.get(word.toLowerCase().substring(0,2)).contains(word.toLowerCase())){
+            return true;
+        }
+
+        return false;
+
+    }
+
 
     private class LoadWordList extends AsyncTask<Void, Integer, Void> {
 
@@ -149,6 +166,22 @@ public class TestDictionary extends Activity{
                 globalVariable.list = (HashMap<String,ArrayList<String>>)ois.readObject();
 
                 ois.close();
+                /*InputStream strF = getResources().getAssets().open("wordlist.txt");
+                Scanner sc = new Scanner(strF);
+
+                while (sc.hasNextLine()) {
+                    String word = sc.nextLine();
+                    Boolean present = globalVariable.list.containsKey(word.toLowerCase().substring(0, 2));
+                    if (present) {
+                        ArrayList<String> ll = globalVariable.list.get(word.toLowerCase().substring(0, 2));
+                        ll.add(word.toLowerCase());
+                    }
+                    else{
+                        ArrayList<String> ll = new ArrayList<String>();
+                        ll.add(word.toLowerCase());
+                        globalVariable.list.put(word.toLowerCase().substring(0,2), ll);
+                    }*/
+
                 int count = 0;
                 try {
                     while(count<100) {
@@ -160,7 +193,9 @@ public class TestDictionary extends Activity{
                     System.err.print(ie);
                 }
 
-            } catch (IOException e) {
+                System.out.println("TestDictionary Loading done");
+
+            } catch(IOException e) {
                 System.err.print(e);
             }catch(ClassNotFoundException ce){
                 System.err.print(ce);
@@ -169,7 +204,7 @@ public class TestDictionary extends Activity{
         }
 
         protected void onProgressUpdate(Integer... params) {
-                progressDialog.setProgress(params[0]);
+            progressDialog.setProgress(params[0]);
         }
 
         protected void onPostExecute(Void v) {
@@ -178,17 +213,6 @@ public class TestDictionary extends Activity{
             }
 
         }
-    }
-
-    public Boolean searchWordInMap(String word) {
-        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
-
-        if(globalVariable.list.get(word.toLowerCase().substring(0,2)).contains(word.toLowerCase())){
-            return true;
-        }
-
-        return false;
-
     }
 
 }

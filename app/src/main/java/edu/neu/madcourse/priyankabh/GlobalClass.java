@@ -14,15 +14,6 @@ import java.util.Map;
 
 public class GlobalClass extends Application{
 
-    public static List<Long> leftLong = new ArrayList<Long>();
-    public static List<Long> rightLong = new ArrayList<Long>();
-    public static List<Long> strLong = new ArrayList<Long>();
-
     public static Map<String,ArrayList<String>> list = new HashMap<String,ArrayList<String>>();
-
-    /*public static Map<Long,String> leftLong = new HashMap<Long,String>();
-    public static Map<Long,String> rightLong = new HashMap<Long,String>();
-    public static Map<Long,String> strLong = new HashMap<Long,String>();*/
-
 
 }
