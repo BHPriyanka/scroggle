@@ -85,9 +85,7 @@ public class ScroggleTile {
             }
         }
         if (mView instanceof Button) {
-            //Drawable drawable = ((ImageButton) mView).getDrawable();
-            //drawable.setLevel(R.drawable.letter_avail);
-            mView.getBackground().setLevel(R.drawable.letter_avail);
+            mView.getBackground().setLevel(level);
         }
     }
 
@@ -98,6 +96,10 @@ public class ScroggleTile {
         }
         else {
             level = R.drawable.letter_gray;
+        }
+
+        if(mView instanceof Button){
+            level = R.drawable.letter_avail;
         }
         return level;
     }
