@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
+    android:elevation="@dimen/elevation_high"
+    android:orientation="vertical"
+    android:padding="@dimen/menu_padding"
+    tools:context=".dictionary.TestDictionary"
+    android:weightSum="1">
+
+    <EditText
+        android:id="@+id/word_entry"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:hint="@string/text_entry"
+        android:inputType="text"
+        android:layout_marginBottom="50dp"
+        android:background="@color/white"
+        android:longClickable="false"/>
+
+    <ScrollView
+        android:id="@+id/ScrollView01"
+        android:layout_height="70dp"
+        android:layout_width="fill_parent"
+        android:background="@color/thinking_background_color"
+        android:layout_marginBottom="50dp">
+
+    <TextView
+        android:id="@+id/view_words"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_color"
+        android:textSize="20dp" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/clear_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:padding="@dimen/menu_button_padding"
+        android:text="@string/clear_label"
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color" />
+
+    <Button
+        android:id="@+id/menu_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:padding="@dimen/menu_button_padding"
+        android:text="@string/return_menu_label"
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
+
+    <Button
+        android:id="@+id/ack_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:padding="@dimen/menu_button_padding"
+        android:text="@string/ack_label"
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"
+        android:layout_weight="0.02" />
+
+</LinearLayout>

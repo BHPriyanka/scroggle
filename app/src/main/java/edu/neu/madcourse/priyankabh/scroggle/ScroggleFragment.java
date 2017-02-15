@@ -143,21 +143,7 @@ public class ScroggleFragment extends Fragment {
                 inner.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v) {
-                        smallTile.animate();
-                        if(isNextMove(smallTile)){
-                            if(!smallTile.getIsSelected()) {
-                                smallTile.setIsSelected(true);
-                                formWord(String.valueOf(smallTile.getLetter()),
-                                        fLarge);
-                                inner.setBackgroundDrawable(getResources()
-                                .getDrawable(R.drawable.tile_selected));
-                            } else {
-                                smallTile.setIsSelected(false);
-                                word = removeLastChar(wordMadeList[fLarge]);
-                                wordMadeList[fLarge] = word;
-                                inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.tile_available));
-                            }
-                        }
+                        //code to check if the letter is selected and then form a word
                         mLastLarge = fLarge;
                         mLastSmall = fSmall;
                     }
@@ -284,18 +270,6 @@ public class ScroggleFragment extends Fragment {
         setAvailableFromLastMove(mLastSmall);
         updateAllTiles();
     }*/
-
-    private void selectLetter(int large, int small) {
-        mLastLarge = large;
-        mLastSmall = small;
-        ScroggleTile smallTile = mSmallTiles[large][small];
-        ScroggleTile largeTile = mLargeTiles[large];
-
-        lettersSelected = lettersSelected.concat(smallTile.getLetter());
-        Log.d("ScroggleFragment: ",lettersSelected);
-        //setAvailableFromLastMove(small);
-
-    }
 
     public boolean isAvailable(ScroggleTile tile) {
         return mAvailable.contains(tile);

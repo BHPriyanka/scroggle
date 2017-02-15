@@ -57,51 +57,8 @@ public class ScroggleTile {
         return mSubTiles;
     }
 
-    public Boolean getIsSelected(){
+    public Boolean getIsFilled(){
         return isFilled;
-    }
-
-    public void setIsFilled(Boolean filled){
-        this.isFilled = filled;
-    }
-
-    public void setIsEmpty(Boolean isEmpty){
-        this.isEmpty = isEmpty;
-    }
-
-    public Boolean getIsEmpty(){
-        return this.isEmpty;
-    }
-
-    public void updateDrawableState() {
-        if (mView == null) return;
-        int level = getLevel();
-        Boolean flag = getIsSelected();
-        if (mView.getBackground() != null) {
-            if(flag == true) {
-                mView.getBackground().setLevel(level);
-            } else {
-                mView.getBackground().setLevel(level);
-            }
-        }
-        if (mView instanceof Button) {
-            mView.getBackground().setLevel(level);
-        }
-    }
-
-    private int getLevel() {
-        int level;
-        if(getIsSelected()){
-            level = R.drawable.letter_green;
-        }
-        else {
-            level = R.drawable.letter_gray;
-        }
-
-        if(mView instanceof Button){
-            level = R.drawable.letter_avail;
-        }
-        return level;
     }
 
 

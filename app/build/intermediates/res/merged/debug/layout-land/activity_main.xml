@@ -1,0 +1,68 @@
+<!--
+ ! Excerpted from "Hello, Android",
+ ! published by The Pragmatic Bookshelf.
+ ! Copyrights apply to this code. It may not be used to create training material,
+ ! courses, books, articles, and the like. Contact us if you are in doubt.
+ ! We make no guarantees that this code is fit for any purpose.
+ ! Visit http://www.pragmaticprogrammer.com/titles/eband4 for more book information.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
+    android:elevation="4dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/about_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="2dp"
+        android:text="@string/about_label"
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
+
+    <Button
+        android:id="@+id/generate_error_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/generate_error_label"
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
+
+    <Button
+        android:id="@+id/tictactoe_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="2dp"
+        android:text="@string/tictactoe_label"
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
+
+    <Button
+        android:id="@+id/dictionary_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="2dp"
+        android:text="@string/dictionary_label"
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
+
+    <Button
+        android:id="@+id/quit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="2dp"
+        android:text="@string/quit_label"
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
+
+</LinearLayout>
