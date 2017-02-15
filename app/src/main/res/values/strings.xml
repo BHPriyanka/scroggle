@@ -10,6 +10,7 @@
 <resources>
     <string name="app_name">NUMAD17S-PriyankaBH</string>
     <string name="long_app_name">Ultimate Tic Tac Toe</string>
+    <string name="scroggle_app_name">Scroggle</string>
     <string name="action_settings">Settings</string>
     <string name="restart_label">Restart</string>
     <string name="main_menu_label">Main Menu</string>

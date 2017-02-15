@@ -16,8 +16,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/sandy_beach"/>
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,15 +32,15 @@
             tools:layout="@layout/fragment_scroggle"/>
         <!-- Control fragment goes here... -->
 
-        <fragment
+        <!--fragment
             android:id="@+id/fragment_scroggle_controls"
             class="edu.neu.madcourse.priyankabh.tictactoe.ControlFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_control"/>
+            tools:layout="@layout/fragment_control"/-->
 
     </LinearLayout>
 
-    <include layout="@layout/thinking"/>
+    <!--include layout="@layout/thinking"/-->
 
 </FrameLayout>

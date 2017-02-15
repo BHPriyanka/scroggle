@@ -7,8 +7,8 @@
  ! We make no guarantees that this code is fit for any purpose.
  ! Visit http://www.pragmaticprogrammer.com/titles/eband4 for more book information.
 -->
-<level-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:drawable="@drawable/tile_empty"
-        android:maxLevel="0" />
-</level-list>
+        android:drawable="@drawable/letter_avail"
+        android:maxLevel="0"/>
+ </level-list>

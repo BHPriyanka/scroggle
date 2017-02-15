@@ -19,4 +19,6 @@
    <color name="black_color">#000000</color>
    <color name="white">#ffffff</color>
    <color name="thinking_background_color">#cfdfdfdf</color>
+   <color name="green_color">#FF99CC00</color>
+   <color name="lavender">#FF00FFFF</color>
 </resources>

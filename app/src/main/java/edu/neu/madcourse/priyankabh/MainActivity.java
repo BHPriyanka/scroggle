@@ -29,6 +29,7 @@ import java.util.HashMap;
 
 import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
 import edu.neu.madcourse.priyankabh.scroggle.ScroggleGameActivity;
+import edu.neu.madcourse.priyankabh.scroggle.ScroggleMainActivity;
 import edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity;
 import static edu.neu.madcourse.priyankabh.R.layout.activity_main;
 
@@ -118,7 +119,7 @@ public class MainActivity extends Activity {
         newGameButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, ScroggleGameActivity.class);
+                Intent intent = new Intent(MainActivity.this, ScroggleMainActivity.class);
                 MainActivity.this.startActivity(intent);
             }
         });

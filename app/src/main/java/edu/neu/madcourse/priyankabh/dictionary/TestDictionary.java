@@ -125,7 +125,7 @@ public class TestDictionary extends Activity{
                 final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                 Intent intent = new Intent(TestDictionary.this, MainActivity.class);
                 TestDictionary.this.startActivity(intent);
-                //globalVariable.list.clear();
+                globalVariable.list.clear();
             }
         });
 
@@ -135,7 +135,7 @@ public class TestDictionary extends Activity{
     public void onBackPressed()
     {
         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
-      //  globalVariable.list.clear();
+        globalVariable.list.clear();
       //  System.gc();
         // code here to show dialog
         super.onBackPressed();  // optional depending on your needs
