@@ -15,32 +15,39 @@ import edu.neu.madcourse.priyankabh.scroggle.ScroggleGameActivity;
 
 public class ScroggleControlFragment extends Fragment {
 
+    private ScroggleFragment sFragment;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView =
                 inflater.inflate(R.layout.scroggle_fragment_control, container, false);
-        View pause = rootView.findViewById(R.id.pause_button);
-        View restart = rootView.findViewById(R.id.button_resume);
-        View quit = rootView.findViewById(R.id.quit_button);
+        final View pause = rootView.findViewById(R.id.pause_button);
+        final View resume = rootView.findViewById(R.id.button_resume);
+        final View quit = rootView.findViewById(R.id.quit_button);
 
+        resume.setVisibility(View.INVISIBLE);
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((ScroggleGameActivity) getActivity()).onScrogglePause();
+                resume.setVisibility(View.VISIBLE);
+                pause.setVisibility(View.INVISIBLE);
+                ((ScroggleGameActivity) getActivity()).sFragment.onScrogglePause();
             }
         });
-        restart.setOnClickListener(new View.OnClickListener() {
+        resume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((ScroggleGameActivity) getActivity()).onScroggleResume();
+                pause.setVisibility(View.VISIBLE);
+                resume.setVisibility(View.INVISIBLE);
+                ((ScroggleGameActivity) getActivity()).sFragment.onScroggleResume();
             }
         });
 
         quit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                getActivity().finish();
+                ((ScroggleGameActivity) getActivity()).sFragment.onScroggleQuit();
             }
         });
         return rootView;
