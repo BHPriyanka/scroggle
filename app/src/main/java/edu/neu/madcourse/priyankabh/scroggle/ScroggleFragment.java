@@ -1,5 +1,6 @@
 package edu.neu.madcourse.priyankabh.scroggle;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
@@ -16,6 +17,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +40,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
+import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
 import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
 import edu.neu.madcourse.priyankabh.tictactoe.Tile;
@@ -55,6 +60,8 @@ public class ScroggleFragment extends Fragment {
             R.id.small9,};
 
     private ScroggleTile mEntireBoard = new ScroggleTile(this);
+    private ScroggleFragment sFragment;
+    private ScroggleControlFragment cFragment;
     private ScroggleTile mLargeTiles[] = new ScroggleTile[9];
     private ScroggleTile mSmallTiles[][] = new ScroggleTile[9][9];
     private int mLastLarge;
@@ -66,13 +73,16 @@ public class ScroggleFragment extends Fragment {
     private final long startTime = 180000;
     private Handler mHandler = new Handler();
     private final long interval = 1000;
+    private long timeRemaning=0;
     private TextView text;
     public String word="";
+    private int phase = 1;
     public Vibrator vibrator;
     private Map<Integer,String> listOfWordsFormed = new HashMap<Integer,String>();
     public int mSoundX, mSoundO, mSoundMiss, mSoundRewind;
     private SoundPool mSoundPool;
     private float mVolume = 1f;
+    private String letterArray = "";
     private Set<ScroggleTile> nextMoves = new HashSet<ScroggleTile>();
     private String gameData="";
     private char[][] letterState = new char[9][9];
@@ -80,8 +90,10 @@ public class ScroggleFragment extends Fragment {
     private View rView;
     private Map<Integer,ArrayList<Integer>> smallIdsWhichFomWord = new HashMap<Integer,ArrayList<Integer>>();
     private int mPhaseOnePoints=0;
+    private int mPhaseTwoPoints=0;
     private int pointsForNumberOfWordsFound = 0;
     private int pointsForLetters = 0;
+    private String phaseTwoWord = "";
     private int pointsForNineLetterWords = 0;
 
     @Override
@@ -93,14 +105,23 @@ public class ScroggleFragment extends Fragment {
             new LoadWords().execute();
         }
         try {
-            listOfWords = new getWords().execute().get();
-            placeLettersInGrids();
+            if(!((ScroggleGameActivity)this.getActivity()).isRestore()) {
+                listOfWords = new getWords().execute().get();
+                placeLettersInGrids();
+            }
         }catch(InterruptedException ie){
             System.err.print(ie);
         }catch (ExecutionException ce){
             System.err.print(ce);
         }
         initGame();
+
+        Bundle b = getActivity().getIntent().getExtras();
+        if (b != null) {
+            phase = 2;
+            gameData = b.getString("gameData");
+        }
+
         vibrator = (Vibrator) this.getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         mSoundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
         mSoundX = mSoundPool.load(getActivity(), R.raw.sergenious_movex, 1);
@@ -121,9 +142,22 @@ public class ScroggleFragment extends Fragment {
             startGame(rootView);
         }
         updateAllTiles();
+        if(phase == 2) {
+            if (timeRemaning < 1000) {
+                countDownTimer = new GameCountDownTimer(90000, interval);
+            } else {
+                countDownTimer = new GameCountDownTimer(timeRemaning, interval);
+            }
+        } else {
+            if(timeRemaning > 0){
+                countDownTimer = new GameCountDownTimer(timeRemaning, interval);
+            } else {
+                countDownTimer = new GameCountDownTimer(90000, interval);
+            }
+        }
         text = (TextView) rootView.findViewById(R.id.timer);
-        countDownTimer = new GameCountDownTimer(startTime, interval);
-        text.setText(text.getText() + String.valueOf(startTime));
+        /*countDownTimer = new GameCountDownTimer(startTime, interval);
+        text.setText(text.getText() + String.valueOf(startTime));*/
         countDownTimer.start();
         return rootView;
 
@@ -137,13 +171,13 @@ public class ScroggleFragment extends Fragment {
             mLargeTiles[large].setView(outer);
             List<Integer> pos = letterPostions.get(large);
             String s = listOfWords.get(large);
-            for(int small = 0;small < 9; small++){
-                    int i = pos.get(small);
-                    Button inner = (Button) outer.findViewById(mSmallIds[i]);
-                    inner.setText(String.valueOf(s.charAt(small)));
-                    final ScroggleTile smallTile = mSmallTiles[large][i];
-                    letterState[large][i] = s.charAt(small);
-                    smallTile.setLetter(String.valueOf(s.charAt(small)));
+            for(int small = 0;small < 9; small++) {
+                int i = pos.get(small);
+                Button inner = (Button) outer.findViewById(mSmallIds[i]);
+                inner.setText(String.valueOf(s.charAt(small)));
+                final ScroggleTile smallTile = mSmallTiles[large][i];
+                letterState[large][i] = s.charAt(small);
+                smallTile.setLetter(String.valueOf(s.charAt(small)));
             }
         }
     }
@@ -170,7 +204,7 @@ public class ScroggleFragment extends Fragment {
     private void initViews(View rootView) {
       mEntireBoard.setView(rootView);
 
-        for(int large = 0;large < 9;large++){
+        for(int large = 0; large < 9; large++){
             final View outer = rootView.findViewById(mLargeIds[large]);
             mLargeTiles[large].setView(outer);
             //List<Integer> pos = letterPostions.get(large);
@@ -189,31 +223,48 @@ public class ScroggleFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         smallTile.animate();
-                        if(isValidMove(smallTile)) {
-                            if (!isChosen(smallTile)) {
-                                smallTile.setChosen(true);
-                                inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
-                                //GradientDrawable gd = (GradientDrawable)inner.getBackground().getCurrent();
-                                //gd.setColor(getResources().getColor(R.color.green_color));
-                                formWord(String.valueOf(smallTile.getLetter()), fLarge, fSmall);
+                        if (phase == 1) {
+                            if (isValidMove(smallTile)) {
+                                if (!isChosen(smallTile)) {
+                                    smallTile.setChosen(true);
+                                    inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
+                                    //GradientDrawable gd = (GradientDrawable)inner.getBackground().getCurrent();
+                                    //gd.setColor(getResources().getColor(R.color.green_color));
+                                    formWord(String.valueOf(smallTile.getLetter()), fLarge, fSmall);
+                                } else {
+                                    smallTile.setChosen(false);
+                                    word = delLastChar(listOfWordsFormed.get(fLarge));
+                                    listOfWordsFormed.put(fLarge, word);
+                                    //GradientDrawable gd = (GradientDrawable)inner.getBackground().getCurrent();
+                                    //gd.setColor(getResources().getColor(R.color.gray_color));
+                                    inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_avail));
+                                }
+                                mSoundPool.play(mSoundX, mVolume, mVolume, 1, 0, 1f);
+                                vibrator.vibrate(15);
+                                think();
                             } else {
-                                smallTile.setChosen(false);
-                                word = delLastChar(listOfWordsFormed.get(fLarge));
-                                listOfWordsFormed.put(fLarge, word);
-                                //GradientDrawable gd = (GradientDrawable)inner.getBackground().getCurrent();
-                                //gd.setColor(getResources().getColor(R.color.gray_color));
-                                inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_avail));
+                                mSoundPool.play(mSoundMiss, mVolume, mVolume, 1, 0, 1f);
                             }
-                            mSoundPool.play(mSoundX, mVolume, mVolume, 1, 0, 1f);
-                            // Vibrate for 25 milliseconds
-                            vibrator.vibrate(25);
-                            think();
+                            //code to check if the letter is selected and then form a word
+                            mLastLarge = fLarge;
+                            mLastSmall = fSmall;
                         } else {
-                            mSoundPool.play(mSoundMiss, mVolume, mVolume, 1, 0, 1f);
+                            if (mLastLarge != fLarge) {
+                                if (!smallTile.getIsEmpty()) {
+                                    smallTile.setIsEmpty(true);
+                                    phaseTwoWord = appendLetter(smallTile.getLetter());
+                                    inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
+                                    mSoundPool.play(mSoundX, mVolume, mVolume, 1, 0, 1f);
+                                    vibrator.vibrate(15);
+                                    think();
+                                } else {
+                                    mSoundPool.play(mSoundMiss, mVolume, mVolume, 1, 0, 1f);
+                                    ((ScroggleGameActivity) getActivity()).stopThinking();
+                                }
+                                mLastLarge = fLarge;
+                                mLastSmall = fSmall;
+                            }
                         }
-                        //code to check if the letter is selected and then form a word
-                        mLastLarge = fLarge;
-                        mLastSmall = fSmall;
                     }
                 });
 
@@ -222,64 +273,97 @@ public class ScroggleFragment extends Fragment {
                     public boolean onLongClick(View v) {
                         //onclick recognise its a word, clearoff all other boxes in this tile
                         //call the search method and check if the word exists in the dictionary
-                        if(isValidMove(smallTile)) {
-                            formWord(String.valueOf(smallTile.getLetter()), fLarge, fSmall);
-                            if (word.length() >= 3) {
-                                Boolean isWordPresent = searchWordInMap(word);
-                                if (isWordPresent) {
-                                    Log.d("WORD PRESENT:", word);
-                                    listOfWordsFormed.put(fLarge, "");
-                                    word = "";
-                                    //isAWord[fLarge] = false;
-                                    setAllNextMoves();
-                                    for (int small = 0; small < 9; small++) {
-                                        final ScroggleTile otherTile = mSmallTiles[fLarge][small];
-                                        final Button innerButton = (Button) outer.findViewById(mSmallIds[small]);
-                                        otherTile.setView(innerButton);
-                                        if (smallIdsWhichFomWord.get(fLarge).contains(small)) {
-                                            innerButton.setEnabled(false);
-                                            innerButton.setTextColor(getResources().getColor(R.color.black_color));
-                                            innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
-                                        } else {
-                                            innerButton.setVisibility(View.GONE);
-                                            innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_gray));
-                                        }
-                                        otherTile.animate();
-                                        otherTile.setChosen(false);
-                                    }
-                                    smallIdsWhichFomWord.get(fLarge).clear();
-                                    isAWord[fLarge] = false;
-                                    vibrator.vibrate(30);
-                                } else {
-                                    setAllNextMoves();
-                                    for (int small = 0; small < 9; small++) {
-                                        final ScroggleTile otherTile = mSmallTiles[fLarge][small];
-                                        final Button innerButton = (Button) outer.findViewById(mSmallIds[small]);
-                                        otherTile.setView(innerButton);
-
-                                        if (smallIdsWhichFomWord.get(fLarge).contains(small)) {
-                                            if (otherTile.getLetter().equals(word.substring(word.length() - 1)) && (small == fSmall)) {
-                                                //innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_gray));
-                                                word = delLastChar(listOfWordsFormed.get(fLarge));
-                                                listOfWordsFormed.put(fLarge, word);
-                                                otherTile.animate();
-                                                otherTile.setChosen(false);
-                                            } else {
+                        if (phase == 1) {
+                            if (isValidMove(smallTile)) {
+                                formWord(String.valueOf(smallTile.getLetter()), fLarge, fSmall);
+                                if (word.length() >= 3) {
+                                    Boolean isWordPresent = searchWordInMap(word);
+                                    if (isWordPresent) {
+                                        Log.d("WORD PRESENT:", word);
+                                        listOfWordsFormed.put(fLarge, "");
+                                        word = "";
+                                        //isAWord[fLarge] = false;
+                                        setAllNextMoves();
+                                        for (int small = 0; small < 9; small++) {
+                                            final ScroggleTile otherTile = mSmallTiles[fLarge][small];
+                                            final Button innerButton = (Button) outer.findViewById(mSmallIds[small]);
+                                            otherTile.setView(innerButton);
+                                            if (smallIdsWhichFomWord.get(fLarge).contains(small)) {
+                                                innerButton.setEnabled(false);
                                                 innerButton.setTextColor(getResources().getColor(R.color.black_color));
-                                                // innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
+                                                innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
+                                            } else {
+                                                //innerButton.setVisibility(View.GONE);
+                                                innerButton.setEnabled(false);
+                                                innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_gray));
+                                            }
+                                            otherTile.animate();
+                                            otherTile.setChosen(false);
+                                        }
+                                        smallIdsWhichFomWord.get(fLarge).clear();
+                                        isAWord[fLarge] = false;
+                                        vibrator.vibrate(30);
+                                    } else {
+                                        setAllNextMoves();
+                                        for (int small = 0; small < 9; small++) {
+                                            final ScroggleTile otherTile = mSmallTiles[fLarge][small];
+                                            final Button innerButton = (Button) outer.findViewById(mSmallIds[small]);
+                                            otherTile.setView(innerButton);
+
+                                            if (smallIdsWhichFomWord.get(fLarge).contains(small)) {
+                                                if (otherTile.getLetter().equals(word.substring(word.length() - 1)) && (small == fSmall)) {
+                                                    //innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_gray));
+                                                    word = delLastChar(listOfWordsFormed.get(fLarge));
+                                                    listOfWordsFormed.put(fLarge, word);
+                                                    ArrayList<Integer> list = smallIdsWhichFomWord.get(fLarge);
+                                                    for (Integer i : list) {
+                                                        if (i == small) {
+                                                            list.remove(i);
+                                                        }
+                                                    }
+                                                    otherTile.animate();
+                                                    otherTile.setChosen(false);
+                                                } else {
+                                                    innerButton.setTextColor(getResources().getColor(R.color.black_color));
+                                                    // innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
+                                                }
+
                                             }
 
                                         }
+                                        setValidNextMove(mLastLarge, mLastSmall);
+                                        isAWord[fLarge] = false;
+                                        vibrator.vibrate(30);
 
                                     }
+                                } else {
                                     setValidNextMove(mLastLarge, mLastSmall);
-                                    isAWord[fLarge] = false;
-                                    vibrator.vibrate(30);
-
                                 }
-                            } else {
-                                setValidNextMove(mLastLarge, mLastSmall);
                             }
+                        } else {
+                            final View rootView = mEntireBoard.getView();
+                            for(int l =0; l< 9 ; l++) {
+                                final View outer = rootView.findViewById(mLargeIds[l]);
+                                mLargeTiles[l].setView(outer);
+                                for(int s= 0; s< 9; s++){
+                                    Button button = (Button) outer.findViewById(mSmallIds[s]);
+                                    ScroggleTile tinyTile = (ScroggleTile) mSmallTiles[l][s];
+                                    if (tinyTile.getIsChosen()) {
+                                        if (isAWord[l]) {
+                                            tinyTile.setIsEmpty(false);
+                                            letterArray="";
+                                            mLastLarge = -1;
+                                            button.setText(String.valueOf(tinyTile.getLetter()));
+                                            button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_gray));
+                                        } else {
+                                                button.setText("");
+                                                button.setEnabled(false);
+                                                button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_avail));
+                                        }
+                                    }
+                                }
+                            }
+                            vibrator.vibrate(45);
                         }
                         return true;
                     }
@@ -387,6 +471,11 @@ public class ScroggleFragment extends Fragment {
         }
     }
 
+    public String appendLetter(String letter){
+        letterArray = letterArray.concat(letter);
+        return letterArray;
+    }
+
     public void placeLettersInGrids(){
             List<List<Integer>> positions = new ArrayList<List<Integer>>();
             positions.addAll(Arrays.asList(
@@ -417,35 +506,75 @@ public class ScroggleFragment extends Fragment {
         }
     }
 
+    public void display(){
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast,
+                (ViewGroup) getView().findViewById(R.id.custom_toast_container));
+
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        //display the word formed at top
+        text.setText("Word: " + word);
+
+        Toast toast = new Toast(getActivity().getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+
     private void think(){
         mHandler.postDelayed(new Runnable() {
             @Override
-            public void run(){
-                if (getActivity() == null) return;
-                setValidNextMove(mLastLarge, mLastSmall);
-                if (listOfWordsFormed.get(mLastLarge) != null) {
-                    if(listOfWordsFormed.get(mLastLarge).length() >= 3){
-                        Boolean isWordPresent = searchWordInMap(word);
+            public void run() {
+                if (phase == 2) {
+                    if(getActivity() == null) return;
+                    if(phaseTwoWord.length() >= 3){
+                        Boolean isWordPresent = searchWordInMap(phaseTwoWord);
                         if(isWordPresent){
-                            Log.d("WORD PRESENT: ", word);
-                            isAWord[mLastLarge] = isWordPresent;
-                            LayoutInflater inflater = getActivity().getLayoutInflater();
-                            View layout = inflater.inflate(R.layout.custom_toast,
-                                    (ViewGroup) getView().findViewById(R.id.custom_toast_container));
-
-                            TextView text = (TextView) layout.findViewById(R.id.text);
-                            //display the word formed at top
-                            text.setText("Word: " + word);
-
-                            Toast toast = new Toast(getActivity().getApplicationContext());
-                            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                            toast.setDuration(Toast.LENGTH_LONG);
-                            toast.setView(layout);
-                            toast.show();
+                            Log.d("WORD PRESENT: ",phaseTwoWord);
+                            display();
+                            // re display the board
+                            final View rootView = mEntireBoard.getView();
+                            for(int l =0; l< 9 ; l++) {
+                                final View outer = rootView.findViewById(mLargeIds[l]);
+                                mLargeTiles[l].setView(outer);
+                                for(int s= 0; s< 9; s++){
+                                    Button button = (Button) outer.findViewById(mSmallIds[s]);
+                                    ScroggleTile tinyTile = (ScroggleTile) mSmallTiles[l][s];
+                                    if (tinyTile.getIsChosen()) {
+                                        if (isAWord[l]) {
+                                            tinyTile.setIsEmpty(false);
+                                            letterArray="";
+                                            mLastLarge = -1;
+                                            button.setText(String.valueOf(tinyTile.getLetter()));
+                                            button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_gray));
+                                        } else {
+                                            button.setText("");
+                                            button.setEnabled(false);
+                                            button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_avail));
+                                        }
+                                    }
+                                }
+                            }
+                            vibrator.vibrate(45);
                         }
+                    }
+                    ((ScroggleGameActivity) getActivity()).stopThinking();
+                } else {
+                    if (getActivity() == null) return;
+                    setValidNextMove(mLastLarge, mLastSmall);
+                    if (listOfWordsFormed.get(mLastLarge) != null) {
+                        if (listOfWordsFormed.get(mLastLarge).length() >= 3) {
+                            Boolean isWordPresent = searchWordInMap(word);
+                            if (isWordPresent) {
+                                Log.d("WORD PRESENT: ", word);
+                                isAWord[mLastLarge] = isWordPresent;
+                                display();
+                            }
+                        }
+                    }
+                    ((ScroggleGameActivity) getActivity()).stopThinking();
                 }
-            }
-                ((ScroggleGameActivity) getActivity()).stopThinking();
             }
 
         }, 1000);
@@ -483,17 +612,30 @@ public class ScroggleFragment extends Fragment {
     /** Create a string containing the state of the game. */
     public String getState() {
         StringBuilder builder = new StringBuilder();
+        builder.append(timeRemaning);
+        builder.append(',');
+        builder.append(phase);
+        builder.append(',');
         builder.append(mLastLarge);
         builder.append(',');
         builder.append(mLastSmall);
         builder.append(',');
         for (int large = 0; large < 9; large++) {
             for (int small = 0; small < 9; small++) {
-                //builder.append(mSmallTiles[large][small].getOwner().name());
-                //builder.append(mSmallTiles[large][small].getLetter());
+                builder.append(mSmallTiles[large][small].getLetter());
+                builder.append(',');
+                builder.append(mSmallTiles[large][small].getIsChosen());
+                builder.append(',');
+                builder.append(letterState[large][small]);
                 builder.append(',');
             }
+            builder.append(listOfWordsFormed.get(large));
+            builder.append(',');
+            builder.append(isAWord[large]);
+            builder.append(',');
         }
+        builder.append(phaseTwoWord);
+        builder.append(',');
         return builder.toString();
     }
 
@@ -508,7 +650,11 @@ public class ScroggleFragment extends Fragment {
         mAvailable.add(tile);
     }
 
-    private  void clearNextMove(){
+    private Boolean isAvailable(ScroggleTile tile){
+        return mAvailable.contains(tile);
+    }
+
+    private  void clearMove(){
         nextMoves.clear();
     }
 
@@ -520,26 +666,117 @@ public class ScroggleFragment extends Fragment {
         return nextMoves.contains(tile);
     }
 
-    public class GameCountDownTimer extends CountDownTimer{
+    public class GameCountDownTimer extends CountDownTimer {
 
         public GameCountDownTimer(long startTime, long interval) {
             super(startTime, interval);
         }
 
         @Override
-        public  void onFinish(){
-            text.setText("Time is up");
+        public void onFinish() {
+            //text.setText("Time is up");
+            if (phase == 1) {
+                if (listOfWordsFormed.size() > 0) {
+                    text.setText("FINISH!!");
+                    ((ScroggleGameActivity) getActivity()).setFragmentInvisible();
+                    final Dialog mDialog = new Dialog(getActivity());
+                    mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    mDialog.setTitle("END: PHASE 1");
+                    mDialog.setContentView(R.layout.phase_two);
+                    mDialog.setCancelable(false);
+
+                    TextView textView = (TextView) getView().findViewById(R.id.TextView01);
+                    textView.setText("BEGIN: PHASE TWO");
+
+                    Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
+                    ok_button.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            phase = 2;
+                            timeRemaning = 0;
+                            Intent intent = new Intent(getActivity(), ScroggleGameActivity.class);
+                            startActivity(intent);
+                            intent.putExtra("gameData", getState());
+                            intent.putExtra("phase", phase);
+                            getActivity().finish();
+                            //if (mDialog != null)
+                            //    mDialog.dismiss();
+                        }
+                    });
+                    //now that the dialog is set up, it's time to show it
+                    mDialog.show();
+                } else {
+                    text.setText("GAME END");
+                    final Dialog mDialog = new Dialog(getActivity());
+                    mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    mDialog.setTitle("Game Over");
+                    mDialog.setContentView(R.layout.phase_two);
+                    mDialog.setCancelable(false);
+
+                    TextView textView = (TextView) mDialog.findViewById(R.id.alert);
+                    textView.setText("SCROGGLE: GAME OVER");
+
+                    Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
+                    ok_button.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            getActivity().finish();
+                            //if (mDialog != null)
+                            //    mDialog.dismiss();
+                        }
+                    });
+                    //now that the dialog is set up, it's time to show it
+                    mDialog.show();
+                }
+            } else {
+                //for phase two
+                text.setText("GAME END");
+                gameData = "";
+                sFragment.getView().setVisibility(View.INVISIBLE);
+                cFragment.getView().setVisibility(View.INVISIBLE);
+                final Dialog mDialog = new Dialog(getActivity());
+                mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                mDialog.setTitle("Game Over");
+                mDialog.setContentView(R.layout.phase_two);
+                mDialog.setCancelable(false);
+
+                TextView textView = (TextView) getView().findViewById(R.id.TextView01);
+                textView.setText("END OF SCROGGLE GAME");
+
+                Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
+                ok_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        getActivity().finish();
+                        //if (mDialog != null)
+                        //    mDialog.dismiss();
+                    }
+                });
+                //now that the dialog is set up, it's time to show it
+                mDialog.show();
+            }
+
         }
 
         @Override
-        public void onTick(long millisUnitFInished){
+        public void onTick(long millisUnitFInished) {
             String time = String.format("%d : %d",
                     TimeUnit.MILLISECONDS.toMinutes(millisUnitFInished),
                     TimeUnit.MILLISECONDS.toSeconds(millisUnitFInished) -
                             TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUnitFInished)));
-            text.setText("Time Remaning: " + time);
-        }
+            if (time.equals("00:03") || time.equals("00:02") || time.equals("00:01")) {
+                Animation animation = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.blink);
+                text.startAnimation(animation);
+                text.setText("Time Remaining: " +time);
 
+            } else {
+                text.setText("Time Remaning: " + time);
+            }
+            timeRemaning = millisUnitFInished;
+        }
     }
 
     public boolean isChosen(ScroggleTile tile) {
@@ -557,9 +794,17 @@ public class ScroggleFragment extends Fragment {
 
     }
 
+    public void setPhase(int ph){
+        this.phase = ph;
+    }
+
     public void putState(String data){
         String[] fields = gameData.split(",");
         int index = 0;
+        timeRemaning = Long.parseLong(fields[index++]);
+        this.setTime(timeRemaning);
+        phase = Integer.parseInt(fields[index++]);
+        this.setPhase(phase);
         mLastLarge = Integer.parseInt(fields[index++]);
         mLastSmall = Integer.parseInt(fields[index++]);
         for(int large = 0; large < 9; large++){
@@ -576,29 +821,40 @@ public class ScroggleFragment extends Fragment {
             Boolean isWord = Boolean.valueOf(fields[index++]);
             isAWord[large] = isWord;
         }
-        boolean isGameEndFlag = Boolean.parseBoolean(fields[index++]);
-        ((ScroggleGameActivity) this.getActivity()).setGameEnd(isGameEndFlag);
+        phaseTwoWord = (fields[index++]);
+       // boolean isGameEndFlag = Boolean.parseBoolean(fields[index++]);
+       // ((ScroggleGameActivity) this.getActivity()).setGameEnd(isGameEndFlag);
         setAvailableFromLastMove(mLastSmall);
         updateAllTiles();
-        putPrevLetters(rView);
-    }
-
-    public void putPrevLetters(View view){
-        mEntireBoard.setView(view);
         for(int large = 0; large <9; large++){
-            final View outer = view.findViewById(mLargeIds[large]);
+            final View outer = rView.findViewById(mLargeIds[large]);
             mLargeTiles[large].setView(outer);
             for(int small = 0; small <9; small++){
-                int fLarge = large;
-                int fSmall = small;
-                final ScroggleTile smallTile = (ScroggleTile) mSmallTiles[large][small];
-                final Button inner = (Button) view.findViewById(mSmallIds[small]);
-                inner.setText(String.valueOf(letterState[large][small]));
-                smallTile.setLetter(String.valueOf(letterState[large][small]));
-                if(smallTile.getIsChosen()){
-                    inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
+                final ScroggleTile smallTile = mSmallTiles[large][small];
+                final Button inner = (Button) rView.findViewById(mSmallIds[small]);
+                if(phase == 2){
+                    if(smallTile.getIsChosen()){
+                        if(isAWord[large]){
+                            inner.setText(String.valueOf(smallTile.getLetter()));
+                            inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_gray));
+                        } else {
+                            inner.setText("");
+                            inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_avail));
+                            inner.setEnabled(false);
+                        }
+                    } else {
+                        inner.setText("");
+                        inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_avail));
+                        inner.setEnabled(false);
+                    }
                 } else {
-                    inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_avail));
+                    inner.setText(String.valueOf(letterState[large][small]));
+                    smallTile.setLetter(String.valueOf(letterState[large][small]));
+                    if (smallTile.getIsChosen()) {
+                        inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
+                    } else {
+                        inner.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_gray));
+                    }
                 }
             }
         }
@@ -616,7 +872,7 @@ public class ScroggleFragment extends Fragment {
 
     public void setValidNextMove(int sLarge, int sSmall){
         //clear the nextmoves hashset
-        clearNextMove();
+        clearMove();
         if(sLarge != -1 && sSmall != -1) {
 
             //get all the possible squares in all directions of the grid with value small
@@ -682,28 +938,21 @@ public class ScroggleFragment extends Fragment {
         int point = 0;
         if(letter.equals("")){
             point=0;
-        }
-        if(letter.equals("E") || letter.equals("A") || letter.equals("I") || letter.equals("O")
-                || letter.equals("N") || letter.equals("R") || letter.equals("T") || letter.equals("L")
-                || letter.equals("S")){
+        } else if(letter.equals("e") || letter.equals("a") || letter.equals("i") || letter.equals("o")
+                || letter.equals("n") || letter.equals("r") || letter.equals("t") || letter.equals("l")
+                || letter.equals("n")){
                     point = 1;
-        }
-        if(letter.equals("D") || letter.equals("G")) {
+        } else if(letter.equals("d") || letter.equals("g")) {
             point = 2;
-        }
-        if(letter.equals("B") || letter.equals("C") || letter.equals("M") || letter.equals("P")){
+        } else if(letter.equals("b") || letter.equals("c") || letter.equals("m") || letter.equals("p")){
             point = 3;
-        }
-        if(letter.equals("F") || letter.equals("H") || letter.equals("V") || letter.equals("W") || letter.equals("Y")) {
+        } else if(letter.equals("f") || letter.equals("h") || letter.equals("v") || letter.equals("w") || letter.equals("y")) {
             point = 4;
-        }
-        if(letter.equals("K")){
+        } else if(letter.equals("k")){
             point = 5;
-        }
-        if(letter.equals("J") || letter.equals("X")){
+        } else if(letter.equals("j") || letter.equals("x")){
             point =8;
-        }
-        if(letter.equals("Q") || letter.equals("Z")){
+        } else if(letter.equals("q") || letter.equals("z")){
             point = 10;
         }
         return  point;
@@ -717,4 +966,9 @@ public class ScroggleFragment extends Fragment {
         int point=0;
         return point;
     }
+
+    public void setTime(long time){
+        this.timeRemaning = time;
+    }
+
 }

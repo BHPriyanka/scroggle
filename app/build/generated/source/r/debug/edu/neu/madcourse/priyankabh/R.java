@@ -2057,6 +2057,7 @@ containing a value of this type.
         public static final int add=0x7f0d0013;
         public static final int adjust_height=0x7f0d001d;
         public static final int adjust_width=0x7f0d001e;
+        public static final int alert=0x7f0d009d;
         public static final int alertTitle=0x7f0d0043;
         public static final int always=0x7f0d001f;
         public static final int auto=0x7f0d0027;
@@ -2065,7 +2066,7 @@ containing a value of this type.
         public static final int buttonPanel=0x7f0d0036;
         public static final int button_main=0x7f0d0079;
         public static final int button_restart=0x7f0d0078;
-        public static final int button_resume=0x7f0d009d;
+        public static final int button_resume=0x7f0d009e;
         public static final int cancel_action=0x7f0d008b;
         public static final int checkbox=0x7f0d0046;
         public static final int chronometer=0x7f0d0093;
@@ -2129,7 +2130,7 @@ containing a value of this type.
         public static final int notification_main_column_container=0x7f0d008f;
         public static final int ok_button=0x7f0d0060;
         public static final int parentPanel=0x7f0d0038;
-        public static final int pause_button=0x7f0d009e;
+        public static final int pause_button=0x7f0d009f;
         public static final int progress_circular=0x7f0d0005;
         public static final int progress_horizontal=0x7f0d0006;
         public static final int quit_button=0x7f0d006d;
@@ -2158,15 +2159,15 @@ containing a value of this type.
         public static final int showCustom=0x7f0d000f;
         public static final int showHome=0x7f0d0010;
         public static final int showTitle=0x7f0d0011;
-        public static final int small1=0x7f0d009f;
-        public static final int small2=0x7f0d00a0;
-        public static final int small3=0x7f0d00a1;
-        public static final int small4=0x7f0d00a2;
-        public static final int small5=0x7f0d00a3;
-        public static final int small6=0x7f0d00a4;
-        public static final int small7=0x7f0d00a5;
-        public static final int small8=0x7f0d00a6;
-        public static final int small9=0x7f0d00a7;
+        public static final int small1=0x7f0d00a0;
+        public static final int small2=0x7f0d00a1;
+        public static final int small3=0x7f0d00a2;
+        public static final int small4=0x7f0d00a3;
+        public static final int small5=0x7f0d00a4;
+        public static final int small6=0x7f0d00a5;
+        public static final int small7=0x7f0d00a6;
+        public static final int small8=0x7f0d00a7;
+        public static final int small9=0x7f0d00a8;
         public static final int spacer=0x7f0d0037;
         public static final int split_action_bar=0x7f0d0007;
         public static final int src_atop=0x7f0d0016;
@@ -2181,7 +2182,7 @@ containing a value of this type.
         public static final int text2=0x7f0d009a;
         public static final int textSpacerNoButtons=0x7f0d003d;
         public static final int textSpacerNoTitle=0x7f0d003c;
-        public static final int thinking=0x7f0d00a8;
+        public static final int thinking=0x7f0d00a9;
         public static final int tictactoe_button=0x7f0d006a;
         public static final int time=0x7f0d0092;
         public static final int timer=0x7f0d0085;
@@ -2264,15 +2265,16 @@ containing a value of this type.
         public static final int notification_template_media_custom=0x7f040037;
         public static final int notification_template_part_chronometer=0x7f040038;
         public static final int notification_template_part_time=0x7f040039;
-        public static final int scroggle_fragment_control=0x7f04003a;
-        public static final int select_dialog_item_material=0x7f04003b;
-        public static final int select_dialog_multichoice_material=0x7f04003c;
-        public static final int select_dialog_singlechoice_material=0x7f04003d;
-        public static final int small_board=0x7f04003e;
-        public static final int small_scroggle=0x7f04003f;
-        public static final int support_simple_spinner_dropdown_item=0x7f040040;
-        public static final int thinking=0x7f040041;
-        public static final int timer_layout=0x7f040042;
+        public static final int phase_two=0x7f04003a;
+        public static final int scroggle_fragment_control=0x7f04003b;
+        public static final int select_dialog_item_material=0x7f04003c;
+        public static final int select_dialog_multichoice_material=0x7f04003d;
+        public static final int select_dialog_singlechoice_material=0x7f04003e;
+        public static final int small_board=0x7f04003f;
+        public static final int small_scroggle=0x7f040040;
+        public static final int support_simple_spinner_dropdown_item=0x7f040041;
+        public static final int thinking=0x7f040042;
+        public static final int timer_layout=0x7f040043;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;

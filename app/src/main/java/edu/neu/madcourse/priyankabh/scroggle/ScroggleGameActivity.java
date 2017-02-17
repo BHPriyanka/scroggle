@@ -16,7 +16,6 @@ import java.util.HashMap;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
 import edu.neu.madcourse.priyankabh.R;
-import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
 
 /**
  * Created by priya on 2/9/2017.
@@ -33,7 +32,7 @@ public class ScroggleGameActivity extends FragmentActivity {
     private int phaseOnePoints = 0;
     private int phaseTwoPoints = 0;
     private String gameData = "";
-    private int phase;
+    private int phase=1;
     private Boolean restore=false;
 
 
@@ -51,7 +50,6 @@ public class ScroggleGameActivity extends FragmentActivity {
         setContentView(R.layout.activity_game_scroggle);
         sFragment = (ScroggleFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_scroggle);
-
         scoreView = (TextView) findViewById(R.id.score);
 
         if(globalVariable.list.isEmpty()) {
@@ -64,13 +62,16 @@ public class ScroggleGameActivity extends FragmentActivity {
             String gameData = getPreferences(MODE_PRIVATE)
                     .getString(PREF_RESTORE, null);
             if (gameData != null) {
-                //sFragment.putState(gameData);
+                sFragment.putState(gameData);
             }
 
         }
 
     }
 
+    public void setFragmentInvisible(){
+        sFragment.getView().setVisibility(View.INVISIBLE);
+    }
     @Override
     public void onPause(){
         super.onPause();
@@ -147,6 +148,7 @@ public class ScroggleGameActivity extends FragmentActivity {
         this.isEnd = val;
     }
 
+
     public void stopThinking() {
         if(phase == 1) {
             scoreView.setText("Total Score: " + String.valueOf(phaseOnePoints));
@@ -191,5 +193,9 @@ public class ScroggleGameActivity extends FragmentActivity {
 
     public void setRestore(Boolean res){
         this.restore = res;
+    }
+
+    public boolean isRestore(){
+        return this.restore;
     }
 }
