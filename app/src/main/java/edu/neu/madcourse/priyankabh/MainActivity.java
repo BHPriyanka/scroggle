@@ -115,7 +115,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        Button newGameButton = (Button) findViewById(R.id.new_game_button);
+        Button newGameButton = (Button) findViewById(R.id.scroggle_button);
         newGameButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

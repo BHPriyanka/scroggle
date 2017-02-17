@@ -38,15 +38,6 @@ public class ScroggleMainFragment extends Fragment {
             }
         });
 
-        View continueButton = rootView.findViewById(R.id.continue_button);
-        continueButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getActivity(), ScroggleMainActivity.class);
-                intent.putExtra(ScroggleGameActivity.KEY_RESTORE, true);
-                ScroggleMainFragment.this.startActivity(intent);
-            }
-        });
         return rootView;
     }
 

@@ -166,21 +166,6 @@ public class TestDictionary extends Activity{
                 globalVariable.list = (HashMap<String,ArrayList<String>>)ois.readObject();
 
                 ois.close();
-                /*InputStream strF = getResources().getAssets().open("wordlist.txt");
-                Scanner sc = new Scanner(strF);
-
-                while (sc.hasNextLine()) {
-                    String word = sc.nextLine();
-                    Boolean present = globalVariable.list.containsKey(word.toLowerCase().substring(0, 2));
-                    if (present) {
-                        ArrayList<String> ll = globalVariable.list.get(word.toLowerCase().substring(0, 2));
-                        ll.add(word.toLowerCase());
-                    }
-                    else{
-                        ArrayList<String> ll = new ArrayList<String>();
-                        ll.add(word.toLowerCase());
-                        globalVariable.list.put(word.toLowerCase().substring(0,2), ll);
-                    }*/
 
                 int count = 0;
                 try {

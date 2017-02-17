@@ -23,13 +23,13 @@ public class ScroggleTile {
     private final ScroggleFragment mGame;
     private ScroggleTile mSubTiles[];
     private View mView;
-    private String mLetter;
-    private Boolean isFilled;
+    private String letter;
+    private Boolean isChosen;
     private Boolean isEmpty;
 
     public ScroggleTile(ScroggleFragment game) {
         this.mGame = game;
-        this.isFilled = false;
+        this.isChosen = false;
         this.isEmpty = false;
     }
 
@@ -42,11 +42,11 @@ public class ScroggleTile {
     }
 
     public String getLetter(){
-        return mLetter;
+        return letter;
     }
 
-    public void setmLetter(String letter) {
-        this.mLetter = letter;
+    public void setLetter(String letter) {
+        this.letter = letter;
     }
 
     public View getView(){
@@ -57,8 +57,12 @@ public class ScroggleTile {
         return mSubTiles;
     }
 
-    public Boolean getIsFilled(){
-        return isFilled;
+    public void setChosen(boolean bool){
+        this.isChosen = bool;
+    }
+
+    public Boolean getIsChosen(){
+        return isChosen;
     }
 
 
@@ -75,4 +79,36 @@ public class ScroggleTile {
         Animation blink = AnimationUtils.loadAnimation(mGame.getActivity().getApplicationContext(), R.anim.blink);
         v.startAnimation(blink);
     }
+
+    public void updateDrawableState() {
+        if (mView == null) return;
+        int level = getLevel();
+        Boolean flag = getIsChosen();
+        if (mView.getBackground() != null) {
+            if(flag == true) {
+                mView.getBackground().setLevel(level);
+            } else {
+                mView.getBackground().setLevel(level);
+            }
+        }
+        if (mView instanceof Button) {
+            mView.getBackground().setLevel(level);
+        }
+    }
+
+    private int getLevel() {
+        int level;
+        if(getIsChosen()){
+            level = R.drawable.letter_green;
+        }
+        else {
+            level = R.drawable.letter_avail;
+        }
+
+        if(mView instanceof Button){
+            level = R.drawable.letter_gray;
+        }
+        return level;
+    }
+
 }

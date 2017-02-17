@@ -1541,7 +1541,6 @@ both sides in the larger game.
       <item name="android:layout_margin">@dimen/tile_margin</item>
       <item name="android:padding">@dimen/tile_padding</item>
       <item name="android:scaleType">centerCrop</item>
-      <item name="android:src">@drawable/letter</item>
    </style>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>

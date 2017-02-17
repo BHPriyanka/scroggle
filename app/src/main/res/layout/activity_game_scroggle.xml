@@ -32,12 +32,12 @@
             tools:layout="@layout/fragment_scroggle"/>
         <!-- Control fragment goes here... -->
 
-        <!--fragment
+        <fragment
             android:id="@+id/fragment_scroggle_controls"
-            class="edu.neu.madcourse.priyankabh.tictactoe.ControlFragment"
+            class="edu.neu.madcourse.priyankabh.scroggle.ScroggleControlFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_control"/-->
+            tools:layout="@layout/scroggle_fragment_control"/>
 
     </LinearLayout>
 

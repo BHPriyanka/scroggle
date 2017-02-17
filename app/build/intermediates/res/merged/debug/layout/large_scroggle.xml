@@ -13,6 +13,7 @@
     tools:context=".scroggle.ScroggleGameActivity"
     android:layout_height="wrap_content"
     android:layout_width="wrap_content">
+    <TableRow>
     <TextView
         android:id="@+id/timer"
         android:text="Time: "
@@ -20,6 +21,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:id="@+id/score"
+            android:text="Score: "
+            android:paddingLeft="10dip"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="30dp"/>
+    </TableRow>
 
 <GridLayout
     android:layout_width="wrap_content"

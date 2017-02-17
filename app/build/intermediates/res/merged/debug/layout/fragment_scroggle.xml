@@ -21,12 +21,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <!--fragment
+        <fragment
             android:id="@+id/fragment_game_controls"
             class="edu.neu.madcourse.priyankabh.tictactoe.ControlFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout="@layout/scroggle_fragment_control.xml"/-->
+            tools:layout="@layout/scroggle_fragment_control"/>
     </LinearLayout>
 
 </RelativeLayout>
