@@ -32,12 +32,22 @@ public class ScroggleGameActivity extends FragmentActivity {
     public TextView scoreView;
     private int phaseOnePoints = 0;
     private int phaseTwoPoints = 0;
+    private String gameData = "";
+    private int phase;
+    private Boolean restore=false;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
         super.onCreate(savedInstanceState);
+
+        Bundle b = this.getIntent().getExtras();
+        if (b != null) {
+            phase = 2;
+            gameData = b.getString("gameData");
+        }
+
         setContentView(R.layout.activity_game_scroggle);
         sFragment = (ScroggleFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_scroggle);
@@ -81,6 +91,11 @@ public class ScroggleGameActivity extends FragmentActivity {
     public void onScroggleResume(){
 
     }
+
+    public void restartGame(){
+    //    sFragment.restartGame();
+    }
+
 
     private class LoadWordList extends AsyncTask<Void, Integer, Void> {
 
@@ -133,6 +148,48 @@ public class ScroggleGameActivity extends FragmentActivity {
     }
 
     public void stopThinking() {
-        scoreView.setText(String.valueOf(phaseOnePoints));
+        if(phase == 1) {
+            scoreView.setText("Total Score: " + String.valueOf(phaseOnePoints));
+        } else {
+            scoreView.setText("Total Score: " + String.valueOf(phaseTwoPoints+phaseOnePoints));
+        }
+    }
+
+    public void startThinking() {
+        View thinkView = findViewById(R.id.thinking);
+        thinkView.setVisibility(View.VISIBLE);
+    }
+
+
+    public int getPhaseOnePoints(){
+        return this.phaseOnePoints;
+    }
+
+    public int getPhaseTwoPoints(){
+        return this.phaseTwoPoints;
+    }
+
+    public void setPhaseOnePoints(int points){
+        this.phaseOnePoints = points;
+    }
+
+    public void setPhaseTwoPoints(int points){
+        this.phaseTwoPoints = points;
+    }
+
+    public int getPhase(){
+        return this.phase;
+    }
+
+    public void setPhase(int phase){
+        this.phase = phase;
+    }
+
+    public Boolean getRestore(){
+        return this.restore;
+    }
+
+    public void setRestore(Boolean res){
+        this.restore = res;
     }
 }
