@@ -79,6 +79,10 @@ public class ScroggleFragment extends Fragment {
     private boolean[] isAWord = new boolean[9];
     private View rView;
     private Map<Integer,ArrayList<Integer>> smallIdsWhichFomWord = new HashMap<Integer,ArrayList<Integer>>();
+    private int mPhaseOnePoints=0;
+    private int pointsForNumberOfWordsFound = 0;
+    private int pointsForLetters = 0;
+    private int pointsForNineLetterWords = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -673,4 +677,44 @@ public class ScroggleFragment extends Fragment {
         return moves;
     }
 
+
+    public int getLetterScore(String letter){
+        int point = 0;
+        if(letter.equals("")){
+            point=0;
+        }
+        if(letter.equals("E") || letter.equals("A") || letter.equals("I") || letter.equals("O")
+                || letter.equals("N") || letter.equals("R") || letter.equals("T") || letter.equals("L")
+                || letter.equals("S")){
+                    point = 1;
+        }
+        if(letter.equals("D") || letter.equals("G")) {
+            point = 2;
+        }
+        if(letter.equals("B") || letter.equals("C") || letter.equals("M") || letter.equals("P")){
+            point = 3;
+        }
+        if(letter.equals("F") || letter.equals("H") || letter.equals("V") || letter.equals("W") || letter.equals("Y")) {
+            point = 4;
+        }
+        if(letter.equals("K")){
+            point = 5;
+        }
+        if(letter.equals("J") || letter.equals("X")){
+            point =8;
+        }
+        if(letter.equals("Q") || letter.equals("Z")){
+            point = 10;
+        }
+        return  point;
+    }
+
+    public int getTotalPhaseOnePoints(){
+        return mPhaseOnePoints + pointsForNumberOfWordsFound + pointsForLetters + pointsForNineLetterWords;
+    }
+
+    public int getPointsForNumberOfWordsFound(){
+        int point=0;
+        return point;
+    }
 }

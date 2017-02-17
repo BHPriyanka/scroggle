@@ -33,6 +33,14 @@ public class ScroggleTile {
         this.isEmpty = false;
     }
 
+    public Boolean getIsEmpty(){
+        return this.isEmpty;
+    }
+
+    public void setIsEmpty(Boolean bool){
+        this.isEmpty = bool;
+    }
+
     public void setSubTiles(ScroggleTile[] subTiles) {
         this.mSubTiles = subTiles;
     }
