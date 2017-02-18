@@ -9,13 +9,22 @@
 package edu.neu.madcourse.priyankabh.scroggle;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
+
+import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
+import edu.neu.madcourse.priyankabh.dictionary.Acknowledgement;
 import edu.neu.madcourse.priyankabh.tictactoe.GameActivity;
 
 public class ScroggleMainFragment extends Fragment {
@@ -35,6 +44,35 @@ public class ScroggleMainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ScroggleGameActivity.class);
                 getActivity().startActivity(intent);
+            }
+        });
+
+        View ackButton = rootView.findViewById(R.id.ack_button);
+        ackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //set up dialog
+                final Dialog mDialog = new Dialog(getActivity());
+                mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                mDialog.setTitle("Acknowledgement");
+                mDialog.setContentView(R.layout.scroggle_ack);
+                mDialog.setCancelable(true);
+
+                //set up text
+                TextView text = (TextView) mDialog.findViewById(R.id.TextView01);
+                text.setText(R.string.scroggle_ack);
+
+                Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
+                ok_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        if (mDialog != null)
+                            mDialog.dismiss();
+                    }
+                });
+                //now that the dialog is set up, it's time to show it
+                mDialog.show();
             }
         });
 

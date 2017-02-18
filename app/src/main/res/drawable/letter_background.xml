@@ -7,8 +7,11 @@
  ! We make no guarantees that this code is fit for any purpose.
  ! Visit http://www.pragmaticprogrammer.com/titles/eband4 for more book information.
 -->
-<level-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:drawable="@drawable/letter_gray"
-        android:maxLevel="0"/>
- </level-list>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <stroke
+        android:width="@dimen/stroke_width"
+        android:color="@color/dark_border_color"/>
+    <solid android:color="@color/gray_color"/>
+    <corners android:radius="@dimen/corner_radius"/>
+</shape>

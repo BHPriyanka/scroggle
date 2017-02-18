@@ -58,7 +58,7 @@ public class ScroggleGameActivity extends FragmentActivity {
             }
 
         }
-        if (phase == 2) {
+        if (phase == 1) {
             scoreView.setText("Total Points = " + String.valueOf(phaseOnePoints));
         } else {
             scoreView.setText("Total Points = " + String.valueOf(phaseOnePoints + phaseTwoPoints));
@@ -101,7 +101,7 @@ public class ScroggleGameActivity extends FragmentActivity {
         }
         sFragment.mediaPlayer = MediaPlayer.create(this, R.raw.joanne_rewind);
         sFragment.mediaPlayer.start();
-        if (phase == 2) {
+        if (phase == 1) {
             scoreView.setText("Total Points = " + String.valueOf(phaseOnePoints));
         } else {
             scoreView.setText("Total Points = " + String.valueOf(phaseOnePoints + phaseTwoPoints));

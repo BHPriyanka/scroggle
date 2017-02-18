@@ -85,4 +85,23 @@ both sides in the larger game.
         \n\
         <b>2. </b> Help/Hack sessions: Discussion with TAs an other students
     </string>
+    <string name="scroggle_ack">
+        <b>Sources of content:</b>
+        \n\
+        <b>1.</b> Audio Samples:https://www.freesound.org/
+        \n\
+        <b>Note: No images used</b>
+        \n\
+        <b>Sources of Code SNippets obtained: </b>
+        \n\
+        <b>1.</b>Blink timer: https://tausiq.wordpress.com/2012/02/28/count-down-timer-and-text-blinking-in-android/
+        \n\
+        <b>2.</b>Toast: https://developer.android.com/guide/topics/ui/notifiers/toasts.html
+        \n\
+        http://www.javatpoint.com/android-toast-example
+        <b>3.</b>AysncTask :http://stackoverflow.com/questions/9671546/asynctask-android-example
+
+
+
+    </string>
     </resources>
