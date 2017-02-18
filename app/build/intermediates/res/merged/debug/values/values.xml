@@ -505,6 +505,33 @@ both sides in the larger game.
     <string name="declare_winner">%1$s is the winner</string>
     <string name="dictionary_label">Dictionary</string>
     <string name="generate_error_label">Generate Error</string>
+    <string name="instructions">
+        <b>Scroggle</b>
+        \n\
+        An interesting word game mainly based on age old Boggle word game where you form words
+        from the given letter in the grids.
+        \n\
+        <b>Scroggle Board</b>
+        The board consists of one 3X3 Large Grid with 9 smaller Grids. The small grid is also a 3X3 grid.
+        \n\
+        <b>Time and Phases</b>
+        Game runs for 3 minutes and consists of two phases with each phase running for 1.5 minutes.
+        At the end of 1.5 minutes, the game automatically takes you to the next phase if you click on OK on the pop up.
+        \n\
+        <b>Rules</b>
+        \n\
+        <b>i.</b> In the first phase, play boggle on each of the small grids,i.e., form words of length anywhere between
+        1-9.
+        \n\
+        <b>ii.</b> So you will have 9 different words(if you have found words in all 9 grids) for your second phase.
+        \n\
+        <b>iii.</b>In the second phase, all the words formed in phase one is displayed. Now form words by picking one letter
+        from each quadrant. You can revisit the grids but not back-to-back which means that suppose the letter T is one grid,
+        letters A and P are in same grid. the word TAP cannot be formed since A and P are in the same grid.
+        \n\
+        <b>iv.</b>Points for each phase is displayed
+        <b> Go Scroggle!!</b>
+    </string>
     <string name="long_app_name">Ultimate Tic Tac Toe</string>
     <string name="main_menu_label">Main Menu</string>
     <string name="my_name">B H Priyanka</string>
@@ -527,10 +554,9 @@ both sides in the larger game.
         <b>2.</b>Toast: https://developer.android.com/guide/topics/ui/notifiers/toasts.html
         \n\
         http://www.javatpoint.com/android-toast-example
+        \n\
         <b>3.</b>AysncTask :http://stackoverflow.com/questions/9671546/asynctask-android-example
-
-
-
+        \n\
     </string>
     <string name="scroggle_app_name">Scroggle</string>
     <string name="search_menu_title">Search</string>

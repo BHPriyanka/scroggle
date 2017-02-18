@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollview"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:elevation="@dimen/elevation_high"
+        android:orientation="vertical"
+        android:padding="@dimen/menu_padding"
+        tools:context=".scroggle.ScroggleGameActivity"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/ins_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:padding="10dp"
+            android:layout_margin="4dp"/>
+
+        <Button
+            android:id="@+id/ok_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/menu_button_margin"
+            android:padding="@dimen/menu_button_padding"
+            android:text="@string/ok_label"
+            android:background="@color/black_color"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+</ScrollView>

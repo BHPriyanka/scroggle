@@ -31,7 +31,7 @@ public class ScroggleControlFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 resume.setVisibility(View.VISIBLE);
-                pause.setVisibility(View.INVISIBLE);
+                pause.setVisibility(View.GONE);
                 ((ScroggleGameActivity) getActivity()).sFragment.onScrogglePause();
             }
         });
@@ -39,7 +39,7 @@ public class ScroggleControlFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 pause.setVisibility(View.VISIBLE);
-                resume.setVisibility(View.INVISIBLE);
+                resume.setVisibility(View.GONE);
                 ((ScroggleGameActivity) getActivity()).sFragment.onScroggleResume();
             }
         });
@@ -50,6 +50,28 @@ public class ScroggleControlFragment extends Fragment {
                 ((ScroggleGameActivity) getActivity()).sFragment.onScroggleQuit();
             }
         });
+
+        final View mute = rootView.findViewById(R.id.mute);
+        final View unmute = rootView.findViewById(R.id.unmute);
+        unmute.setVisibility(View.INVISIBLE);
+        mute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((ScroggleGameActivity) getActivity()).sFragment.mute();
+                 mute.setVisibility(View.GONE);
+                unmute.setVisibility(View.VISIBLE);
+            }
+        });
+
+        unmute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((ScroggleGameActivity) getActivity()).sFragment.mute();
+                unmute.setVisibility(View.GONE);
+                mute.setVisibility(View.VISIBLE);
+            }
+        });
+
         return rootView;
     }
 

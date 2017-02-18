@@ -53,14 +53,42 @@ public class ScroggleMainFragment extends Fragment {
             public void onClick(View v) {
                 //set up dialog
                 final Dialog mDialog = new Dialog(getActivity());
-                mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+               // mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 mDialog.setTitle("Acknowledgement");
                 mDialog.setContentView(R.layout.scroggle_ack);
                 mDialog.setCancelable(true);
 
                 //set up text
-                TextView text = (TextView) mDialog.findViewById(R.id.TextView01);
+                TextView text = (TextView) mDialog.findViewById(R.id.ack_scroggle);
                 text.setText(R.string.scroggle_ack);
+
+                Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
+                ok_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        if (mDialog != null)
+                            mDialog.dismiss();
+                    }
+                });
+                //now that the dialog is set up, it's time to show it
+                mDialog.show();
+            }
+        });
+
+        View insButton = rootView.findViewById(R.id.instruction);
+        insButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //set up dialog
+                final Dialog mDialog = new Dialog(getActivity());
+                mDialog.setTitle("Instructions");
+                mDialog.setContentView(R.layout.instructions);
+                mDialog.setCancelable(true);
+
+                //set up text
+                TextView text = (TextView) mDialog.findViewById(R.id.ins_button);
+                text.setText(R.string.instructions);
 
                 Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
                 ok_button.setOnClickListener(new View.OnClickListener() {
