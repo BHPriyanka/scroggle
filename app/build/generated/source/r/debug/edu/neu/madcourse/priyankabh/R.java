@@ -2291,13 +2291,14 @@ containing a value of this type.
         public static final int department64_draw=0x7f070001;
         public static final int erkanozan_miss=0x7f070002;
         public static final int gat_loop=0x7f070003;
-        public static final int joanne_rewind=0x7f070004;
-        public static final int minor2go_premium_beat_6_i_dream_of_you_full_exampl=0x7f070005;
-        public static final int notr_loser=0x7f070006;
-        public static final int oldedgar_winner=0x7f070007;
-        public static final int sergenious_moveo=0x7f070008;
-        public static final int sergenious_movex=0x7f070009;
-        public static final int siknoiz_presence_drums=0x7f07000a;
+        public static final int happy_music=0x7f070004;
+        public static final int joanne_rewind=0x7f070005;
+        public static final int minor2go_premium_beat_6_i_dream_of_you_full_exampl=0x7f070006;
+        public static final int notr_loser=0x7f070007;
+        public static final int oldedgar_winner=0x7f070008;
+        public static final int sergenious_moveo=0x7f070009;
+        public static final int sergenious_movex=0x7f07000a;
+        public static final int siknoiz_presence_drums=0x7f07000b;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f080000;

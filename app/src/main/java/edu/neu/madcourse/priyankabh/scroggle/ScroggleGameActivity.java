@@ -1,13 +1,21 @@
 package edu.neu.madcourse.priyankabh.scroggle;
 
 import android.app.ProgressDialog;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
+
+import edu.neu.madcourse.priyankabh.GlobalClass;
 import edu.neu.madcourse.priyankabh.R;
 
 /**
@@ -19,10 +27,10 @@ public class ScroggleGameActivity extends FragmentActivity {
     public static String PREF_RESTORE = "pref_restore";
 
     public ScroggleFragment sFragment;
-    private ProgressDialog progressDialog;
-    private Boolean isEnd;
+    private MediaPlayer mediaPlayer;
     private int phaseOnePoints = 0;
     private int phaseTwoPoints = 0;
+    private SoundPool mSoundPool;
     private String gameData = "";
     private int gameScore =0;
     private int phase=1;
@@ -34,6 +42,7 @@ public class ScroggleGameActivity extends FragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        final GlobalClass globalVariable = (GlobalClass) this.getApplicationContext();
         super.onCreate(savedInstanceState);
 
         Bundle b = this.getIntent().getExtras();
@@ -59,9 +68,9 @@ public class ScroggleGameActivity extends FragmentActivity {
 
         }
         if (phase == 1) {
-            scoreView.setText("Total Points = " + String.valueOf(phaseOnePoints));
+            scoreView.setText("Total Points = " + String.valueOf(this.phaseOnePoints));
         } else {
-            scoreView.setText("Total Points = " + String.valueOf(phaseOnePoints + phaseTwoPoints));
+            scoreView.setText("Total Points = " + String.valueOf(this.phaseOnePoints + this.phaseTwoPoints));
         }
 
     }
@@ -74,9 +83,9 @@ public class ScroggleGameActivity extends FragmentActivity {
     public void onPause(){
         super.onPause();
         sFragment.mHandler.removeCallbacks(null);
-        sFragment.mediaPlayer.stop();
-        sFragment.mediaPlayer.reset();
-        sFragment.mediaPlayer.release();
+        mediaPlayer.stop();
+        mediaPlayer.reset();
+        mediaPlayer.release();
         sFragment.countDownTimer.cancel();
         if (isResume) {
             isResume = false;
@@ -101,35 +110,24 @@ public class ScroggleGameActivity extends FragmentActivity {
                 sFragment.countDownTimer.start();
             }
         }
-        sFragment.mediaPlayer = MediaPlayer.create(this, R.raw.joanne_rewind);
-        sFragment.mediaPlayer.start();
+        mediaPlayer = MediaPlayer.create(this, R.raw.happy_music);
+        mediaPlayer.setVolume(0.5f, 0.5f);
+        mediaPlayer.setLooping(true);
         if (phase == 1) {
-            scoreView.setText("Total Points = " + String.valueOf(phaseOnePoints));
+            scoreView.setText("Total Points = " + String.valueOf(this.phaseOnePoints));
         } else {
-            scoreView.setText("Total Points = " + String.valueOf(phaseOnePoints + phaseTwoPoints));
+            scoreView.setText("Total Points = " + String.valueOf(this.phaseOnePoints + this.phaseTwoPoints));
         }
 
     }
 
 
-    public void restartGame(){
-    //    sFragment.restartGame();
-    }
-
-    public void setGameEnd(Boolean val){
-        this.isEnd = val;
-    }
-
-    public void setGameScore(int score){
-        this.phaseOnePoints = score;
-    }
-
 
     public void stopThinking() {
         if(phase == 1) {
-            scoreView.setText("Total Score: " + String.valueOf(phaseOnePoints));
+            scoreView.setText("Total Score: " + String.valueOf(this.phaseOnePoints));
         } else {
-            scoreView.setText("Total Score: " + String.valueOf(phaseTwoPoints+phaseOnePoints));
+            scoreView.setText("Total Score: " + String.valueOf(this.phaseTwoPoints+this.phaseOnePoints));
         }
     }
 
@@ -138,29 +136,16 @@ public class ScroggleGameActivity extends FragmentActivity {
         thinkView.setVisibility(View.VISIBLE);
     }
 
-
-    public int getPhaseOnePoints(){
-        return this.phaseOnePoints;
-    }
-
     public int getPhaseTwoPoints(){
         return this.phaseTwoPoints;
     }
 
     public void setPhaseOnePoints(int points){
-        this.phaseOnePoints += points;
+        this.phaseOnePoints = points;
     }
 
     public void setPhaseTwoPoints(int points){
-        this.phaseTwoPoints += points;
-    }
-
-    public int getPhase(){
-        return this.phase;
-    }
-
-    public void setPhase(int phase){
-        this.phase = phase;
+        this.phaseTwoPoints = points;
     }
 
     public Boolean getRestore(){
@@ -173,5 +158,34 @@ public class ScroggleGameActivity extends FragmentActivity {
 
     public boolean isRestore(){
         return this.restore;
+    }
+
+    private class LoadWords extends AsyncTask<Void, Integer, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+            try {
+                InputStream strF = getResources().getAssets().open("wordlist.txt");
+
+                Scanner s = new Scanner(strF);
+                while(s.hasNextLine()){
+                    String word=s.nextLine();
+                    if(word.length() == 9){
+                        globalVariable.nineLetterWords.add(word);
+                    }
+                }
+
+            } catch(IOException e) {
+                System.err.print(e);
+            }
+            return null;
+        }
+
+        protected void onProgressUpdate(Integer... params) {
+        }
+
+        protected void onPostExecute(Void v) {
+        }
     }
 }

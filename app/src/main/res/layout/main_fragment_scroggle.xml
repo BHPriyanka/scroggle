@@ -32,7 +32,9 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/menu_button_margin"
         android:padding="@dimen/menu_button_padding"
-        android:text="@string/new_game_label"/>
+        android:text="@string/new_game_label"
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
 
     <Button
         android:id="@+id/instruction"
@@ -40,7 +42,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/menu_button_margin"
         android:padding="@dimen/menu_button_padding"
-        android:text="Instructions"/>
+        android:text="Instructions"
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
 
     <Button
         android:id="@+id/ack_button"
@@ -48,7 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/menu_button_margin"
         android:padding="@dimen/menu_button_padding"
-        android:text="@string/ack_label"/>
+        android:text="@string/ack_label"
+        android:textColor="@color/gray_color"
+        android:background="@color/black_color"/>
 
 
 </LinearLayout>

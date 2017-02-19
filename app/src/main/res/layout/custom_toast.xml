@@ -6,7 +6,7 @@
     android:padding="8dp"
     android:background="#DAAA"
     >
-    <ImageView android:src="@drawable/common_plus_signin_btn_icon_dark"
+    <ImageView android:src="@drawable/common_ic_googleplayservices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="8dp"

@@ -52,7 +52,7 @@ import edu.neu.madcourse.priyankabh.tictactoe.Tile;
  */
 
 public class ScroggleFragment extends Fragment {
-    ProgressDialog progressDialog;
+
     // Data structures go here...
     static private int mLargeIds[] = {R.id.large1, R.id.large2, R.id.large3,
             R.id.large4, R.id.large5, R.id.large6, R.id.large7, R.id.large8,
@@ -62,14 +62,16 @@ public class ScroggleFragment extends Fragment {
             R.id.small4, R.id.small5, R.id.small6, R.id.small7, R.id.small8,
             R.id.small9,};
 
+    private ProgressDialog progressDialog;
     private Boolean isResume = ScroggleGameActivity.isResume;
     private ScroggleTile mEntireBoard = new ScroggleTile(this);
-    private int wScore;
+    private int phaseOneScore =0;
     private int w2Score;
     private int countForSmallIds=0;
     private int count=0;
     private ScroggleTile mLargeTiles[] = new ScroggleTile[9];
     private ScroggleTile mSmallTiles[][] = new ScroggleTile[9][9];
+    private int maintainIds[][] = new int[9][9];
     private int mLastLarge;
     private int mLastSmall;
     private Set<ScroggleTile> mAvailable = new HashSet<ScroggleTile>();
@@ -102,7 +104,7 @@ public class ScroggleFragment extends Fragment {
     private View rView;
     private Map<Integer,ArrayList<Integer>> smallIdsWhichFormWordPhaseOne = new HashMap<Integer,ArrayList<Integer>>();
     //private int[] smallIdsWhichFormWordsPhaseTwo = new int[50];
-    private Map<Integer,Integer> smallIdsWhichFormWordsPhaseTwo = new HashMap<Integer,Integer>();
+    private Map<Integer,ArrayList<Integer>> smallIdsWhichFormWordsPhaseTwo = new HashMap<Integer,ArrayList<Integer>>();
     public int mPhaseOnePoints=0;
     private int mPhaseTwoPoints=0;
     private String phaseTwoWord;
@@ -110,18 +112,8 @@ public class ScroggleFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState){
-        final GlobalClass globalVariable = (GlobalClass) getActivity().getApplicationContext();
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        if(globalVariable.nineLetterWords.isEmpty()){
-            progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMax(100);
-            progressDialog.setMessage("Please wait....");
-            progressDialog.setTitle("Loading Dictionary");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            progressDialog.show();
-            new LoadWords().execute();
-        }
 
         Bundle b = getActivity().getIntent().getExtras();
         try {
@@ -147,7 +139,11 @@ public class ScroggleFragment extends Fragment {
         mSoundX = mSoundPool.load(getActivity(), R.raw.sergenious_movex, 1);
         mSoundO = mSoundPool.load(getActivity(), R.raw.sergenious_moveo, 1);
         mSoundMiss = mSoundPool.load(getActivity(), R.raw.erkanozan_miss, 1);
-        mSoundRewind = mSoundPool.load(getActivity(), R.raw.oldedgar_winner, 1);
+       // mSoundRewind = mSoundPool.load(getActivity(), R.raw.happy_music, 1);
+        mediaPlayer = MediaPlayer.create(getActivity(), R.raw.happy_music);
+        mediaPlayer.setVolume(0.5f, 0.5f);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
     }
 
 
@@ -249,6 +245,8 @@ public class ScroggleFragment extends Fragment {
                     public void onClick(View v) {
                         smallTile.animate();
                         if (phase == 1) {
+                          //  if(mLastLarge != fLarge){
+                           // setValidNextMove(mLastLarge,mLastSmall);
                             if (isValidMove(smallTile)) {
                                 if (!isChosen(smallTile)) {
                                     smallTile.setChosen(true);
@@ -263,12 +261,14 @@ public class ScroggleFragment extends Fragment {
                                 mSoundPool.play(mSoundX, mVolume, mVolume, 1, 0, 1f);
                                 vibrator.vibrate(15);
                                 think();
+                                //code to check if the letter is selected and then form a word
+                                mLastLarge = fLarge;
+                                mLastSmall = fSmall;
+                                setValidNextMove(mLastLarge, mLastSmall);
                             } else {
                                 mSoundPool.play(mSoundMiss, mVolume, mVolume, 1, 0, 1f);
                             }
-                            //code to check if the letter is selected and then form a word
-                            mLastLarge = fLarge;
-                            mLastSmall = fSmall;
+
                         } else {
                             setValidNextMovePhaseTwo(mLastLarge, mLastSmall);
                             if(isValidPhaseTwoMove(smallTile)){
@@ -307,14 +307,14 @@ public class ScroggleFragment extends Fragment {
                                 if (word.length() >= 3) {
                                     Boolean isWordPresent = searchWordInMap(word);
                                     if (isWordPresent) {
-                                        wScore = 0;
+                                        phaseOneScore = 0;
                                         for (int i = 0; i < listOfWordsFormed.get(mLastLarge).length(); i++) {
-                                            wScore += getLetterScore(listOfWordsFormed.get(mLastLarge).charAt(i));
+                                            phaseOneScore += getLetterScore(listOfWordsFormed.get(mLastLarge).charAt(i));
                                         }
-                                        scoreForPhaseOneWordsFormed[mLastLarge] = wScore;
+                                        scoreForPhaseOneWordsFormed[mLastLarge] = phaseOneScore;
                                         isAWord[mLastLarge] = isWordPresent;
                                         Log.d("WORD PRESENT:", word);
-                                        listOfWordsFormed.put(fLarge, "");
+                                        listOfWordsFormed.put(fLarge, word);
                                         word = "";
                                         smallTile.setChosen(true);
                                         //isAWord[fLarge] = false;
@@ -334,15 +334,9 @@ public class ScroggleFragment extends Fragment {
                                                 innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_gray));
                                             }
                                             otherTile.animate();
-                                           // otherTile.setChosen(false);
                                         }
-
-                                      //  vibrator.vibrate(30);
-                                       // calcPhaseOnePoints();
-                                       // ((ScroggleGameActivity) getActivity()).setPhaseOnePoints(mPhaseOnePoints);
-                                       // isAWord[fLarge] = false;
-                                       // scoreForPhaseOneWordsFormed[fLarge] = 0;
-                                       // smallIdsWhichFomWord.get(fLarge).clear();
+                                        calcPhaseOnePoints();
+                                        ((ScroggleGameActivity) getActivity()).setPhaseOnePoints(mPhaseOnePoints);
 
                                     } else {
                                         setAllNextMoves();
@@ -353,7 +347,6 @@ public class ScroggleFragment extends Fragment {
 
                                             if (smallIdsWhichFormWordPhaseOne.get(fLarge).contains(small)) {
                                                 if (otherTile.getLetter().equals(word.substring(word.length() - 1)) && (small == fSmall)) {
-                                                    //innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_gray));
                                                     word = delLastChar(listOfWordsFormed.get(fLarge));
                                                     listOfWordsFormed.put(fLarge, word);
                                                     ArrayList<Integer> list = smallIdsWhichFormWordPhaseOne.get(fLarge);
@@ -363,30 +356,23 @@ public class ScroggleFragment extends Fragment {
                                                         }
                                                     }
                                                     otherTile.animate();
-                                                   // otherTile.setChosen(false);
                                                 } else {
                                                     innerButton.setTextColor(getResources().getColor(R.color.black_color));
-                                                    // innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
                                                 }
 
                                             }
 
                                         }
                                         setValidNextMove(mLastLarge, mLastSmall);
-                                       // isAWord[fLarge] = false;
-                                        //vibrator.vibrate(30);
-                                       // calcPhaseTwoPoints();
-                                       // scoreForPhaseTwoWordsFormed[fLarge]=0;
-                                        //((ScroggleGameActivity) getActivity()).setPhaseTwoPoints(mPhaseTwoPoints);
 
                                     }
-                                    vibrator.vibrate(30);
-                                     calcPhaseOnePoints();
-                                     scoreForPhaseOneWordsFormed[fLarge]=0;
-                                    ((ScroggleGameActivity) getActivity()).setPhaseOnePoints(mPhaseOnePoints);
+                                    vibrator.vibrate(20);
+
                                 } else {
                                     setValidNextMove(mLastLarge, mLastSmall);
+                                    scoreForPhaseOneWordsFormed[fLarge]=0;
                                 }
+
                             }
                         } else {
                             setValidNextMovePhaseTwo(mLastLarge, mLastSmall);
@@ -402,9 +388,25 @@ public class ScroggleFragment extends Fragment {
                                             phaseTwoWord = "";
                                             smallTile.setChosen(true);
                                             setAllNextPhaseTwoMoves();
-
                                             count++;
-                                          for(Integer ll : smallIdsWhichFormWordsPhaseTwo.keySet()) {
+
+                                            for(int big=0;big<9;big++){
+                                                for(int tiny = 0;tiny<9;tiny++){
+                                                    final ScroggleTile otherTile = mSmallTiles[big][tiny];
+                                                    final Button innerButton = (Button) outer.findViewById(mSmallIds[tiny]);
+                                                    otherTile.setView(innerButton);
+
+                                                    if(smallIdsWhichFormWordsPhaseTwo.get(big) != null){
+                                                        if(smallIdsWhichFormWordsPhaseTwo.get(big).contains(tiny)){
+                                                            innerButton.setEnabled(false);
+                                                            innerButton.setClickable(false);
+                                                            innerButton.setTextColor(getResources().getColor(R.color.black_color));
+                                                            innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_red));
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                          /*for(Integer ll : smallIdsWhichFormWordsPhaseTwo.keySet()) {
                                               final ScroggleTile otherTile = mSmallTiles[ll][smallIdsWhichFormWordsPhaseTwo.get(ll)];
                                               final Button innerButton = (Button) outer.findViewById(mSmallIds[smallIdsWhichFormWordsPhaseTwo.get(ll)]);
                                               otherTile.setView(innerButton);
@@ -412,8 +414,9 @@ public class ScroggleFragment extends Fragment {
                                               innerButton.setClickable(false);
                                               innerButton.setTextColor(getResources().getColor(R.color.black_color));
                                               innerButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_red));
-                                          }
-
+                                          }*/
+                                            calcPhaseTwoPoints();
+                                            ((ScroggleGameActivity) getActivity()).setPhaseTwoPoints(mPhaseTwoPoints);
 
                                         } else {
                                             setAllNextPhaseTwoMoves();
@@ -423,24 +426,26 @@ public class ScroggleFragment extends Fragment {
                                                 otherTile.setView(innerButton);
 
                                                 if (Arrays.asList(phaseTwoWords).contains(phaseTwoWord)){
-                                                        phaseTwoWord = delLastChar(phaseTwoWords[count]);
-                                                        phaseTwoWords[count] = phaseTwoWord;
+                                                    phaseTwoWord = delLastChar(phaseTwoWords[count]);
+                                                    phaseTwoWords[count] = phaseTwoWord;
+                                                    otherTile.animate();
                                                 }
-
 
                                             }
                                             setValidNextMovePhaseTwo(mLastLarge, mLastSmall);
 
                                         }
+
                                     }
                                     vibrator.vibrate(30);
-                                     calcPhaseTwoPoints();
-                                    ((ScroggleGameActivity) getActivity()).setPhaseTwoPoints(mPhaseTwoPoints);
+
                                 } else {
                                     setValidNextMovePhaseTwo(mLastLarge, mLastSmall);
                                 }
+
                             }
-                            }
+
+                        }
                             return true;
                         }
                 });
@@ -500,72 +505,19 @@ public class ScroggleFragment extends Fragment {
     }
 
     public void appendLetter(String letter, int l, int s){
-        /*if(l != mLastLarge){
-            if(phaseTwoWord.equals("")){
-                phaseTwoWord = "".concat(letter);
-            }
-
-            if(phaseTwoWords != null && phaseTwoWords[l] != null) {
-                phaseTwoWord = phaseTwoWords[l].concat(phaseTwoWord);
-                phaseTwoWords[l]=phaseTwoWord;
-            } else {
-                phaseTwoWords[l]= phaseTwoWord;
-            }
-            if(smallIdsWhichFormWordsPhaseTwo.get(l) == null) {
-                smallIdsWhichFormWordsPhaseTwo.put(l, new ArrayList<Integer>(Arrays.asList(s)));
-            } else {
-                ArrayList<Integer> smalls = smallIdsWhichFormWordsPhaseTwo.get(l);
-                smalls.add(s);
-            }
-        }*/
         phaseTwoWord = phaseTwoWord.concat(letter);
-        smallIdsWhichFormWordsPhaseTwo.put(l,s);
+
+        if(smallIdsWhichFormWordsPhaseTwo.get(l) == null) {
+            smallIdsWhichFormWordsPhaseTwo.put(l, new ArrayList<Integer>(Arrays.asList(s)));
+        } else {
+            ArrayList<Integer> smalls = smallIdsWhichFormWordsPhaseTwo.get(l);
+            smalls.add(s);
+        }
         //phaseTwoWords[l] = phaseTwoWord;
     }
 
 
-    private class LoadWords extends AsyncTask<Void, Integer, Void> {
 
-        @Override
-        protected Void doInBackground(Void... params) {
-            final GlobalClass globalVariable = (GlobalClass) getActivity().getApplicationContext();
-            try {
-                InputStream strF = getResources().getAssets().open("wordlist.txt");
-
-                Scanner s = new Scanner(strF);
-                while(s.hasNextLine()){
-                    String word=s.nextLine();
-                    if(word.length() == 9){
-                        globalVariable.nineLetterWords.add(word);
-                    }
-                }
-
-                int count = 0;
-                try {
-                    while(count<100) {
-                        Thread.sleep(200);
-                        count +=2;
-                        publishProgress(count);
-                    }
-                }catch(InterruptedException ie){
-                    System.err.print(ie);
-                }
-            } catch(IOException e) {
-                System.err.print(e);
-            }
-            return null;
-        }
-
-        protected void onProgressUpdate(Integer... params) {
-            progressDialog.setProgress(params[0]);
-        }
-
-        protected void onPostExecute(Void v) {
-            if (progressDialog != null && progressDialog.isShowing()) {
-                progressDialog.dismiss();
-            }
-        }
-    }
 
     private class getWords extends AsyncTask<Void, Void, List<String>> {
 
@@ -652,16 +604,16 @@ public class ScroggleFragment extends Fragment {
                             if(!Arrays.asList(phaseTwoWords).contains(phaseTwoWord)){
                             Boolean isWordPresent = searchWordInMap(phaseTwoWord);
                             if (isWordPresent) {
-                                phaseTwoWords[count] = phaseTwoWord;
                                 Log.d("WORD PRESENT: ", word);
                                 display();
-                            }
 
-                            isPhaseTwoWord[mLastLarge] = isWordPresent;count++;
-                            calcPhaseTwoPoints();
-                            ((ScroggleGameActivity) getActivity()).setPhaseTwoPoints(mPhaseTwoPoints);
+                                isPhaseTwoWord[mLastLarge] = isWordPresent;
+
+                            }
                         }
                     }
+                    calcPhaseTwoPoints();
+                    ((ScroggleGameActivity) getActivity()).setPhaseTwoPoints(mPhaseTwoPoints);
                 } else {
                     if (getActivity() == null) return;
                     setValidNextMove(mLastLarge, mLastSmall);
@@ -671,20 +623,23 @@ public class ScroggleFragment extends Fragment {
                             if (isWordPresent) {
                                 Log.d("WORD PRESENT: ", word);
                                 display();
-                                wScore = 0;
-                                for (int i = 0; i < listOfWordsFormed.get(mLastLarge).length(); i++) {
-                                    wScore += getLetterScore(listOfWordsFormed.get(mLastLarge).charAt(i));
-                                }
-                                scoreForPhaseOneWordsFormed[mLastLarge] = wScore;
+                              //  phaseOneScore = 0;
+                              //  for (int i = 0; i < listOfWordsFormed.get(mLastLarge).length(); i++) {
+                              //      phaseOneScore += getLetterScore(listOfWordsFormed.get(mLastLarge).charAt(i));
+                              //  }
+                             //   scoreForPhaseOneWordsFormed[mLastLarge] = phaseOneScore;
+                              //  calcPhaseOnePoints();
+                             //  ((ScroggleGameActivity) getActivity()).setPhaseOnePoints(mPhaseOnePoints);
                             } else {
                                 scoreForPhaseOneWordsFormed[mLastLarge] = 0;
                             }
                             isAWord[mLastLarge] = isWordPresent;
-                            calcPhaseOnePoints();
-                            ((ScroggleGameActivity) getActivity()).setPhaseOnePoints(mPhaseOnePoints);
+
                         }
                     }
+
                 }
+
                 ((ScroggleGameActivity) getActivity()).stopThinking();
             }
 
@@ -750,6 +705,7 @@ public class ScroggleFragment extends Fragment {
     /** Create a string containing the state of the game. */
     public String getState() {
         StringBuilder builder = new StringBuilder();
+
         builder.append(mPhaseOnePoints);
         builder.append(',');
         builder.append(mPhaseTwoPoints);
@@ -757,10 +713,6 @@ public class ScroggleFragment extends Fragment {
         builder.append(timeRemaning);
         builder.append(',');
         builder.append(phase);
-        builder.append(',');
-        builder.append(mLastLarge);
-        builder.append(',');
-        builder.append(mLastSmall);
         builder.append(',');
         for (int large = 0; large < 9; large++) {
             for (int small = 0; small < 9; small++) {
@@ -833,16 +785,16 @@ public class ScroggleFragment extends Fragment {
             //text.setText("Time is up");
             if (phase == 1) {
                 if (listOfWordsFormed.size() > 0) {
-                    text.setText("FINISH!!");
+                  //  text.setText("FINISH!!");
                     ((ScroggleGameActivity) getActivity()).setFragmentInvisible();
                     final Dialog mDialog = new Dialog(getActivity());
-                    mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    mDialog.setTitle("END: PHASE 1");
+                   // mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    mDialog.setTitle("SCROGGLE");
                     mDialog.setContentView(R.layout.phase_two);
                     mDialog.setCancelable(false);
 
                     TextView textView = (TextView) mDialog.findViewById(R.id.alert);
-                    textView.setText("BEGIN: PHASE TWO");
+                    textView.setText("END: PHASE ONE\nBEGIN: PHASE TWO\nYour Phase 1 Score: "+mPhaseOnePoints);
 
                     Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
                     ok_button.setOnClickListener(new View.OnClickListener() {
@@ -855,6 +807,7 @@ public class ScroggleFragment extends Fragment {
                             intent.putExtra("gameData", getState());
                             intent.putExtra("phase", phase);
                             startActivity(intent);
+                            mediaPlayer.pause();
                             getActivity().finish();
                             //if (mDialog != null)
                             //    mDialog.dismiss();
@@ -863,15 +816,15 @@ public class ScroggleFragment extends Fragment {
                     //now that the dialog is set up, it's time to show it
                     mDialog.show();
                 } else {
-                     text.setText("GAME END");
+                    // text.setText("GAME END");
                     final Dialog mDialog = new Dialog(getActivity());
-                    mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    mDialog.setTitle("Game Over");
+                    //mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    mDialog.setTitle("SCROGGLE");
                     mDialog.setContentView(R.layout.phase_two);
                     mDialog.setCancelable(false);
 
                     TextView textView = (TextView) mDialog.findViewById(R.id.alert);
-                    textView.setText("SCROGGLE: GAME OVER");
+                    textView.setText("Game Over\nYour Phase 1 Score: "+mPhaseOnePoints);
 
                     Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
                     ok_button.setOnClickListener(new View.OnClickListener() {
@@ -888,25 +841,27 @@ public class ScroggleFragment extends Fragment {
                 }
             } else {
                 //for phase two
-                text.setText("GAME END");
+               // text.setText("GAME END");
                 gameData = "";
                 //((ScroggleGameActivity) getActivity()).setFragmentInvisible();
                 rView.setVisibility(View.INVISIBLE);
                 //((ScroggleGameActivity)getActivity()).cFragment.getView().setVisibility(View.INVISIBLE);
                 final Dialog mDialog = new Dialog(getActivity());
-                mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                mDialog.setTitle("Game Over");
+                //mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                mDialog.setTitle("SCROGGLE");
                 mDialog.setContentView(R.layout.phase_two);
                 mDialog.setCancelable(false);
 
                 TextView textView = (TextView) mDialog.findViewById(R.id.alert);
-                textView.setText("SCROGGLE: GAME OVER");
+                int total =mPhaseOnePoints+mPhaseTwoPoints;
+                textView.setText("Game Over\nYour Total Score: "+total);
 
                 Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
                 ok_button.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
+                        mediaPlayer.pause();
                         getActivity().finish();
                         //if (mDialog != null)
                         //    mDialog.dismiss();
@@ -956,6 +911,7 @@ public class ScroggleFragment extends Fragment {
     public void putState(String data) {
         String[] fields = data.split(",");
         int index = 0;
+
         mPhaseOnePoints = Integer.parseInt(fields[index++]);
         ((ScroggleGameActivity) getActivity()).setPhaseOnePoints(mPhaseOnePoints);
         mPhaseTwoPoints = Integer.parseInt(fields[index++]);
@@ -964,8 +920,6 @@ public class ScroggleFragment extends Fragment {
         this.setTime(timeRemaning);
         phase = Integer.parseInt(fields[index++]);
         this.setPhase(phase);
-        mLastLarge = Integer.parseInt(fields[index++]);
-        mLastSmall = Integer.parseInt(fields[index++]);
         for (int large = 0; large < 9; large++) {
             for (int small = 0; small < 9; small++) {
                 String letter = (fields[index++]);
@@ -992,13 +946,13 @@ public class ScroggleFragment extends Fragment {
                 for (int s = 0; s < 9; s++) {
                     Button button = (Button) outer.findViewById(mSmallIds[s]);
                     ScroggleTile tinyTile = mSmallTiles[l][s];
-                    if (tinyTile.getIsChosen()) {
+                    if (tinyTile.getIsChosen()){
                         if (isAWord[l]) {
                             //  tinyTile.setIsEmpty(false);
                             letterArray = "";
                             mLastLarge = -1;
                             button.setText(String.valueOf(tinyTile.getLetter()));
-                            button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_red));
+                            button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
                         } else {
                             button.setText("");
                             button.setEnabled(false);
@@ -1020,11 +974,13 @@ public class ScroggleFragment extends Fragment {
                     Button button = (Button) outer.findViewById(mSmallIds[s]);
                     ScroggleTile tinyTile = mSmallTiles[l][s];
                     if (tinyTile.getIsChosen()) {
-                        button.setClickable(true);
-                        button.setText(String.valueOf(tinyTile.getLetter()));
-                        button.setTextColor(getResources().getColor(R.color.black_color));
-                        button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
-                        tinyTile.setChosen(false);
+                        if(isAWord[l]) {
+                            button.setClickable(true);
+                            button.setText(String.valueOf(tinyTile.getLetter()));
+                            button.setTextColor(getResources().getColor(R.color.black_color));
+                            button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
+                            tinyTile.setChosen(false);
+                        }
                     } else {
                         button.setEnabled(false);
                         button.setClickable(false);
@@ -1050,25 +1006,26 @@ public class ScroggleFragment extends Fragment {
     public void setValidNextMove(int sLarge, int sSmall){
         //clear the nextmoves hashset
         clearMove();
-        if(sLarge != -1 && sSmall != -1) {
+            if (sLarge != -1 && sSmall != -1) {
 
-            //get all the possible squares in all directions of the grid with value small
-            List<Integer> moves = getPossibleMoves(sSmall);
-            for (int i=0; i< moves.size();i++) {
-                int gridId = moves.get(i);
-                ScroggleTile smallTile = mSmallTiles[sLarge][gridId];
-                if (!smallTile.getIsChosen()) {
-                    addMove(smallTile);
-                }
-            }
-
-            for (int large = 0; large < 9; large++) {
-                for (int small = 0; small < 9; small++) {
-                    if (large != sLarge) {
-                        addMove(mSmallTiles[large][small]);
+                //get all the possible squares in all directions of the grid with value small
+                List<Integer> moves = getPossibleMoves(sSmall);
+                for (int i = 0; i < moves.size(); i++) {
+                    int gridId = moves.get(i);
+                    ScroggleTile smallTile = mSmallTiles[sLarge][gridId];
+                    if (!smallTile.getIsChosen()) {
+                        addMove(smallTile);
                     }
                 }
-            }
+
+                for (int large = 0; large < 9; large++) {
+                    for (int small = 0; small < 9; small++) {
+                        if (large != sLarge) {
+                            addMove(mSmallTiles[large][small]);
+                        }
+                    }
+                }
+
         }
         if(nextMoves.isEmpty()){
             setAllNextMoves();
@@ -1180,8 +1137,8 @@ public class ScroggleFragment extends Fragment {
     public int getLetterScore(char letter){
         int point = 0;
         if((letter == 'e') || (letter == 'a') || (letter == 'i') || (letter == 'o')
-                || (letter == 'n') || (letter == 'r') || (letter == 't') || (letter == 'l')
-                || (letter == 'n')){
+                || (letter == 'r') || (letter == 't') || (letter == 'l')
+                || (letter == 'n') || (letter == 's') || (letter == 'u')){
                     point = 1;
         } else if(letter == ('d') || letter == ('g')) {
             point = 2;
@@ -1214,6 +1171,9 @@ public class ScroggleFragment extends Fragment {
     public void onScroggleResume(){
         countDownTimer = new GameCountDownTimer(timeRemaning, interval);
         countDownTimer.start();
+        mediaPlayer = MediaPlayer.create(getActivity(), R.raw.happy_music);
+        mediaPlayer.setVolume(0.5f, 0.5f);
+        mediaPlayer.setLooping(true);
         mediaPlayer.start();
         ((ScroggleGameActivity)getActivity()).sFragment.getView().setVisibility(View.VISIBLE);
         isResume = true;
@@ -1226,6 +1186,35 @@ public class ScroggleFragment extends Fragment {
                 mPhaseOnePoints += scoreForPhaseOneWordsFormed[i];
             }
         }
+        int scoreForLengthOfWords=0;
+        for(Integer large :listOfWordsFormed.keySet()){
+                int sco = getScoreForLengthOfWords(listOfWordsFormed.get(large));
+                scoreForLengthOfWords+=sco;
+            }
+
+        mPhaseOnePoints += scoreForLengthOfWords;
+    }
+
+    public int getScoreForLengthOfWords(String str){
+        //based on the length of the words, give each letter 2 points(Bonus)
+        int s=0;
+        if(str.length() == 3){
+            s = 6;
+        } else if(str.length() == 4) {
+            s=8;
+        } else if(str.length() == 5){
+            s=10;
+        } else if(str.length() == 6){
+            s=12;
+        } else if(str.length() == 7){
+            s=14;
+        } else if(str.length() == 8){
+            s=16;
+        } else if(str.length() == 9){//bonus if  words is 9 in length
+            s=25;
+        }
+
+        return s;
     }
 
     private void calcPhaseTwoPoints() {

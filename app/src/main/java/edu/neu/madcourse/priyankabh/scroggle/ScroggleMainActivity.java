@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
 import edu.neu.madcourse.priyankabh.R;
@@ -22,36 +23,34 @@ import edu.neu.madcourse.priyankabh.R;
 
 public class ScroggleMainActivity extends Activity {
     MediaPlayer mMediaPlayer;
-    private ProgressDialog progressDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_scroggle);
-
-        if(globalVariable.list.isEmpty()) {
-            Log.d("TestDictionary","After check.. calling asynctask" + globalVariable.list.isEmpty());
+        if(globalVariable.nineLetterWords.isEmpty()){
             new LoadWordList().execute();
         }
+
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        mMediaPlayer = MediaPlayer.create(this, R.raw.gat_loop);
-        mMediaPlayer.setVolume(0.5f, 0.5f);
-        mMediaPlayer.setLooping(true);
-        mMediaPlayer.start();
+       // mMediaPlayer = MediaPlayer.create(this, R.raw.gat_loop);
+       // mMediaPlayer.setVolume(0.5f, 0.5f);
+       // mMediaPlayer.setLooping(true);
+       // mMediaPlayer.start();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mMediaPlayer.stop();
-        mMediaPlayer.reset();
-        mMediaPlayer.release();
+       // mMediaPlayer.stop();
+        //mMediaPlayer.reset();
+       // mMediaPlayer.release();
     }
 
 
@@ -67,16 +66,14 @@ public class ScroggleMainActivity extends Activity {
                 globalVariable.list = (HashMap<String,ArrayList<String>>)ois.readObject();
 
                 ois.close();
+                InputStream f = getResources().getAssets().open("wordlist.txt");
 
-                int count = 0;
-                try {
-                    while(count<100) {
-                        Thread.sleep(200);
-                        count +=2;
-                        publishProgress(count);
+                Scanner s = new Scanner(f);
+                while(s.hasNextLine()){
+                    String word=s.nextLine();
+                    if(word.length() == 9){
+                        globalVariable.nineLetterWords.add(word);
                     }
-                }catch(InterruptedException ie){
-                    System.err.print(ie);
                 }
 
                 System.out.println("TestDictionary Loading done");
@@ -90,13 +87,10 @@ public class ScroggleMainActivity extends Activity {
         }
 
         protected void onProgressUpdate(Integer... params) {
-//            progressDialog.setProgress(params[0]);
+
         }
 
         protected void onPostExecute(Void v) {
-            if (progressDialog != null && progressDialog.isShowing()) {
-                progressDialog.dismiss();
-            }
 
         }
     }
