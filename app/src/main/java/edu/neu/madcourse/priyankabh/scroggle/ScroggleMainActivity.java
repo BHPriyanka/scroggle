@@ -1,6 +1,7 @@
 package edu.neu.madcourse.priyankabh.scroggle;
 
 import android.app.Activity;
+
 import android.app.ProgressDialog;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
@@ -23,6 +24,7 @@ import edu.neu.madcourse.priyankabh.R;
 
 public class ScroggleMainActivity extends Activity {
     MediaPlayer mMediaPlayer;
+    private  ProgressDialog progressDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -30,7 +32,14 @@ public class ScroggleMainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_scroggle);
         if(globalVariable.nineLetterWords.isEmpty()){
-            new LoadWordList().execute();
+
+            progressDialog = new ProgressDialog(ScroggleMainActivity.this);
+            progressDialog.setMax(100);
+            progressDialog.setMessage("Please wait....");
+            progressDialog.setTitle("Scroggle");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressDialog.show();
+            new LoadWords().execute();
         }
 
     }
@@ -53,22 +62,15 @@ public class ScroggleMainActivity extends Activity {
        // mMediaPlayer.release();
     }
 
-
-    private class LoadWordList extends AsyncTask<Void, Integer, Void> {
+    private class LoadWords extends AsyncTask<Void, Integer, Void> {
 
         @Override
         protected Void doInBackground(Void... params) {
             final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
             try {
-                InputStream strF = getResources().getAssets().open("hashmap");
-                ObjectInputStream ois=new ObjectInputStream(strF);
+                InputStream strF = getResources().getAssets().open("wordlist.txt");
 
-                globalVariable.list = (HashMap<String,ArrayList<String>>)ois.readObject();
-
-                ois.close();
-                InputStream f = getResources().getAssets().open("wordlist.txt");
-
-                Scanner s = new Scanner(f);
+                Scanner s = new Scanner(strF);
                 while(s.hasNextLine()){
                     String word=s.nextLine();
                     if(word.length() == 9){
@@ -76,22 +78,32 @@ public class ScroggleMainActivity extends Activity {
                     }
                 }
 
-                System.out.println("TestDictionary Loading done");
+                int count = 0;
+                try {
+                    while(count<100) {
+                        Thread.sleep(200);
+                        count +=1;
+                        publishProgress(count);
+                    }
+                    Log.d("TAG","loading donw nineletter words");
+                }catch(InterruptedException ie){
+                    System.err.print(ie);
+                }
 
             } catch(IOException e) {
                 System.err.print(e);
-            }catch(ClassNotFoundException ce){
-                System.err.print(ce);
             }
             return null;
         }
 
         protected void onProgressUpdate(Integer... params) {
-
+            progressDialog.setProgress(params[0]);
         }
 
         protected void onPostExecute(Void v) {
-
+            if (progressDialog != null && progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
         }
     }
 }

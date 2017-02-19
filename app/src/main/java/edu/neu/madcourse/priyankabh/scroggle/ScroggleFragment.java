@@ -112,6 +112,7 @@ public class ScroggleFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState){
+        final GlobalClass globalVariable = (GlobalClass) getActivity().getApplicationContext();
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
 
@@ -414,10 +415,11 @@ public class ScroggleFragment extends Fragment {
                                                 if (Arrays.asList(phaseTwoWords).contains(phaseTwoWord)){
                                                     phaseTwoWord = delLastChar(phaseTwoWords[count]);
                                                     phaseTwoWords[count] = phaseTwoWord;
-                                                    otherTile.animate();
+
                                                 }
 
                                             }
+
                                             setValidNextMovePhaseTwo(mLastLarge, mLastSmall);
 
                                         }

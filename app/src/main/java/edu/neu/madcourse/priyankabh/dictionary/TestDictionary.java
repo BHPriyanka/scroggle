@@ -47,10 +47,7 @@ public class TestDictionary extends Activity{
         setContentView(R.layout.dictionary_test);
         this.setTitle("Test Dictionary");
 
-        Log.d("TestDictionary","Before calling asynctask" + globalVariable.list.isEmpty());
         if(globalVariable.list.isEmpty()) {
-            Log.d("TestDictionary","After check.. calling asynctask" + globalVariable.list.isEmpty());
-
             progressDialog = new ProgressDialog(TestDictionary.this);
             progressDialog.setMax(100);
             progressDialog.setMessage("Please wait....");
@@ -78,7 +75,6 @@ public class TestDictionary extends Activity{
                 }
 
                 if(seen){
-                    Log.d("TAG", "The word is in the dictionary");
                     EditText editText = (EditText) findViewById(R.id.word_entry);
                     TextView textView = (TextView)findViewById(R.id.view_words);
 
@@ -89,9 +85,9 @@ public class TestDictionary extends Activity{
                         textView.append(editText.getText() + "\n");
                     }
                 }
-                else{
-                    Log.d("TAG", "The word does not exist in the dictionary");
-                }
+               // else{
+                   // Log.d("TAG", "The word does not exist in the dictionary");
+               // }
             }
 
             @Override
@@ -177,8 +173,6 @@ public class TestDictionary extends Activity{
                 }catch(InterruptedException ie){
                     System.err.print(ie);
                 }
-
-                System.out.println("TestDictionary Loading done");
 
             } catch(IOException e) {
                 System.err.print(e);

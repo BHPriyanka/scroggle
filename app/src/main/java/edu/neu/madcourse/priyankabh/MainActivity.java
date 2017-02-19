@@ -30,6 +30,7 @@ import java.util.HashMap;
 import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
 import edu.neu.madcourse.priyankabh.scroggle.ScroggleGameActivity;
 import edu.neu.madcourse.priyankabh.scroggle.ScroggleMainActivity;
+import edu.neu.madcourse.priyankabh.scroggle.ScroggleMainFragment;
 import edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity;
 import static edu.neu.madcourse.priyankabh.R.layout.activity_main;
 
@@ -40,12 +41,17 @@ public class MainActivity extends Activity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(activity_main);
         this.setTitle("B H Priyanka");
+        if(globalVariable.list.isEmpty()){
+            new LoadWordList().execute();
+        }
 
         //this button will show the dialog
         Button aboutButton = (Button) findViewById(R.id.about_button);
@@ -176,6 +182,43 @@ public class MainActivity extends Activity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
+    }
+
+
+
+
+    private class LoadWordList extends AsyncTask<Void, Integer, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+            try {
+                InputStream strF = getResources().getAssets().open("hashmap");
+                ObjectInputStream ois=new ObjectInputStream(strF);
+
+                globalVariable.list = (HashMap<String,ArrayList<String>>)ois.readObject();
+
+                ois.close();
+
+                System.out.println("TestDictionary Loading done");
+
+            } catch(IOException e) {
+                System.err.print(e);
+            }catch(ClassNotFoundException ce){
+                System.err.print(ce);
+            }
+            return null;
+        }
+
+        protected void onProgressUpdate(Integer... params) {
+//            progressDialog.setProgress(params[0]);
+        }
+
+        protected void onPostExecute(Void v) {
+          //  if (progressDialog != null && progressDialog.isShowing()) {
+         //       progressDialog.dismiss();
+         //   }
+        }
     }
 
 }

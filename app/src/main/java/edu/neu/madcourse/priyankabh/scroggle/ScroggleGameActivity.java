@@ -17,6 +17,7 @@ import java.util.Scanner;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
 import edu.neu.madcourse.priyankabh.R;
+import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
 
 /**
  * Created by priya on 2/9/2017.
@@ -27,14 +28,15 @@ public class ScroggleGameActivity extends FragmentActivity {
     public static String PREF_RESTORE = "pref_restore";
 
     public ScroggleFragment sFragment;
+    private ProgressDialog progressDialog;
     private MediaPlayer mediaPlayer;
     private int phaseOnePoints = 0;
     private int phaseTwoPoints = 0;
     private SoundPool mSoundPool;
     private String gameData = "";
-    private int gameScore =0;
-    private int phase=1;
-    private Boolean restore=false;
+    private int gameScore = 0;
+    private int phase = 1;
+    private Boolean restore = false;
     public static Boolean isResume = false;
     private String phaseTwoWord;
     private TextView scoreView;
@@ -47,7 +49,7 @@ public class ScroggleGameActivity extends FragmentActivity {
 
         Bundle b = this.getIntent().getExtras();
         if (b != null) {
-            phaseTwoWord="";
+            phaseTwoWord = "";
             phase = 2;
             gameData = b.getString("gameData");
         }
@@ -75,12 +77,12 @@ public class ScroggleGameActivity extends FragmentActivity {
 
     }
 
-    public void setFragmentInvisible(){
+    public void setFragmentInvisible() {
         sFragment.getView().setVisibility(View.INVISIBLE);
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
         sFragment.mHandler.removeCallbacks(null);
         mediaPlayer.stop();
@@ -97,14 +99,12 @@ public class ScroggleGameActivity extends FragmentActivity {
     }
 
 
-
-
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
-        if(!isResume){
+        if (!isResume) {
             isResume = true;
-            if(sFragment.timeRemaning > 0){
+            if (sFragment.timeRemaning > 0) {
                 sFragment.countDownTimer.start();
             } else {
                 sFragment.countDownTimer.start();
@@ -122,12 +122,11 @@ public class ScroggleGameActivity extends FragmentActivity {
     }
 
 
-
     public void stopThinking() {
-        if(phase == 1) {
+        if (phase == 1) {
             scoreView.setText("Total Score: " + String.valueOf(this.phaseOnePoints));
         } else {
-            scoreView.setText("Total Score: " + String.valueOf(this.phaseTwoPoints+this.phaseOnePoints));
+            scoreView.setText("Total Score: " + String.valueOf(this.phaseTwoPoints + this.phaseOnePoints));
         }
     }
 
@@ -136,56 +135,28 @@ public class ScroggleGameActivity extends FragmentActivity {
         thinkView.setVisibility(View.VISIBLE);
     }
 
-    public int getPhaseTwoPoints(){
+    public int getPhaseTwoPoints() {
         return this.phaseTwoPoints;
     }
 
-    public void setPhaseOnePoints(int points){
+    public void setPhaseOnePoints(int points) {
         this.phaseOnePoints = points;
     }
 
-    public void setPhaseTwoPoints(int points){
+    public void setPhaseTwoPoints(int points) {
         this.phaseTwoPoints = points;
     }
 
-    public Boolean getRestore(){
+    public Boolean getRestore() {
         return this.restore;
     }
 
-    public void setRestore(Boolean res){
+    public void setRestore(Boolean res) {
         this.restore = res;
     }
 
-    public boolean isRestore(){
+    public boolean isRestore() {
         return this.restore;
     }
 
-    private class LoadWords extends AsyncTask<Void, Integer, Void> {
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
-            try {
-                InputStream strF = getResources().getAssets().open("wordlist.txt");
-
-                Scanner s = new Scanner(strF);
-                while(s.hasNextLine()){
-                    String word=s.nextLine();
-                    if(word.length() == 9){
-                        globalVariable.nineLetterWords.add(word);
-                    }
-                }
-
-            } catch(IOException e) {
-                System.err.print(e);
-            }
-            return null;
-        }
-
-        protected void onProgressUpdate(Integer... params) {
-        }
-
-        protected void onPostExecute(Void v) {
-        }
-    }
 }
