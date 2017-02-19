@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.neu.madcourse.priyankabh.numad17s_priyankabh"
-    android:versionCode="17"
-    android:versionName="3.3" >
+    android:versionCode="23"
+    android:versionName="3.9" >
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -52,7 +52,7 @@
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
         </activity>
         <activity
-            android:name="edu.neu.madcourse.priyankabh.scroggle.ScroggleMainActivity"
+            android:name="edu.neu.madcourse.priyankabh.scroggle.WordGame"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
         </activity>

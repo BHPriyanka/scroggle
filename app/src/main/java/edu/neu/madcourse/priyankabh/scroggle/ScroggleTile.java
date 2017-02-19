@@ -61,10 +61,6 @@ public class ScroggleTile {
         return mView;
     }
 
-    public ScroggleTile[] getSubTiles(){
-        return mSubTiles;
-    }
-
     public void setChosen(boolean bool){
         this.isChosen = bool;
     }

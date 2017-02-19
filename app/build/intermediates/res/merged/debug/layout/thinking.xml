@@ -15,7 +15,7 @@
    android:layout_height="match_parent"
    android:clickable="true"
    android:visibility="gone"
-   tools:showIn="@layout/game_activity">
+   tools:showIn="@layout/activity_game">
 
    <ProgressBar
       android:background="@drawable/thinking_background"

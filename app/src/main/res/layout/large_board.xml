@@ -11,7 +11,7 @@
    xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="wrap_content"
    android:layout_height="wrap_content"
-   tools:context=".GameActivity">
+   tools:context=".tictactoe.GameActivity">
 
    <include android:id="@+id/large1" layout="@layout/small_board"
       android:layout_width="wrap_content" android:layout_height="wrap_content"

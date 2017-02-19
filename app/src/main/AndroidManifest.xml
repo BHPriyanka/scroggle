@@ -40,7 +40,7 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
         </activity>
-        <activity android:name=".scroggle.ScroggleMainActivity"
+        <activity android:name=".scroggle.WordGame"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
         </activity>

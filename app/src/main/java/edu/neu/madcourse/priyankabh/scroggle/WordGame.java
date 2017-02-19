@@ -7,12 +7,8 @@ import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
@@ -22,7 +18,7 @@ import edu.neu.madcourse.priyankabh.R;
  * Created by priya on 2/10/2017.
  */
 
-public class ScroggleMainActivity extends Activity {
+public class WordGame extends Activity {
     MediaPlayer mMediaPlayer;
     private  ProgressDialog progressDialog;
 
@@ -30,10 +26,10 @@ public class ScroggleMainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState){
         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_scroggle);
+        setContentView(R.layout.game_word);
         if(globalVariable.nineLetterWords.isEmpty()){
 
-            progressDialog = new ProgressDialog(ScroggleMainActivity.this);
+            progressDialog = new ProgressDialog(WordGame.this);
             progressDialog.setMax(100);
             progressDialog.setMessage("Please wait....");
             progressDialog.setTitle("Scroggle");
@@ -48,18 +44,11 @@ public class ScroggleMainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-       // mMediaPlayer = MediaPlayer.create(this, R.raw.gat_loop);
-       // mMediaPlayer.setVolume(0.5f, 0.5f);
-       // mMediaPlayer.setLooping(true);
-       // mMediaPlayer.start();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-       // mMediaPlayer.stop();
-        //mMediaPlayer.reset();
-       // mMediaPlayer.release();
     }
 
     private class LoadWords extends AsyncTask<Void, Integer, Void> {

@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -28,9 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
-import edu.neu.madcourse.priyankabh.scroggle.ScroggleGameActivity;
-import edu.neu.madcourse.priyankabh.scroggle.ScroggleMainActivity;
-import edu.neu.madcourse.priyankabh.scroggle.ScroggleMainFragment;
+import edu.neu.madcourse.priyankabh.scroggle.WordGame;
 import edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity;
 import static edu.neu.madcourse.priyankabh.R.layout.activity_main;
 
@@ -125,7 +122,7 @@ public class MainActivity extends Activity {
         newGameButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, ScroggleMainActivity.class);
+                Intent intent = new Intent(MainActivity.this, WordGame.class);
                 MainActivity.this.startActivity(intent);
             }
         });

@@ -7,14 +7,15 @@ android {
         applicationId "edu.neu.madcourse.priyankabh.numad17s_priyankabh"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 17
-        versionName "3.3"
+        versionCode 23
+        versionName "3.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            multiDexEnabled true
         }
 
         debug {

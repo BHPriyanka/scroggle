@@ -11,44 +11,26 @@ package edu.neu.madcourse.priyankabh.scroggle;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Fragment;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
-
-import edu.neu.madcourse.priyankabh.GlobalClass;
-import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
-import edu.neu.madcourse.priyankabh.dictionary.Acknowledgement;
-import edu.neu.madcourse.priyankabh.tictactoe.GameActivity;
 
-public class ScroggleMainFragment extends Fragment {
+public class WordGameFragment extends Fragment {
 
     private AlertDialog mDialog;
-    private ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         final View rootView =
-                inflater.inflate(R.layout.main_fragment_scroggle, container, false);
+                inflater.inflate(R.layout.fragment_word_game, container, false);
 
         // Handle buttons here...
         View newButton = rootView.findViewById(R.id.new_button);
@@ -66,7 +48,6 @@ public class ScroggleMainFragment extends Fragment {
             public void onClick(View v) {
                 //set up dialog
                 final Dialog mDialog = new Dialog(getActivity());
-               // mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 mDialog.setTitle("Acknowledgement");
                 mDialog.setContentView(R.layout.scroggle_ack);
                 mDialog.setCancelable(true);

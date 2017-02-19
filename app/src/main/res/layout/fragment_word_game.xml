@@ -15,7 +15,7 @@
     android:elevation="@dimen/elevation_high"
     android:orientation="vertical"
     android:padding="@dimen/menu_padding"
-    tools:context=".scroggle.ScroggleMainActivity">
+    tools:context=".scroggle.WordGame">
 
     <TextView
         android:layout_width="fill_parent"
