@@ -940,13 +940,20 @@ public class ScroggleFragment extends Fragment {
                             button.setTextColor(getResources().getColor(R.color.black_color));
                             button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
                             tinyTile.setChosen(false);
+                        } else {
+                            button.setEnabled(false);
+                            button.setClickable(false);
+                            tinyTile.setChosen(false);
+                            tinyTile.setIsEmpty(true);
+                            // tinyTile.setChosen(false);
+                            button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_gray));
                         }
                     } else {
                         button.setEnabled(false);
                         button.setClickable(false);
                         tinyTile.setChosen(false);
                         tinyTile.setIsEmpty(true);
-                       // tinyTile.setChosen(false);
+                        // tinyTile.setChosen(false);
                         button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_gray));
                     }
                 }
