@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw720dp-v13\\values-sw720dp-v13.xml",
+        "outputFile": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw720dp-v13\\values-sw720dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 91
                 },
                 "from": {
-                    "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\values-sw720dp\\dimens.xml",
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\src\\main\\res\\values-sw720dp\\dimens.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 3,

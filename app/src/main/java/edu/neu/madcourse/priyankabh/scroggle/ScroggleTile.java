@@ -79,10 +79,6 @@ public class ScroggleTile {
         }
     }
 
-    public void timer(View v){
-        Animation blink = AnimationUtils.loadAnimation(mGame.getActivity().getApplicationContext(), R.anim.blink);
-        v.startAnimation(blink);
-    }
 
     public void updateDrawableState() {
         if (mView == null) return;
