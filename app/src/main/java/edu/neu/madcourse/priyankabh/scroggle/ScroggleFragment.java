@@ -845,11 +845,7 @@ public class ScroggleFragment extends Fragment {
                             TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millisUnitFInished)),
                     TimeUnit.MILLISECONDS.toSeconds(millisUnitFInished) -
                             TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUnitFInished)));
-<<<<<<< HEAD
-            if (time.equals("00:05") || time.equals("00:04") || time.equals("00:03") || time.equals("00:02") || time.equals("00:01")) {
-=======
             if (time.equals("00 : 05") || time.equals("00 : 04") || time.equals("00 : 03") || time.equals("00 : 02") || time.equals("00 : 01")) {
->>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                 Animation animation = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.blink);
                 text.startAnimation(animation);
                 mediaPlayer.stop();

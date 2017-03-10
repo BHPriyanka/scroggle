@@ -1,22 +1,22 @@
 [
     {
-        "merged": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\dictionary_test.xml",
-        "source": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\src\\main\\res\\layout-land\\dictionary_test.xml"
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\about_me.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout-land\\about_me.xml"
     },
     {
-        "merged": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\about_me.xml",
-        "source": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\src\\main\\res\\layout-land\\about_me.xml"
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\activity_game.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout-land\\activity_game.xml"
     },
     {
-        "merged": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\activity_main.xml",
-        "source": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\src\\main\\res\\layout-land\\activity_main.xml"
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\dictionary_test.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout-land\\dictionary_test.xml"
     },
     {
-        "merged": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\fragment_control.xml",
-        "source": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\src\\main\\res\\layout-land\\fragment_control.xml"
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\activity_main.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout-land\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\activity_game.xml",
-        "source": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\src\\main\\res\\layout-land\\activity_game.xml"
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\fragment_control.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout-land\\fragment_control.xml"
     }
 ]
