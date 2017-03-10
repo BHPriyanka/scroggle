@@ -406,5 +406,9 @@
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.2.0\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\connectivity_network.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\connectivity_network.xml"
     }
 ]

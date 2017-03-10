@@ -2,9 +2,17 @@ package edu.neu.madcourse.priyankabh.communication.realtimedatabase;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -12,6 +20,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -35,10 +45,12 @@ import java.util.Map;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
 import edu.neu.madcourse.priyankabh.R;
+import edu.neu.madcourse.priyankabh.communication.CommunicationActivity;
+import edu.neu.madcourse.priyankabh.communication.fcm.FCMActivity;
 import edu.neu.madcourse.priyankabh.communication.realtimedatabase.models.User;
 
 
-public class RealtimeDatabaseActivity extends Activity {
+public class RealtimeDatabaseActivity extends AppCompatActivity {
 
     private static final String TAG = RealtimeDatabaseActivity.class.getSimpleName();
 
@@ -55,12 +67,45 @@ public class RealtimeDatabaseActivity extends Activity {
     MediaPlayer mMediaPlayer;
     private String wordTyped;
     private String getTokenInstance;
+    private CoordinatorLayout mCoordinatorLayout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_realtime_database);
+        try{
+            boolean isVisible = GlobalClass.isActivityVisible();
+            //If its visible, trigger task, else do nothing
+            mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
+
+            // At activity startup we manually check the internet status and change
+            // the text status
+            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if (networkInfo != null && networkInfo.isConnected()) {
+                new CommunicationActivity().changeTextStatus(true);
+            } else {
+                Snackbar snackbar = Snackbar.make(mCoordinatorLayout,
+                        "No Internet Connection", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("RETRY", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                // Custom action
+                                Intent intent = new Intent(RealtimeDatabaseActivity.this, CommunicationActivity.class);
+                                RealtimeDatabaseActivity.this.startActivity(intent);
+                            }
+                        });
+                snackbar.setActionTextColor(Color.RED);
+                View view = snackbar.getView();
+                TextView textView = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setTextColor(Color.YELLOW);
+                snackbar.show();
+            }
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
 
         getTokenInstance = FirebaseInstanceId.getInstance().getToken();
         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
@@ -148,6 +193,8 @@ public class RealtimeDatabaseActivity extends Activity {
         word1 = (TextView) findViewById(R.id.word1);
         word2 = (TextView) findViewById(R.id.word2);
 
+        //TableLayout tableLayout = (TableLayout) findViewById(R.id.table_layout);
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         add5 = (Button)findViewById(R.id.add5);
@@ -184,7 +231,6 @@ public class RealtimeDatabaseActivity extends Activity {
                         for (Map.Entry<String, Object> entry : users.entrySet()){
                             //Get user map
                             Map singleUser = (Map) entry.getValue();
-                            //if(((String)singleUser.get("username")).equalsIgnoreCase("Player 1")){
                             if(entry.getKey().equalsIgnoreCase(getTokenInstance)){
                                score.setText((String)singleUser.get("score"));
                                 userName.setText((String)singleUser.get("username"));
@@ -194,6 +240,13 @@ public class RealtimeDatabaseActivity extends Activity {
                                 userName2.setText((String)singleUser.get("username"));
                                 word2.setText((String)singleUser.get("wordFormed"));
                             }
+                            /*for(int i=0;i<users.size();i++){
+                                TableRow row = new TableRow(getApplicationContext());
+                                TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT);
+                                row.setLayoutParams(lp);
+
+                            }*/
+
                             Log.e(TAG, "onaddValueEvent: dataSnapshot = " + entry.getValue());
 
                         }

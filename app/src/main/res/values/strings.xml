@@ -190,4 +190,26 @@ both sides in the larger game.
     <string name="score">Score</string>
 
     <string name="add5">Add 5</string>
+
+    <string name="communication_acknowledgement">
+        <b>Sources of content:</b>
+        \n\
+        <b>Internet Connectivity Example :
+            \n\
+        </b> 1. http://viralpatel.net/blogs/android-internet-connection-status-network-change/
+        \n\
+        <b>2. </b>http://stackoverflow.com/questions/3141807/android-service-to-check-internet-connectivity
+        \n\
+        \n\
+        <b>Sources of Code Snippets obtained: </b>
+        \n\
+        <b>1.CoordinatorLayout :
+        \n\
+        </b> http://www.androidauthority.com/using-coordinatorlayout-android-apps-703720/
+        \n\
+        <b>2.Snackbar :
+        \n\
+        </b> http://www.androidhive.info/2015/09/android-material-design-snackbar-example/
+        \n\
+    </string>
     </resources>

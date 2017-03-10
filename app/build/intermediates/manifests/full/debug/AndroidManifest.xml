@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.neu.madcourse.priyankabh.numad17s_priyankabh"
-    android:versionCode="32"
-    android:versionName="4.0" >
+    android:versionCode="33"
+    android:versionName="4.1" >
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -10,10 +10,11 @@
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-
+    <!-- This permissions are neccessary for broadcast receiver -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- Include required permissions for Google Mobile Ads to run -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Optional permission for Analytics to run. -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Optional permission for Analytics to run. -->
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Permissions required for GCM -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
@@ -75,35 +76,29 @@
         <activity
             android:name="edu.neu.madcourse.priyankabh.communication.fcm.FCMActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" >
         </activity>
         <activity
             android:name="edu.neu.madcourse.priyankabh.communication.realtimedatabase.RealtimeDatabaseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" >
+        </activity>
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.communication.CommunicationAcknowledgement"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
         </activity>
         <activity
             android:name="edu.neu.madcourse.priyankabh.communication.CommunicationActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" >
         </activity>
         <activity
             android:name="edu.neu.madcourse.priyankabh.communication.fcm.RegisterUserActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
         </activity>
-        <activity
-            android:name="edu.neu.madcourse.priyankabh.communication.realtimedatabase.WordDictionary"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
-        </activity>
-        <!--
-        receiver android:name=".communication.NetworkConnectivity">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver
-        -->
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -118,6 +113,18 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+        <!-- Broadcast receiver declaration in manifest file and make sure to enable it -->
+        <receiver
+            android:name="edu.neu.madcourse.priyankabh.communication.NetworkConnectivity"
+            android:enabled="true" >
+            <intent-filter>
+
+                <!-- Intent filters for broadcast receiver -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

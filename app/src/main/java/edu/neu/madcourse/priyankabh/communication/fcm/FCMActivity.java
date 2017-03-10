@@ -2,11 +2,19 @@ package edu.neu.madcourse.priyankabh.communication.fcm;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -34,14 +43,16 @@ import java.util.Scanner;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
 import edu.neu.madcourse.priyankabh.R;
+import edu.neu.madcourse.priyankabh.communication.CommunicationActivity;
 
 /**
  * Created by priya on 2/26/2017.
  */
 
-public class FCMActivity extends Activity {
+public class FCMActivity extends AppCompatActivity {
     private static final String TAG = FCMActivity.class.getSimpleName();
     private String chosenUserKey="";
+    private CoordinatorLayout mCoordinatorLayout;
 
     // Please add the server key from your firebase console in the follwoing format "key=<serverKey>"
     private static final String SERVER_KEY = "key=AAAA3ITLrYc:APA91bEO4XNNsyoIbhH4T9y_NqaKMstR2BwSAgCG9I8-m9JzsKrzxi9XhNOArq2ShRPSM6mrOwvYj2-11o4JDVML2Oqca7HwAe13xcIssT7Z2dJX9Wg9G1ydLOOijzn47tUt7PG_Joq5";
@@ -49,26 +60,46 @@ public class FCMActivity extends Activity {
     // This is the client registration token
     private static final String CLIENT_REGISTRATION_TOKEN = "c-oERAVG_xs:APA91bHP1pvmhMVupa-_1Byypo0g2c6CSop6i14OKFmLP4hQwd5RSvYhthQhGPOwzRtXtBCkURQYWzgAG3VnrZzFa7GZ8DErJbgny74maYjbgHPkfZpAlvDVO5bYkni6TLcb2rjY9115";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fcm);
 
-        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+        try{
+            boolean isVisible = GlobalClass.isActivityVisible();
+            //If its visible, trigger task, else do nothing
+            mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 
-        Button logTokenButton = (Button) findViewById(R.id.logTokenButton);
-        logTokenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get token
-                globalVariable.token = FirebaseInstanceId.getInstance().getToken();
-
-                // Log and toast
-                String msg = getString(R.string.msg_token_fmt, globalVariable.token);
-                Log.d(TAG, msg);
-                Toast.makeText(FCMActivity.this, msg, Toast.LENGTH_SHORT).show();
+            // At activity startup we manually check the internet status and change
+            // the text status
+            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if (networkInfo != null && networkInfo.isConnected()) {
+                new CommunicationActivity().changeTextStatus(true);
+            } else {
+                Snackbar snackbar = Snackbar.make(mCoordinatorLayout,
+                        "No Internet Connection", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("RETRY", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                // Custom action
+                                Intent intent = new Intent(FCMActivity.this, CommunicationActivity.class);
+                                FCMActivity.this.startActivity(intent);
+                            }
+                        });
+                snackbar.setActionTextColor(Color.RED);
+                View view = snackbar.getView();
+                TextView textView = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setTextColor(Color.YELLOW);
+                snackbar.show();
             }
-        });
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
 
         Button registerButton = (Button) findViewById(R.id.registerUserToDatabaseButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -352,5 +383,21 @@ public class FCMActivity extends Activity {
 
         protected void onPostExecute(Void v) {
         }
+
     }
+
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+        GlobalClass.activityPaused();// On Pause notify the Application
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        GlobalClass.activityResumed();// On Resume notify the Application
+    }
+
 }

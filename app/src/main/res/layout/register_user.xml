@@ -11,7 +11,7 @@
 
     <EditText
         android:id="@+id/user_name"
-        android:layout_width="fill_parent"
+        android:layout_width="200dp"
         android:layout_height="50dp"
         android:hint="Full Name"
         android:inputType="text"
