@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hr\\values-hr.xml",
+        "outputFile": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hr\\values-hr.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,11 @@
                     "endOffset": 205
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +34,11 @@
                     "endOffset": 313
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -49,7 +57,11 @@
                     "endOffset": 436
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -68,7 +80,11 @@
                     "endOffset": 533
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -87,7 +103,11 @@
                     "endOffset": 643
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -106,7 +126,11 @@
                     "endOffset": 729
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -125,7 +149,11 @@
                     "endOffset": 833
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -144,7 +172,11 @@
                     "endOffset": 952
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -163,7 +195,11 @@
                     "endOffset": 1036
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -182,7 +218,11 @@
                     "endOffset": 1119
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -201,7 +241,11 @@
                     "endOffset": 1205
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -220,7 +264,11 @@
                     "endOffset": 1309
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -239,7 +287,11 @@
                     "endOffset": 1422
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -258,7 +310,11 @@
                     "endOffset": 1528
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -277,7 +333,11 @@
                     "endOffset": 1633
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -296,7 +356,11 @@
                     "endOffset": 1746
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -315,7 +379,11 @@
                     "endOffset": 1853
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -334,7 +402,11 @@
                     "endOffset": 1976
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -353,7 +425,11 @@
                     "endOffset": 2073
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\values-hr\\values-hr.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -372,7 +448,11 @@
                     "endOffset": 2147
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-ads\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 4,
                         "startColumn": 0,
@@ -391,7 +471,11 @@
                     "endOffset": 2225
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 4,
                         "startColumn": 0,
@@ -410,7 +494,11 @@
                     "endOffset": 2331
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 5,
                         "startColumn": 0,
@@ -429,7 +517,11 @@
                     "endOffset": 2418
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 6,
                         "startColumn": 0,
@@ -448,7 +540,11 @@
                     "endOffset": 2531
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 7,
                         "startColumn": 0,
@@ -467,7 +563,11 @@
                     "endOffset": 2618
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 8,
                         "startColumn": 0,
@@ -486,7 +586,11 @@
                     "endOffset": 2784
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 9,
                         "startColumn": 0,
@@ -505,7 +609,11 @@
                     "endOffset": 2898
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 10,
                         "startColumn": 0,
@@ -524,7 +632,11 @@
                     "endOffset": 3016
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 11,
                         "startColumn": 0,
@@ -543,7 +655,11 @@
                     "endOffset": 3137
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 12,
                         "startColumn": 0,
@@ -562,7 +678,11 @@
                     "endOffset": 3240
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 13,
                         "startColumn": 0,
@@ -581,7 +701,11 @@
                     "endOffset": 3346
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 14,
                         "startColumn": 0,
@@ -600,7 +724,11 @@
                     "endOffset": 3427
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 15,
                         "startColumn": 0,
@@ -619,7 +747,11 @@
                     "endOffset": 3525
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 16,
                         "startColumn": 0,
@@ -638,7 +770,11 @@
                     "endOffset": 3626
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 17,
                         "startColumn": 0,
@@ -657,7 +793,11 @@
                     "endOffset": 3734
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 18,
                         "startColumn": 0,
@@ -676,7 +816,11 @@
                     "endOffset": 3816
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 19,
                         "startColumn": 0,
@@ -695,7 +839,11 @@
                     "endOffset": 3960
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\8.4.0\\res\\values-hr\\common_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 4,
                         "startColumn": 0,
@@ -714,7 +862,11 @@
                     "endOffset": 4108
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 5,
                         "startColumn": 0,
@@ -733,7 +885,11 @@
                     "endOffset": 4208
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 6,
                         "startColumn": 0,
@@ -752,7 +908,11 @@
                     "endOffset": 4286
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 20,
                         "startColumn": 0,
@@ -771,7 +931,11 @@
                     "endOffset": 4367
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 21,
                         "startColumn": 0,
@@ -790,7 +954,11 @@
                     "endOffset": 4445
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 22,
                         "startColumn": 0,
@@ -809,7 +977,11 @@
                     "endOffset": 4540
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 23,
                         "startColumn": 0,
@@ -828,7 +1000,11 @@
                     "endOffset": 4638
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 24,
                         "startColumn": 0,
@@ -847,7 +1023,11 @@
                     "endOffset": 4747
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 25,
                         "startColumn": 0,
@@ -866,7 +1046,11 @@
                     "endOffset": 4848
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 26,
                         "startColumn": 0,
@@ -885,7 +1069,11 @@
                     "endOffset": 4950
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 27,
                         "startColumn": 0,
@@ -904,7 +1092,11 @@
                     "endOffset": 5027
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\values-hr\\base_strings.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 28,
                         "startColumn": 0,
@@ -923,7 +1115,11 @@
                     "endOffset": 5129
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 29,
                         "startColumn": 0,
@@ -961,7 +1157,11 @@
                     "endOffset": 5332
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\values-hr\\values.xml",
+=======
+                    "file": "C:\\Users\\priya\\Documents\\scroggle-game\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\values-hr\\values-hr.xml",
+>>>>>>> 35d8179b2db6d06ae1e55f8fe574105cee7eca33
                     "position": {
                         "startLine": 31,
                         "startColumn": 0,
