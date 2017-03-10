@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "947120745863",
+    "firebase_url": "https://numad17s-priyankabh.firebaseio.com",
+    "project_id": "numad17s-priyankabh",
+    "storage_bucket": "numad17s-priyankabh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947120745863:android:37443679323b7319",
+        "android_client_info": {
+          "package_name": "edu.neu.madcourse.priyankabh.numad17s_priyankabh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947120745863-klra7vdqjm5r3fooqpuf182q0gu3gpp1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWIvCKBXNkEtR6KenstYv--TswTiPLnEo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -279,6 +279,8 @@
     <style name="TextAppearance.AppCompat.Notification.Title.Media">
         <item name="android:textColor">@color/primary_text_default_material_dark</item>
     </style>
+    <style name="Theme.AppInvite.Preview.Base" parent="@android:style/Theme.Material.Light.DialogWhenLarge.NoActionBar">
+</style>
     <style name="Widget.AppCompat.NotificationActionContainer" parent="">
         <item name="android:background">@drawable/notification_action_background</item>
     </style>
@@ -286,5 +288,8 @@
         <item name="android:textAppearance">?android:attr/textAppearanceButton</item>
         <item name="android:textColor">@color/secondary_text_default_material_light</item>
         <item name="android:textSize">@dimen/notification_action_text_size</item>
+    </style>
+    <style name="Widget.Design.AppBarLayout" parent="Base.Widget.Design.AppBarLayout">
+        <item name="android:stateListAnimator">@animator/design_appbar_state_list_animator</item>
     </style>
 </resources>

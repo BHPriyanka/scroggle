@@ -24,6 +24,9 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
@@ -141,15 +144,12 @@ public class WordGameFragment extends Fragment {
         protected Void doInBackground(Void... params) {
             final GlobalClass globalVariable = (GlobalClass) getActivity().getApplicationContext();
             try {
-                InputStream strF = getResources().getAssets().open("wordlist.txt");
+                InputStream strF = getResources().getAssets().open("nineLetterWords");
+                ObjectInputStream ois=new ObjectInputStream(strF);
 
-                Scanner s = new Scanner(strF);
-                while(s.hasNextLine()){
-                    String word=s.nextLine();
-                    if(word.length() == 9){
-                        globalVariable.nineLetterWords.add(word);
-                    }
-                }
+                globalVariable.nineLetterWords = (ArrayList<String>)ois.readObject();
+
+                ois.close();
 
                 int count = 0;
                 try {
@@ -158,13 +158,15 @@ public class WordGameFragment extends Fragment {
                         count +=1;
                         publishProgress(count);
                     }
-                    Log.d("TAG","loading donw nineletter words");
+
                 }catch(InterruptedException ie){
                     System.err.print(ie);
                 }
 
             } catch(IOException e) {
                 System.err.print(e);
+            } catch(ClassNotFoundException ce ){
+                System.err.print(ce);
             }
             return null;
         }

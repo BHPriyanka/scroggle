@@ -21,4 +21,8 @@
    <color name="thinking_background_color">#cfdfdfdf</color>
    <color name="green_color">#FF99CC00</color>
    <color name="lavender">#FF00FFFF</color>
+
+   <color name="colorPrimary">#3F51B5</color>
+   <color name="colorPrimaryDark">#303F9F</color>
+   <color name="colorAccent">#FF4081</color>
 </resources>

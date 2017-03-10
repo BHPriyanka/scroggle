@@ -16,5 +16,8 @@ public class GlobalClass extends Application{
 
     public static Map<String,ArrayList<String>> list = new HashMap<String,ArrayList<String>>();
     public static List<String> nineLetterWords = new ArrayList<String>();
+    public static String token="";
+    public static ArrayList<String> names = new ArrayList<>();
+    public static Map<String,Object> usersMap = new HashMap<String,Object>();
 
 }

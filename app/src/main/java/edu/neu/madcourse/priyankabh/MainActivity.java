@@ -26,6 +26,7 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import edu.neu.madcourse.priyankabh.communication.CommunicationActivity;
 import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
 import edu.neu.madcourse.priyankabh.scroggle.WordGame;
 import edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity;
@@ -127,6 +128,15 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button communicationButton = (Button) findViewById(R.id.communication_button);
+        communicationButton.setOnClickListener(new View.OnClickListener(){
+           @Override
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, CommunicationActivity.class);
+               MainActivity.this.startActivity(intent);
+            }
+        });
+
         Button quitButton = (Button) findViewById(R.id.quit_button);
         quitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,7 +207,7 @@ public class MainActivity extends Activity {
 
                 ois.close();
 
-                System.out.println("TestDictionary Loading done");
+                //System.out.println("TestDictionary Loading done");
 
             } catch(IOException e) {
                 System.err.print(e);
