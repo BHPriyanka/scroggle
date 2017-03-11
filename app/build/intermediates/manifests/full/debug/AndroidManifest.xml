@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.neu.madcourse.priyankabh.numad17s_priyankabh"
-    android:versionCode="33"
-    android:versionName="4.1" >
+    android:versionCode="34"
+    android:versionName="4.2" >
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -95,6 +95,16 @@
         </activity>
         <activity
             android:name="edu.neu.madcourse.priyankabh.communication.fcm.RegisterUserActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
+        </activity>
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.communication.realtimedatabase.EnterWordToDatabaseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.communication.realtimedatabase.ViewScoreActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" >
         </activity>

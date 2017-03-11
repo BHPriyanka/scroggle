@@ -21,6 +21,6 @@ public class User {
         this.username = username;
         this.score = score;
         //this.email =mail;
-        this.token = token;
+        //this.token = token;
     }
 }

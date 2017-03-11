@@ -35,15 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
-        android:text="@string/quickstart_message" />
+        android:text="The Register Button registers the user and his details to the database if the user already does not exist.The choose Player button lists out the users registered, and upon choosing the player, sends the notification" />
 
-    <!--Button
-        android:id="@+id/sendNotification"
-        android:layout_width="@dimen/standard_field_width"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:onClick="pushNotification"
-        android:text="@string/send_notification" /-->
 
     <Button
         android:id="@+id/registerUserToDatabaseButton"
@@ -63,15 +56,16 @@
         android:padding="@dimen/menu_button_padding"
         android:text="Choose Player"/>
 
+    <Button
+        android:id="@+id/quit_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/menu_button_margin"
+        android:padding="@dimen/menu_button_padding"
+        android:text="Quit"/>
+
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:src="@android:drawable/ic_popup_disk_full"/>
 
 </android.support.design.widget.CoordinatorLayout>

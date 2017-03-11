@@ -192,6 +192,10 @@
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\layout\\cast_help_text.xml"
     },
     {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\enter_word_to_database.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\enter_word_to_database.xml"
+    },
+    {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\layout\\abc_screen_simple.xml"
     },
@@ -278,6 +282,10 @@
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.2.0\\res\\layout\\design_navigation_item_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\realtime_database_menu.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\realtime_database_menu.xml"
     },
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",

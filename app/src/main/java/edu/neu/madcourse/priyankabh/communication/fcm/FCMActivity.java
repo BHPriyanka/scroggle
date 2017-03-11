@@ -42,6 +42,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
+import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
 import edu.neu.madcourse.priyankabh.communication.CommunicationActivity;
 
@@ -99,16 +100,13 @@ public class FCMActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
-
         Button registerButton = (Button) findViewById(R.id.registerUserToDatabaseButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //set up dialog
                 final Dialog mDialog = new Dialog(FCMActivity.this);
-                //mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                mDialog.setTitle("Enter your Full Name");
+                //mDialog.setTitle("Enter your Full Name");
                 mDialog.setContentView(R.layout.register_user);
                 mDialog.setCancelable(true);
 
@@ -196,7 +194,22 @@ public class FCMActivity extends AppCompatActivity {
             }
         });
 
+        Button quit_button =(Button)findViewById(R.id.quit_button);
+        quit_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FCMActivity.this, CommunicationActivity.class);
+                FCMActivity.this.startActivity(intent);
+            }
+        });
+
      }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(FCMActivity.this, CommunicationActivity.class);
+        FCMActivity.this.startActivity(intent);
+    }
 
     /*public void pushNotification(View type) {
         new Thread(new Runnable() {
@@ -270,67 +283,11 @@ public class FCMActivity extends AppCompatActivity {
         }
     }
 
-/*
-    private void pushNotification() {
-        JSONObject jPayload = new JSONObject();
-        JSONObject jNotification = new JSONObject();
-        try {
-            jNotification.put("title", "Google I/O 2016");
-            jNotification.put("body", "Firebase Cloud Messaging (App)");
-            jNotification.put("sound", "default");
-            jNotification.put("badge", "1");
-            jNotification.put("click_action", "OPEN_ACTIVITY_1");
-
-            // If sending to a single client
-            jPayload.put("to", CLIENT_REGISTRATION_TOKEN);
-
-
-            // If sending to multiple clients (must be more than 1 and less than 1000)
-            //JSONArray ja = new JSONArray();
-            //ja.put(CLIENT_REGISTRATION_TOKEN);
-            // Add Other client tokens
-            //ja.put(FirebaseInstanceId.getInstance().getToken());
-            //jPayload.put("registration_ids", ja);
-
-
-            jPayload.put("priority", "high");
-            jPayload.put("notification", jNotification);
-
-            URL url = new URL("https://fcm.googleapis.com/fcm/send");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Authorization", SERVER_KEY);
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setDoOutput(true);
-
-            // Send FCM message content.
-            OutputStream outputStream = conn.getOutputStream();
-            outputStream.write(jPayload.toString().getBytes());
-            outputStream.close();
-
-            // Read FCM response.
-            InputStream inputStream = conn.getInputStream();
-            final String resp = convertStreamToString(inputStream);
-
-            Handler h = new Handler(Looper.getMainLooper());
-            h.post(new Runnable() {
-                @Override
-                public void run() {
-                    Log.e(TAG, "run: " + resp);
-                    Toast.makeText(FCMActivity.this,resp,Toast.LENGTH_LONG);
-                }
-            });
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
-        }
-    }*/
 
     public static String convertStreamToString(InputStream is) {
         Scanner s = new Scanner(is).useDelimiter("\\A");
         return s.hasNext() ? s.next().replace(",", ",\n") : "";
     }
-
-
 
     public void fetchUsersFromDatabase(){
         //Get datasnapshot at your "users" root node

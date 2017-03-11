@@ -8,6 +8,12 @@
     android:orientation="vertical"
     android:weightSum="1">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:text="Enter Full Name" />
 
     <EditText
         android:id="@+id/user_name"
@@ -15,10 +21,10 @@
         android:layout_height="50dp"
         android:hint="Full Name"
         android:inputType="text"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/white"
-        android:longClickable="false"/>
-
+        android:longClickable="false"
+        android:layout_gravity="center"/>
     <Button
         android:id="@+id/ok_button"
         android:layout_width="match_parent"

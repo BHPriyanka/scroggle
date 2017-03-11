@@ -67,6 +67,14 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".communication.realtimedatabase.EnterWordToDatabaseActivity"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".communication.realtimedatabase.ViewScoreActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
