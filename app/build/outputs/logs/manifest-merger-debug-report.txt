@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:2:1-103:12
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:2:1-133:12
 	package
 		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:3:5-43
 		INJECTED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml
@@ -39,7 +39,7 @@ MERGED from [com.google.firebase:firebase-iid:10.2.0] C:\Users\priya\AndroidStud
 	android:name
 		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:9:22-76
 application
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:11:5-102:19
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:11:5-132:19
 MERGED from [com.android.support:design:25.2.0] C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\build\intermediates\exploded-aar\com.android.support\design\25.2.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:transition:25.2.0] C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\build\intermediates\exploded-aar\com.android.support\transition\25.2.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services:10.2.0] C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\10.2.0\AndroidManifest.xml:5:5-20
@@ -208,69 +208,109 @@ ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main
 		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:67:13-63
 	android:name
 		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:66:19-73
-activity#edu.neu.madcourse.priyankabh.communication.realtimedatabase.EnterWordToDatabaseActivity
+activity#edu.neu.madcourse.priyankabh.twoplayergame.ChoosePlayerActivity
 ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:70:9-73:20
 	android:screenOrientation
 		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:72:13-49
 	android:theme
 		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:71:13-83
 	android:name
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:70:19-93
-activity#edu.neu.madcourse.priyankabh.communication.realtimedatabase.ViewScoreActivity
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:70:19-69
+activity#edu.neu.madcourse.priyankabh.twoplayergame.RegisterActivity
 ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:74:9-77:20
 	android:screenOrientation
 		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:76:13-49
 	android:theme
 		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:75:13-63
 	android:name
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:74:19-83
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:74:19-65
+activity#edu.neu.madcourse.priyankabh.communication.realtimedatabase.EnterWordToDatabaseActivity
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:78:9-81:20
+	android:screenOrientation
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:80:13-49
+	android:theme
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:79:13-83
+	android:name
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:78:19-93
+activity#edu.neu.madcourse.priyankabh.communication.realtimedatabase.ViewScoreActivity
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:82:9-85:20
+	android:screenOrientation
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:84:13-49
+	android:theme
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:83:13-63
+	android:name
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:82:19-83
+activity#edu.neu.madcourse.priyankabh.twoplayergame.TwoPlayerWordGameActivity
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:86:9-89:20
+	android:screenOrientation
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:88:13-49
+	android:theme
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:87:13-83
+	android:name
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:86:19-74
+activity#edu.neu.madcourse.priyankabh.twoplayergame.ScroggleTwoPlayerGameActivity
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:90:9-93:20
+	android:screenOrientation
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:92:13-49
+	android:theme
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:91:13-83
+	android:name
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:90:19-78
+activity#edu.neu.madcourse.priyankabh.twoplayergame.OpponentProfileActivity
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:94:9-97:20
+	android:screenOrientation
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:96:13-49
+	android:theme
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:95:13-83
+	android:name
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:94:19-72
 meta-data#com.google.android.gms.version
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:78:9-80:69
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:98:9-100:69
 MERGED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.2.0\AndroidManifest.xml:20:9-121
 	android:value
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:80:13-66
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:100:13-66
 	android:name
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:79:13-58
-service#edu.neu.madcourse.priyankabh.communication.fcm.WordGameMessagingService
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:81:9-85:19
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:99:13-58
+service#edu.neu.madcourse.priyankabh.twoplayergame.TwoPlayerWordGameMessagingService
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:106:9-110:19
 	android:name
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:81:18-76
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:106:18-81
 intent-filter#com.google.firebase.MESSAGING_EVENT
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:82:13-84:29
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:107:13-109:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:83:17-77
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:108:17-77
 	android:name
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:83:25-75
-service#edu.neu.madcourse.priyankabh.communication.fcm.WordGameInstanceIDService
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:86:9-90:19
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:108:25-75
+service#edu.neu.madcourse.priyankabh.twoplayergame.TwoPlayerWordGameInstanceIDService
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:111:9-115:19
 	android:name
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:86:18-77
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:111:18-82
 intent-filter#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:87:13-89:29
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:112:13-114:29
 action#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:88:17-79
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:113:17-79
 	android:name
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:88:25-77
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:113:25-77
 receiver#edu.neu.madcourse.priyankabh.communication.NetworkConnectivity
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:92:9-101:20
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:122:9-131:20
 	android:enabled
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:94:13-35
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:124:13-35
 	android:name
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:93:13-62
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:123:13-62
 intent-filter#android.net.conn.CONNECTIVITY_CHANGE+android.net.wifi.STATE_CHANGE+android.net.wifi.WIFI_STATE_CHANGED
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:95:13-100:29
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:125:13-130:29
 action#android.net.conn.CONNECTIVITY_CHANGE
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:97:17-79
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:127:17-79
 	android:name
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:97:25-76
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:127:25-76
 action#android.net.wifi.WIFI_STATE_CHANGED
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:98:17-78
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:128:17-78
 	android:name
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:98:25-75
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:128:25-75
 action#android.net.wifi.STATE_CHANGE
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:99:17-72
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:129:17-72
 	android:name
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:99:25-69
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:129:25-69
 uses-sdk
 INJECTED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:multidex:1.0.1] C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.1\AndroidManifest.xml:18:5-42

@@ -19,6 +19,7 @@ public class GlobalClass extends Application{
     public static String token="";
     public static ArrayList<String> names = new ArrayList<>();
     public static Map<String,Object> usersMap = new HashMap<String,Object>();
+    public static Map<String,String> pairPlayers = new HashMap<String, String>();
 
     // Gloabl declaration of variable to use in whole app
     public static boolean activityVisible; // Variable that will check the

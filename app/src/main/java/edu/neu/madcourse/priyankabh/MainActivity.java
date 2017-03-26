@@ -13,24 +13,32 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
+import edu.neu.madcourse.priyankabh.twoplayergame.RegisterActivity;
 import edu.neu.madcourse.priyankabh.communication.CommunicationActivity;
 import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
 import edu.neu.madcourse.priyankabh.scroggle.WordGame;
 import edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity;
-import static edu.neu.madcourse.priyankabh.R.layout.activity_main;
 
 public class MainActivity extends Activity {
 
@@ -45,8 +53,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
         super.onCreate(savedInstanceState);
-        setContentView(activity_main);
+        setContentView(R.layout.activity_main);
         this.setTitle("B H Priyanka");
+
+        new fetchDataFromFireBase().execute();
+
         if(globalVariable.list.isEmpty()){
             new LoadWordList().execute();
         }
@@ -137,6 +148,40 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button twoPlayerButton = (Button) findViewById(R.id.twoplayer_button);
+        twoPlayerButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //set up dialog
+                final Dialog mDialog = new Dialog(MainActivity.this);
+                //mDialog.setTitle("Enter your Full Name");
+                mDialog.setContentView(R.layout.register_user);
+                mDialog.setCancelable(true);
+
+                //set up text
+                Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
+                ok_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                        String score = "";
+                        EditText text = (EditText) mDialog.findViewById(R.id.user_name);
+                        intent.putExtra("userName", text.getText().toString());
+                        intent.putExtra("score", score);
+                        String token = FirebaseInstanceId.getInstance().getToken();
+                        intent.putExtra("token", token);
+                        intent.putExtra("gameState", "");
+                        startActivity(intent);
+                        if (mDialog != null)
+                            mDialog.dismiss();
+                    }
+                });
+                //now that the dialog is set up, it's time to show it
+                mDialog.show();
+            }
+        });
+
         Button quitButton = (Button) findViewById(R.id.quit_button);
         quitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,8 +237,6 @@ public class MainActivity extends Activity {
     }
 
 
-
-
     private class LoadWordList extends AsyncTask<Void, Integer, Void> {
 
         @Override
@@ -227,5 +270,61 @@ public class MainActivity extends Activity {
          //   }
         }
     }
+
+    public class fetchDataFromFireBase extends AsyncTask<Void, Integer, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            fetchUsersFromDatabase();
+            return null;
+        }
+
+        protected void onProgressUpdate(Integer... params) {
+
+        }
+
+        protected void onPostExecute(Void v) {
+        }
+
+    }
+
+    private void collectUserNames() {
+        //iterate through each user, ignoring their UID
+        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+        for (Map.Entry<String, Object> entry : globalVariable.usersMap.entrySet()){
+            //Get user map
+            Map singleUser = (Map) entry.getValue();
+            //Get phone field and append to list
+            if(!globalVariable.names.contains((String) singleUser.get("username"))){
+                globalVariable.names.add((String) singleUser.get("username"));
+            }
+        }
+
+    }
+
+    public void fetchUsersFromDatabase(){
+        //Get datasnapshot at your "users" root node
+        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("players");
+        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+        dbref.addValueEventListener(
+                new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //Get map of users in datasnapshot
+                        globalVariable.usersMap = (Map<String,Object>) dataSnapshot.getValue();
+                        if(globalVariable.usersMap != null) {
+                            collectUserNames();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        //handle databaseError
+                    }
+                });
+    }
+
 
 }

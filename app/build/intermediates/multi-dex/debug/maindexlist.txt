@@ -34,6 +34,7 @@ com/google/android/gms/ads/internal/overlay/zzf.class
 com/google/android/gms/internal/zzbmx.class
 com/google/android/gms/internal/zzzf$2.class
 com/google/android/gms/internal/zzmf.class
+edu/neu/madcourse/priyankabh/twoplayergame/models/Player.class
 android/support/v4/net/ConnectivityManagerCompat$HoneycombMR2ConnectivityManagerCompatImpl.class
 android/support/multidex/MultiDexExtractor.class
 android/support/v4/media/MediaBrowserCompat$Subscription.class

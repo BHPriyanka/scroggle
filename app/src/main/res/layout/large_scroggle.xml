@@ -23,7 +23,7 @@
         android:layout_marginBottom="30dp"/>
 
         <TextView
-            android:id="@+id/score"
+            android:id="@+id/large_score"
             android:text="Score: "
             android:paddingLeft="10dip"
             android:layout_height="wrap_content"

@@ -17,6 +17,7 @@
     <string name="declare_winner">%1$s is the winner</string>
     <string name="continue_label">Continue</string>
     <string name="new_game_label">Start New Game</string>
+    <string name="new_game">Start Game</string>
     <string name="about_title">About Ultimate Tic Tac Toe</string>
     <string name="about_label">About</string>
     <string name="ok_label">OK</string>

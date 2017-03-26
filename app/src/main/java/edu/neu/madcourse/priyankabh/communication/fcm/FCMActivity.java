@@ -1,10 +1,8 @@
 package edu.neu.madcourse.priyankabh.communication.fcm;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -42,7 +40,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
-import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
 import edu.neu.madcourse.priyankabh.communication.CommunicationActivity;
 
@@ -291,7 +288,7 @@ public class FCMActivity extends AppCompatActivity {
 
     public void fetchUsersFromDatabase(){
         //Get datasnapshot at your "users" root node
-        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("users");
+        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("players");
         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
         dbref.addValueEventListener(
                 new ValueEventListener() {

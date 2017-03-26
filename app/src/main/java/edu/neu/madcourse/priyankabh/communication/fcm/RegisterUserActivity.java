@@ -34,9 +34,6 @@ public class RegisterUserActivity extends AppCompatActivity {
     private CoordinatorLayout coordinatorLayout;
     private String chosenUserKey="";
 
-    // Please add the server key from your firebase console in the follwoing format "key=<serverKey>"
-    private static final String SERVER_KEY = "key=AAAA3ITLrYc:APA91bEO4XNNsyoIbhH4T9y_NqaKMstR2BwSAgCG9I8-m9JzsKrzxi9XhNOArq2ShRPSM6mrOwvYj2-11o4JDVML2Oqca7HwAe13xcIssT7Z2dJX9Wg9G1ydLOOijzn47tUt7PG_Joq5";
-
     private String userName="";
     private static final String TAG = FCMActivity.class.getSimpleName();
     private String userScore="";

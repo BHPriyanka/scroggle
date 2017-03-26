@@ -67,6 +67,14 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".twoplayergame.ChoosePlayerActivity"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".twoplayergame.RegisterActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".communication.realtimedatabase.EnterWordToDatabaseActivity"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
             android:screenOrientation="portrait">
@@ -75,19 +83,41 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".twoplayergame.TwoPlayerWordGameActivity"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".twoplayergame.ScroggleTwoPlayerGameActivity"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".twoplayergame.OpponentProfileActivity"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            android:screenOrientation="portrait">
+        </activity>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <service android:name=".communication.fcm.WordGameMessagingService">
+        <!--service android:name=".communication.fcm.WordGameMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service-->
+        <service android:name=".twoplayergame.TwoPlayerWordGameMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
-        <service android:name=".communication.fcm.WordGameInstanceIDService">
+        <service android:name=".twoplayergame.TwoPlayerWordGameInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
+        <!--service android:name=".communication.fcm.WordGameInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service-->
         <!-- Broadcast receiver declaration in manifest file and make sure to enable it -->
         <receiver
             android:name=".communication.NetworkConnectivity"

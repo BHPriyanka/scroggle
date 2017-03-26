@@ -18,13 +18,11 @@ public class ScroggleGameActivity extends FragmentActivity {
     public static String PREF_RESTORE = "pref_restore";
 
     public ScroggleFragment sFragment;
-    private ProgressDialog progressDialog;
     private MediaPlayer mediaPlayer;
     private int phaseOnePoints = 0;
     private int phaseTwoPoints = 0;
     private String gameData = "";
     private int phase = 1;
-    private Boolean restore = false;
     public static Boolean isResume = false;
     private String phaseTwoWord;
     private TextView scoreView;
@@ -32,7 +30,6 @@ public class ScroggleGameActivity extends FragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        final GlobalClass globalVariable = (GlobalClass) this.getApplicationContext();
         super.onCreate(savedInstanceState);
 
         Bundle b = this.getIntent().getExtras();
@@ -45,7 +42,7 @@ public class ScroggleGameActivity extends FragmentActivity {
         setContentView(R.layout.activity_game_scroggle);
         sFragment = (ScroggleFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_scroggle);
-        scoreView = (TextView) findViewById(R.id.score);
+        scoreView = (TextView) findViewById(R.id.large_score);
 
         boolean restore = getIntent().getBooleanExtra(KEY_RESTORE, false);
 

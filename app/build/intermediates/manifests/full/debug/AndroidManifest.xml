@@ -99,6 +99,16 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" >
         </activity>
         <activity
+            android:name="edu.neu.madcourse.priyankabh.twoplayergame.ChoosePlayerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.twoplayergame.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
+        </activity>
+        <activity
             android:name="edu.neu.madcourse.priyankabh.communication.realtimedatabase.EnterWordToDatabaseActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
@@ -108,21 +118,49 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" >
         </activity>
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.twoplayergame.TwoPlayerWordGameActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.twoplayergame.ScroggleTwoPlayerGameActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.twoplayergame.OpponentProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-        <service android:name="edu.neu.madcourse.priyankabh.communication.fcm.WordGameMessagingService" >
+        <!--
+        service android:name=".communication.fcm.WordGameMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service
+        -->
+        <service android:name="edu.neu.madcourse.priyankabh.twoplayergame.TwoPlayerWordGameMessagingService" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name="edu.neu.madcourse.priyankabh.communication.fcm.WordGameInstanceIDService" >
+        <service android:name="edu.neu.madcourse.priyankabh.twoplayergame.TwoPlayerWordGameInstanceIDService" >
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+        <!--
+        service android:name=".communication.fcm.WordGameInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service
+        -->
         <!-- Broadcast receiver declaration in manifest file and make sure to enable it -->
         <receiver
             android:name="edu.neu.madcourse.priyankabh.communication.NetworkConnectivity"

@@ -1192,6 +1192,7 @@ both sides in the larger game.
     <string name="msg_subscribed">Subscribed to news topic</string>
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
     <string name="my_name">B H Priyanka</string>
+    <string name="new_game">Start Game</string>
     <string name="new_game_label">Start New Game</string>
     <string name="ok_label">OK</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>
