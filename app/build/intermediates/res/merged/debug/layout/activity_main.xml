@@ -6,6 +6,7 @@
  ! We make no guarantees that this code is fit for any purpose.
  ! Visit http://www.pragmaticprogrammer.com/titles/eband4 for more book information.
 -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,6 +16,7 @@
     android:elevation="@dimen/elevation_high"
     android:orientation="vertical"
     android:padding="@dimen/menu_padding"
+    android:id="@+id/activity_main"
     tools:context=".MainActivity">
 
     <Button
@@ -105,5 +107,6 @@
         android:text="@string/quit_label"
         android:textColor="@color/gray_color"
         android:background="@color/black_color"/>
+
 
 </LinearLayout>

@@ -3,7 +3,8 @@
     package="edu.neu.madcourse.priyankabh">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- This permissions are neccessary for broadcast receiver -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -68,11 +69,11 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".twoplayergame.ChoosePlayerActivity"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".twoplayergame.RegisterActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".communication.realtimedatabase.EnterWordToDatabaseActivity"
@@ -84,15 +85,15 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".twoplayergame.TwoPlayerWordGameActivity"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".twoplayergame.ScroggleTwoPlayerGameActivity"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".twoplayergame.OpponentProfileActivity"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
             android:screenOrientation="portrait">
         </activity>
         <meta-data
@@ -113,21 +114,17 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
-        <!--service android:name=".communication.fcm.WordGameInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-            </intent-filter>
-        </service-->
-        <!-- Broadcast receiver declaration in manifest file and make sure to enable it -->
         <receiver
-            android:name=".communication.NetworkConnectivity"
+            android:name=".twoplayergame.DetectNetworkActivity"
             android:enabled="true" >
             <intent-filter>
+
                 <!-- Intent filters for broadcast receiver -->
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-                <action android:name="android.net.wifi.STATE_CHANGE" />
+                <!--action android:name="android.net.wifi.WIFI_STATE_CHANGED" /-->
+                <!--action android:name="android.net.wifi.STATE_CHANGE" /-->
             </intent-filter>
         </receiver>
+
     </application>
 </manifest>

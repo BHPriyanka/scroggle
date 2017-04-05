@@ -9,6 +9,8 @@ import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -46,6 +48,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
+import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
 import edu.neu.madcourse.priyankabh.communication.realtimedatabase.EnterWordToDatabaseActivity;
 import edu.neu.madcourse.priyankabh.communication.realtimedatabase.models.User;
@@ -130,10 +133,10 @@ public class TwoPlayerScroggleFragment extends Fragment {
             isPlayer2 = b.getBoolean("isPlayer2");
             //if (b.getInt("player") == 1) {
             if(isPlayer2){
-                player = 1;
+                player = 2;
                 color = "green";
             } else {//if (b.getInt("player") == 2) {
-                player = 2;
+                player = 1;
                 color="red";
             }
           //  gameData = b.getString("gameState");
@@ -147,7 +150,8 @@ public class TwoPlayerScroggleFragment extends Fragment {
                     gameData = b.getString("gameState");
                 }
             }  else{
-                gameData = (String) entry.get("gameState");
+                //gameData = (String) entry.get("gameState");
+                gameData = b.getString("gameState");
             }
 
         }
@@ -781,6 +785,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
                     mDialog.show();
                 }
             } else {
+
                 if (listOfSmallIds.size() > 0) {
                     ((ScroggleTwoPlayerGameActivity) getActivity()).setFragmentInvisible();
                     final Dialog mDialog = new Dialog(getActivity());
@@ -882,6 +887,12 @@ public class TwoPlayerScroggleFragment extends Fragment {
         this.player = ph;
     }
 
+
+    private void switchTurns() {
+        player = player == 1 ? 2 : 1;
+
+    }
+
     public void putState(String data) {
         String[] fields = data.split(",");
         int index = 0;
@@ -894,18 +905,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
         this.setTime(timeRemaning);
         player = Integer.parseInt(fields[index++]);
         this.setPhase(player);
-      /*  for (int large = 0; large < 9; large++) {
-            for (int small = 0; small < 9; small++) {
-                String letter = (fields[index++]);
-                mSmallTiles[large][small].setLetter(letter);
-                Boolean isChosen = Boolean.valueOf(fields[index++]);
-                mSmallTiles[large][small].setChosen(isChosen);
-                char state = fields[index++].charAt(0);
-                letterState[large][small] = state;
-            }
-        }*/
-
-
+    
         int lengthOfListOfSmallIds = Integer.parseInt(fields[index++]);
         for(int i=0 ; i< lengthOfListOfSmallIds;i++){
             String wordFormed = fields[index++];
@@ -1100,6 +1100,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
         mediaPlayer.pause();
         ((ScroggleTwoPlayerGameActivity) getActivity()).sFragment.getView().setVisibility(View.INVISIBLE);
         isResume = false;
+        GlobalClass.activityPaused();// On Pause notify the Application
     }
 
     public void onScroggleResume() {
@@ -1111,6 +1112,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
         mediaPlayer.start();
         ((ScroggleTwoPlayerGameActivity) getActivity()).sFragment.getView().setVisibility(View.VISIBLE);
         isResume = true;
+        GlobalClass.activityResumed();// On Resume notify the Application
     }
 
     private void calcPhaseOnePoints() {
@@ -1204,6 +1206,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
                     }
                 });
     }
+
 
 }
 

@@ -1,11 +1,20 @@
 package edu.neu.madcourse.priyankabh.twoplayergame;
 
+import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,8 +23,11 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import java.util.Map;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
+import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
 import edu.neu.madcourse.priyankabh.scroggle.ScroggleFragment;
+
+import static edu.neu.madcourse.priyankabh.twoplayergame.DetectNetworkActivity.IS_NETWORK_AVAILABLE;
 
 /**
  * Created by priya on 3/12/2017.
@@ -41,11 +53,49 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
     private boolean isGameDataPresent = false;
     private String getTokenInstance;
     private boolean isPlayer2 = true;
+    private static TextView internetStatus;
+    private Dialog dialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         final GlobalClass globalVariable = (GlobalClass) this.getApplicationContext();
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game_twoplayer_scroggle);
+
+
+        IntentFilter intentFilter = new IntentFilter(DetectNetworkActivity.NETWORK_AVAILABLE_ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                boolean isNetworkAvailable = intent.getBooleanExtra(IS_NETWORK_AVAILABLE, false);
+                String networkStatus = isNetworkAvailable ? "connected" : "disconnected";
+
+                if(networkStatus.equals("connected")){
+                   // Log.d("MainActivity","networkStatus :" +networkStatus +" "+dialog.isShowing()+" "+dialog);
+//                    text.setText("Internet connected");
+                    if(dialog!=null && dialog.isShowing()){
+                   //     Log.d("MainActivity", "onReceive: ...................");
+                        dialog.cancel();
+                        dialog.dismiss();
+                        dialog.hide();
+                    }
+                } else {
+                    Log.d("MainActivity","networkStatus :" +networkStatus);
+                    if(dialog == null){
+                       // Log.d("MainActivity", "onReceive:d ");
+                        dialog = new Dialog(ScroggleTwoPlayerGameActivity.this);
+                        dialog.setContentView(R.layout.internet_connectivity);
+                        dialog.setCancelable(false);
+                        TextView text = (TextView) dialog.findViewById(R.id.internet_connection);
+                        text.setText("Internet Disconnected");
+                        dialog.show();
+                    } else if(dialog != null && !dialog.isShowing()){
+                      //  Log.d("MainActivity", "onReceive:d.. ");
+                        dialog.show();
+                    }
+                }
+            }
+        }, intentFilter);
 
         getTokenInstance = FirebaseInstanceId.getInstance().getToken();
 
@@ -74,7 +124,6 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
 
         }
 
-        setContentView(R.layout.activity_game_twoplayer_scroggle);
         sFragment = (TwoPlayerScroggleFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_scroggle_twoplayer);
         scoreView = (TextView) findViewById(R.id.large_score);
@@ -135,6 +184,7 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
         getPreferences(MODE_PRIVATE).edit()
                 .putString(PREF_RESTORE, gameData)
                 .commit();
+        GlobalClass.activityPaused();// On Pause notify the Application
     }
 
 
@@ -171,7 +221,7 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
      //   }
 
         mSensorManager.registerListener(mShakeDetector, mAccelerometer,SensorManager.SENSOR_DELAY_UI);
-
+        GlobalClass.activityResumed();// On Resume notify the Application
     }
 
 
@@ -187,7 +237,17 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
         this.playerOnePoints = points;
     }
 
-   // public void setPhaseTwoPoints(int points) {
-   //     this.phaseTwoPoints = points;
-   // }
+    // Method to change the text status
+    public void changeTextStatus(boolean isConnected) {
+
+        // Change status according to boolean value
+        if (isConnected) {
+            internetStatus.setText("Internet Connected.");
+            internetStatus.setTextColor(Color.parseColor("#00ff00"));
+        } else {
+            internetStatus.setText("Internet Disconnected.");
+            internetStatus.setTextColor(Color.parseColor("#ff0000"));
+        }
+    }
+
 }

@@ -4,12 +4,20 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.LocalBroadcastManager;
 import android.telephony.TelephonyManager;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -34,13 +42,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.neu.madcourse.priyankabh.twoplayergame.DetectNetworkActivity;
 import edu.neu.madcourse.priyankabh.twoplayergame.RegisterActivity;
 import edu.neu.madcourse.priyankabh.communication.CommunicationActivity;
 import edu.neu.madcourse.priyankabh.dictionary.TestDictionary;
 import edu.neu.madcourse.priyankabh.scroggle.WordGame;
 import edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity;
 
+import static edu.neu.madcourse.priyankabh.twoplayergame.DetectNetworkActivity.IS_NETWORK_AVAILABLE;
+
 public class MainActivity extends Activity {
+
+    public static boolean activityVisible; // Variable that will check the
+    // current activity state
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -49,11 +63,48 @@ public class MainActivity extends Activity {
     private GoogleApiClient client;
     private ProgressDialog progressDialog;
 
+    Dialog dialog;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        IntentFilter intentFilter = new IntentFilter(DetectNetworkActivity.NETWORK_AVAILABLE_ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                boolean isNetworkAvailable = intent.getBooleanExtra(IS_NETWORK_AVAILABLE, false);
+                String networkStatus = isNetworkAvailable ? "connected" : "disconnected";
+
+                if(networkStatus.equals("connected")){
+                 //   Log.d("MainActivity","networkStatus :" +networkStatus +" "+dialog.isShowing()+" "+dialog);
+//                    text.setText("Internet connected");
+                    if(dialog!=null && dialog.isShowing()){
+                     //   Log.d("MainActivity", "onReceive: ...................");
+                        dialog.cancel();
+                        dialog.dismiss();
+                        dialog.hide();
+                    }
+                } else {
+                  //  Log.d("MainActivity","networkStatus :" +networkStatus);
+                    if(dialog == null){
+                    //    Log.d("MainActivity", "onReceive:d ");
+                        dialog = new Dialog(MainActivity.this);
+                        dialog.setContentView(R.layout.internet_connectivity);
+                        dialog.setCancelable(false);
+                        TextView text = (TextView) dialog.findViewById(R.id.internet_connection);
+                        text.setText("Internet Disconnected");
+                        dialog.show();
+                    } else if(dialog != null && !dialog.isShowing()){
+                      //  Log.d("MainActivity", "onReceive:d.. ");
+                        dialog.show();
+                    }
+                }
+            }
+        }, intentFilter);
+
         this.setTitle("B H Priyanka");
 
         new fetchDataFromFireBase().execute();
@@ -177,7 +228,7 @@ public class MainActivity extends Activity {
                             mDialog.dismiss();
                     }
                 });
-                //now that the dialog is set up, it's time to show it
+
                 mDialog.show();
             }
         });
@@ -324,6 +375,20 @@ public class MainActivity extends Activity {
                         //handle databaseError
                     }
                 });
+    }
+
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+        //GlobalClass.activityPaused();// On Pause notify the Application
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+       // GlobalClass.activityResumed();// On Pause notify the Application
     }
 
 

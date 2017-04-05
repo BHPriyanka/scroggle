@@ -5,7 +5,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-public class ShakeDetector implements SensorEventListener {
+public class ShakeDetector  implements SensorEventListener {
 
     /*
      * The gForce that is necessary to register as shake.

@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
+import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
 
 /**
@@ -35,7 +39,6 @@ import edu.neu.madcourse.priyankabh.R;
  */
 
 public class TwoPlayerWordGameFragment extends Fragment {
-
     private ProgressDialog progressDialog;
     private boolean isPlayer2;
 

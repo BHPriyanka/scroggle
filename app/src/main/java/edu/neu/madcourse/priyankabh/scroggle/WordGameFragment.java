@@ -26,6 +26,7 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
+import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
 
 public class WordGameFragment extends Fragment {
@@ -59,6 +60,15 @@ public class WordGameFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ScroggleGameActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+        View exitButton = rootView.findViewById(R.id.exit_button);
+        newButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 getActivity().startActivity(intent);
             }
         });

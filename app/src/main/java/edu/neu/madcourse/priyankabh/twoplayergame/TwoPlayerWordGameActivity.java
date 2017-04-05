@@ -1,8 +1,19 @@
 package edu.neu.madcourse.priyankabh.twoplayergame;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.widget.TextView;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,8 +27,11 @@ import java.util.Map;
 import java.util.Random;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
+import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
 import edu.neu.madcourse.priyankabh.twoplayergame.models.Player;
+
+import static edu.neu.madcourse.priyankabh.twoplayergame.DetectNetworkActivity.IS_NETWORK_AVAILABLE;
 
 /**
  * Created by priya on 3/11/2017.
@@ -26,13 +40,47 @@ import edu.neu.madcourse.priyankabh.twoplayergame.models.Player;
 public class TwoPlayerWordGameActivity extends Activity {
     private String getTokenInstance;
     private int n;
-    //private boolean isPlayer2;
+    private Dialog dialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_word_player_two);
+
+        IntentFilter intentFilter = new IntentFilter(DetectNetworkActivity.NETWORK_AVAILABLE_ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                boolean isNetworkAvailable = intent.getBooleanExtra(IS_NETWORK_AVAILABLE, false);
+                String networkStatus = isNetworkAvailable ? "connected" : "disconnected";
+
+                if(networkStatus.equals("connected")){
+                  //  Log.d("MainActivity","networkStatus :" +networkStatus +" "+dialog.isShowing()+" "+dialog);
+//                    text.setText("Internet connected");
+                    if(dialog!=null && dialog.isShowing()){
+                      //  Log.d("MainActivity", "onReceive: ...................");
+                        dialog.cancel();
+                        dialog.dismiss();
+                        dialog.hide();
+                    }
+                } else {
+                    Log.d("MainActivity","networkStatus :" +networkStatus);
+                    if(dialog == null){
+                     //   Log.d("MainActivity", "onReceive:d ");
+                        dialog = new Dialog(TwoPlayerWordGameActivity.this);
+                        dialog.setContentView(R.layout.internet_connectivity);
+                        dialog.setCancelable(false);
+                        TextView text = (TextView) dialog.findViewById(R.id.internet_connection);
+                        text.setText("Internet Disconnected");
+                        dialog.show();
+                    } else if(dialog != null && !dialog.isShowing()){
+                     //   Log.d("MainActivity", "onReceive:d.. ");
+                        dialog.show();
+                    }
+                }
+            }
+        }, intentFilter);
 
         getTokenInstance = FirebaseInstanceId.getInstance().getToken();
 
@@ -48,7 +96,6 @@ public class TwoPlayerWordGameActivity extends Activity {
     }
 
     private void onAddGameIdForPlayer(DatabaseReference postRef, String player, int n) {
-       // final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
         Log.d("TAG", "onAddGameIdForPlayer: "+player);
         final int val =n;
         postRef
@@ -97,5 +144,18 @@ public class TwoPlayerWordGameActivity extends Activity {
                 });
     }
 
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+     //   GlobalClass.activityPaused();// On Pause notify the Application
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+       // GlobalClass.activityResumed();// On Resume notify the Application
+    }
 
 }

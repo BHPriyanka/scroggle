@@ -21,9 +21,10 @@ public class GlobalClass extends Application{
     public static Map<String,Object> usersMap = new HashMap<String,Object>();
     public static Map<String,String> pairPlayers = new HashMap<String, String>();
 
-    // Gloabl declaration of variable to use in whole app
+
     public static boolean activityVisible; // Variable that will check the
     // current activity state
+
 
     public static boolean isActivityVisible() {
         return activityVisible; // return true or false
@@ -38,6 +39,5 @@ public class GlobalClass extends Application{
         activityVisible = false;// this will set false when activity paused
 
     }
-
 
 }

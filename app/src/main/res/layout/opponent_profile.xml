@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,26 +7,82 @@
     android:elevation="@dimen/elevation_high"
     android:orientation="vertical"
     android:padding="@dimen/menu_padding"
-    tools:context=".dictionary.Acknowledgement"
+    tools:context=".twoplayergame.OpponentProfileActivity"
     android:weightSum="1">
 
+
     <TextView
-        android:id="@+id/profile_view"
+        android:id="@+id/inter_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:padding="10dp"
-        android:layout_margin="4dp"/>
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/ok_click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/menu_button_margin"
         android:padding="@dimen/menu_button_padding"
         android:text="@string/ok_label"
         android:background="@color/black_color"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:layout_marginBottom="187dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/profile_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Opponent Profile"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_marginTop="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:id="@+id/table_layout"
+        android:layout_below="@+id/profile_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="26dp">
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_name"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Name: "/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_name_val"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_score"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Score:"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/player_score_val"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        </TableRow>
+    </TableLayout>
+
+
+</RelativeLayout>

@@ -1,17 +1,23 @@
 package edu.neu.madcourse.priyankabh.twoplayergame;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -30,87 +36,129 @@ import java.util.Map;
 import java.util.Scanner;
 
 import edu.neu.madcourse.priyankabh.GlobalClass;
+import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
 import edu.neu.madcourse.priyankabh.communication.realtimedatabase.models.User;
 import edu.neu.madcourse.priyankabh.twoplayergame.models.Player;
+
+import static edu.neu.madcourse.priyankabh.twoplayergame.DetectNetworkActivity.IS_NETWORK_AVAILABLE;
 
 /**
  * Created by priya on 3/21/2017.
  */
 
-public class ChoosePlayerActivity extends Activity{
+public class ChoosePlayerActivity extends Activity {
     private String chosenUserKey="";
     String token;
     private DatabaseReference mDatabase;
+    private Dialog dialog;
     private static final String SERVER_KEY = "key=AAAA3ITLrYc:APA91bEO4XNNsyoIbhH4T9y_NqaKMstR2BwSAgCG9I8-m9JzsKrzxi9XhNOArq2ShRPSM6mrOwvYj2-11o4JDVML2Oqca7HwAe13xcIssT7Z2dJX9Wg9G1ydLOOijzn47tUt7PG_Joq5";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        IntentFilter intentFilter = new IntentFilter(DetectNetworkActivity.NETWORK_AVAILABLE_ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                boolean isNetworkAvailable = intent.getBooleanExtra(IS_NETWORK_AVAILABLE, false);
+                String networkStatus = isNetworkAvailable ? "connected" : "disconnected";
+
+                if(networkStatus.equals("connected")){
+                    Log.d("MainActivity","networkStatus :" +networkStatus +" "+dialog.isShowing()+" "+dialog);
+//                    text.setText("Internet connected");
+                    if(dialog!=null && dialog.isShowing()){
+                        Log.d("MainActivity", "onReceive: ...................");
+                        dialog.cancel();
+                        dialog.dismiss();
+                        dialog.hide();
+                    }
+                } else {
+                    Log.d("MainActivity","networkStatus :" +networkStatus);
+                    if(dialog == null){
+                        Log.d("MainActivity", "onReceive:d ");
+                        dialog = new Dialog(ChoosePlayerActivity.this);
+                        dialog.setContentView(R.layout.internet_connectivity);
+                        dialog.setCancelable(false);
+                        TextView text = (TextView) dialog.findViewById(R.id.internet_connection);
+                        text.setText("Internet Disconnected");
+                        dialog.show();
+                    } else if(dialog != null && !dialog.isShowing()){
+                        Log.d("MainActivity", "onReceive:d.. ");
+                        dialog.show();
+                    }
+                }
+            }
+        }, intentFilter);
+
         final Dialog mDialog = new Dialog(ChoosePlayerActivity.this);
         mDialog.setTitle("Players");
-       // setContentView(R.layout.choose_user);
         mDialog.setContentView(R.layout.choose_user);
-        mDialog.setCancelable(true);
+        mDialog.setCancelable(false);
         final ListView listView = (ListView) mDialog.findViewById(R.id.list_users);
+
         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
 
-       token = FirebaseInstanceId.getInstance().getToken();
+        token = FirebaseInstanceId.getInstance().getToken();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         List<String> playersWithCurrentPlayer = new ArrayList<String>();
-        if(globalVariable.usersMap != null && globalVariable.usersMap.containsKey(token)){
+        if (globalVariable.usersMap != null && globalVariable.usersMap.containsKey(token)) {
             playersWithCurrentPlayer = globalVariable.names;
-            Map<String,Object> p = (Map<String, Object>) globalVariable.usersMap.get(token);
+            Map<String, Object> p = (Map<String, Object>) globalVariable.usersMap.get(token);
             playersWithCurrentPlayer.remove(p.get("username"));
 
         }
+        if ((playersWithCurrentPlayer.size() != 0)) {
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(ChoosePlayerActivity.this,
+                    android.R.layout.simple_list_item_1, android.R.id.text1, playersWithCurrentPlayer);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ChoosePlayerActivity.this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, playersWithCurrentPlayer);
+            // Assign adapter to ListView
+            listView.setAdapter(adapter);
 
-        // Assign adapter to ListView
-        listView.setAdapter(adapter);
+            // ListView Item Click Listener
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    // ListView Clicked item index
+                    int itemPosition = position;
 
-        // ListView Item Click Listener
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // ListView Clicked item index
-                int itemPosition = position;
+                    // ListView Clicked item value
+                    String itemValue = (String) listView.getItemAtPosition(position);
 
-                // ListView Clicked item value
-                String  itemValue  = (String) listView.getItemAtPosition(position);
+                    // Show Alert
+                    Toast.makeText(getApplicationContext(),
+                            "  Opponent Chosen : " + itemValue, Toast.LENGTH_LONG).show();
 
-                // Show Alert
-                Toast.makeText(getApplicationContext(),
-                        "  Opponent Chosen : " +itemValue , Toast.LENGTH_LONG).show();
+                    for (Map.Entry<String, Object> entry : globalVariable.usersMap.entrySet()) {
+                        Map singleUser = (Map) entry.getValue();
+                        if (itemValue.equals(singleUser.get("username"))) {
+                            chosenUserKey = entry.getKey();
+                            globalVariable.pairPlayers.put(token, chosenUserKey);
+                            globalVariable.pairPlayers.put(chosenUserKey, token);
+                        }
+                    }
 
-                for (Map.Entry<String, Object> entry : globalVariable.usersMap.entrySet()) {
-                    Map singleUser = (Map) entry.getValue();
-                    if (itemValue.equals(singleUser.get("username"))) {
-                        chosenUserKey = entry.getKey();
-                        globalVariable.pairPlayers.put(token, chosenUserKey);
-                        globalVariable.pairPlayers.put(chosenUserKey, token);
+                    mDatabase.child("players").child(token).child("opponent").setValue(chosenUserKey);
+                    mDatabase.child("players").child(chosenUserKey).child("opponent").setValue(token);
+
+                    pushNotification();
+
+                    if (mDialog != null) {
+                        mDialog.dismiss();
+                        Intent intent = new Intent(ChoosePlayerActivity.this, OpponentProfileActivity.class);
+                        startActivity(intent);
                     }
                 }
 
+            });
 
-                mDatabase.child("players").child(token).child("opponent").setValue(chosenUserKey);
-                mDatabase.child("players").child(chosenUserKey).child("opponent").setValue(token);
-
-                pushNotification();
-
-                if (mDialog != null) {
-                    mDialog.dismiss();
-                    Intent intent = new Intent(ChoosePlayerActivity.this, OpponentProfileActivity.class);
-                    startActivity(intent);
-                }
-            }
-
-        });
-
-        mDialog.show();
+            mDialog.show();
+        } else {
+            Intent intent = new Intent(ChoosePlayerActivity.this, TwoPlayerWordGameActivity.class);
+            //intent.putExtra("isPlayer2", isPlayer2);
+            startActivity(intent);
+        }
     }
 
 
@@ -128,7 +176,7 @@ public class ChoosePlayerActivity extends Activity{
         JSONObject jPayload = new JSONObject();
         JSONObject jNotification = new JSONObject();
         try {
-            jNotification.put("title", "Google I/O 2016");
+            jNotification.put("title", "Scroggle");
             if(globalVariable.usersMap.containsKey(token)){
                 Map<String,Object> p = (Map<String, Object>) globalVariable.usersMap.get(token);
                 String user = (String) p.get("username");
