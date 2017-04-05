@@ -52,9 +52,10 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
     private ShakeDetector mShakeDetector;
     private boolean isGameDataPresent = false;
     private String getTokenInstance;
-    private boolean isPlayer2 = true;
+    private boolean isPlayer1 = true;
     private static TextView internetStatus;
     private Dialog dialog;
+    private long totalTime;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -101,7 +102,8 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
 
         Bundle b = this.getIntent().getExtras();
         if (b != null) {
-            isPlayer2 = b.getBoolean("isPlayer2");
+            totalTime = b.getLong("totalTime");
+            isPlayer1 = b.getBoolean("isPlayer1");
 
             if (b.getInt("player") == 1) {
                 player = 2;

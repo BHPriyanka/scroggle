@@ -13,6 +13,8 @@ public class Player {
     public String gameState;
     public String opponent;
     public int gameID;
+    public long totalPlayerTime;
+    public long totalGameTime;
 
 
     public Player(){
@@ -25,5 +27,7 @@ public class Player {
         this.score = score;
         this.gameState = gameState;
         this.gameID = 0;
+        this.totalPlayerTime = 90000;
+        totalGameTime = 180000;
     }
 }

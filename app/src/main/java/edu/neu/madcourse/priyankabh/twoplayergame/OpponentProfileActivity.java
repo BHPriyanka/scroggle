@@ -38,7 +38,7 @@ import static edu.neu.madcourse.priyankabh.twoplayergame.DetectNetworkActivity.I
  */
 
 public class OpponentProfileActivity extends Activity {
-    private boolean isPlayer2 = false;
+    private boolean isPlayer1=true;
     private String token;
     private DatabaseReference mDatabase;
     private Dialog dialog;
@@ -90,18 +90,23 @@ public class OpponentProfileActivity extends Activity {
 
         token = FirebaseInstanceId.getInstance().getToken();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        List<String> playersWithCurrentPlayer = new ArrayList<String>();
-        if (globalVariable.pairPlayers != null && globalVariable.pairPlayers.containsKey(token)) {
-            Map<String, Object> p = (Map<String, Object>) globalVariable.usersMap.get(globalVariable.pairPlayers.get(token));
-            playername.setText((String)p.get("username"));
-            playerscore.setText((String)p.get("score"));
-
-        }
 
         Bundle  b = this.getIntent().getExtras();
 
         if (b != null) {
-           isPlayer2 = b.getBoolean("isPlayer2");
+           isPlayer1 = b.getBoolean("isPlayer1");
+            Map<String, Object> q = (Map<String, Object>) globalVariable.usersMap.get(token);
+            String o = (String) q.get("opponent");
+            Map<String, Object> opp = (Map<String, Object>) globalVariable.usersMap.get(o);
+            playername.setText((String) opp.get("username"));
+            playerscore.setText((String) opp.get("score"));
+        } else {
+            if (globalVariable.pairPlayers != null && globalVariable.pairPlayers.containsKey(token)) {
+                Map<String, Object> p = (Map<String, Object>) globalVariable.usersMap.get(globalVariable.pairPlayers.get(token));
+                playername.setText((String)p.get("username"));
+                playerscore.setText((String)p.get("score"));
+
+            }
         }
 
         Button ok = (Button) findViewById(R.id.ok_click);
@@ -109,7 +114,7 @@ public class OpponentProfileActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(OpponentProfileActivity.this, TwoPlayerWordGameActivity.class);
-                intent.putExtra("isPlayer2", isPlayer2);
+                intent.putExtra("isPlayer1", isPlayer1);
                 startActivity(intent);
             }
         });

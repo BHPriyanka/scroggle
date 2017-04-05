@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Apr 05 03:13:16 EDT 2017
+#Wed Apr 05 15:39:24 EDT 2017
 20.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 143.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 493.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -12,7 +12,7 @@
 66.set=ANDROID_RESOURCE
 317.set=ANDROID_RESOURCE
 356.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
-373.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_04_light.png
+373.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_19_dark.png
 527.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 203.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\fragment_word_game.xml
 86.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -74,7 +74,7 @@
 83.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\ic_expand.xml
 447.set=ANDROID_RESOURCE
 386.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_11_dark.png
-557.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\googleg_disabled_color_18.png
+557.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_12_light.png
 74.set=ANDROID_RESOURCE
 325.set=ANDROID_RESOURCE
 5.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_template_big_media_custom.xml
@@ -252,8 +252,8 @@
 391.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_grow_fade_in_from_bottom.xml
 545.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 578.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
-254.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_07_dark.png
-425.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_pause_light.png
+254.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\quantum_ic_stop_white_24.png
+425.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_21_dark.png
 47.set=ANDROID_RESOURCE
 287.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_06_light.png
 458.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxxhdpi-v4\\ic_expand_00004.png
@@ -384,7 +384,7 @@
 40.set=ANDROID_RESOURCE
 262.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 433.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
-630.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png
+630.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_16_light.png
 295.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 214.set=ANDROID_RESOURCE
 125.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -392,7 +392,7 @@
 666.set=ANDROID_RESOURCE
 492.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_13_dark.png
 169.set=ANDROID_RESOURCE
-663.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png
+663.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png
 646.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 544.set=ANDROID_RESOURCE
 158.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -453,7 +453,7 @@
 446.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 376.set=ANDROID_RESOURCE
 617.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
-122.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_audiotrack.png
+122.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\cast_abc_scrubber_primary_mtrl_alpha.9.png
 643.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\pause.png
 479.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 155.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\fragment_scroggle_twoplayer.xml
@@ -475,7 +475,7 @@
 573.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 353.set=ANDROID_RESOURCE
 420.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_03_light.png
-282.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_09_dark.png
+282.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_00_light.png
 453.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_ratingbar_indicator_material.xml
 436.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 276.set=ANDROID_RESOURCE
@@ -505,7 +505,7 @@
 246.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 596.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 583.set=ANDROID_RESOURCE
-443.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_04_dark.png
+443.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\quantum_ic_skip_previous_white_24.png
 176.set=ANDROID_RESOURCE
 614.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\place_autocomplete_fragment.xml
 109.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -688,7 +688,7 @@
 24.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 497.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 668.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
-173.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_17_light.png
+173.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\quantum_ic_cast_connected_white_24.png
 479.set=ANDROID_RESOURCE
 344.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_11_light.png
 694.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\cast_ic_notification_disconnect.xml
@@ -959,7 +959,7 @@
 82.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_screen_simple.xml
 437.set=ANDROID_RESOURCE
 385.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\design_tint_password_toggle.xml
-556.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_05_light.png
+556.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\googleg_disabled_color_18.png
 64.set=ANDROID_RESOURCE
 315.set=ANDROID_RESOURCE
 4.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\googleg_standard_color_18.png
@@ -1035,7 +1035,7 @@
 499.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 175.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-ldrtl-xhdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png
 499.set=ANDROID_RESOURCE
-346.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\cast_ic_stop_circle_filled_white.png
+346.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\quantum_ic_pause_white_24.png
 696.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\cast_ic_notification_0.png
 422.set=ANDROID_RESOURCE
 59.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -1137,7 +1137,7 @@
 417.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 461.set=ANDROID_RESOURCE
 279.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
-296.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png
+296.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_22_dark.png
 126.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_search_dropdown_item_icons_2line.xml
 647.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\mr_playback_control.xml
 159.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png
@@ -1154,7 +1154,7 @@
 227.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 577.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 393.set=ANDROID_RESOURCE
-253.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\quantum_ic_stop_white_24.png
+253.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\quantum_ic_keyboard_arrow_down_white_36.png
 424.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\quantum_ic_clear_white_24.png
 37.set=ANDROID_RESOURCE
 286.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxxhdpi-v4\\ic_expand_00000.png
@@ -1220,7 +1220,7 @@
 564.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-land-v21\\dictionary_test.xml
 99.set=ANDROID_RESOURCE
 22.set=ASSET
-247.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\places_ic_search.png
+247.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_play_light.png
 597.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_alert_dialog_button_bar_material.xml
 603.set=ANDROID_RESOURCE
 648.set=ANDROID_RESOURCE
@@ -1241,7 +1241,7 @@
 76.set=ANDROID_RESOURCE
 327.set=ANDROID_RESOURCE
 357.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
-374.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_19_dark.png
+374.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_04_light.png
 528.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 702.set=ANDROID_RESOURCE
 204.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_pause.png
@@ -1304,7 +1304,7 @@
 84.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxxhdpi-v4\\ic_expand_00013.png
 457.set=ANDROID_RESOURCE
 387.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-land\\about_me.xml
-558.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_12_light.png
+558.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_05_light.png
 84.set=ANDROID_RESOURCE
 335.set=ANDROID_RESOURCE
 6.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\animator-v21\\design_appbar_state_list_animator.xml
@@ -1366,7 +1366,7 @@
 222.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 572.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 343.set=ANDROID_RESOURCE
-281.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_00_light.png
+281.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_09_dark.png
 452.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png
 435.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 266.set=ANDROID_RESOURCE
@@ -1484,8 +1484,8 @@
 392.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_06_dark.png
 546.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
 579.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
-255.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\quantum_ic_keyboard_arrow_down_white_36.png
-426.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_21_dark.png
+255.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_07_dark.png
+426.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_pause_light.png
 57.set=ANDROID_RESOURCE
 308.set=ANDROID_RESOURCE
 288.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_19_light.png
@@ -1520,7 +1520,7 @@
 88.set=ANDROID_RESOURCE
 339.set=ANDROID_RESOURCE
 313.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
-680.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_16_dark.png
+680.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_cast_disabled_light.png
 11.set=ANDROID_RESOURCE
 175.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 346.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -1630,7 +1630,7 @@
 434.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 110.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\design_bottom_sheet_dialog.xml
 460.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml
-631.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_16_light.png
+631.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png
 296.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 224.set=ANDROID_RESOURCE
 126.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -1638,7 +1638,7 @@
 143.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_action_tombstone.xml
 676.set=ANDROID_RESOURCE
 493.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\design_error.xml
-664.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png
+664.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png
 647.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 102.set=ANDROID_RESOURCE
 554.set=ANDROID_RESOURCE
@@ -1696,7 +1696,7 @@
 447.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 386.set=ANDROID_RESOURCE
 618.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
-123.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\cast_abc_scrubber_primary_mtrl_alpha.9.png
+123.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_audiotrack.png
 644.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_09_light.png
 156.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml
 327.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\place_autocomplete_fragment.xml
@@ -1742,7 +1742,7 @@
 597.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 593.set=ANDROID_RESOURCE
 273.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_20_light.png
-444.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\quantum_ic_skip_previous_white_24.png
+444.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_on_04_dark.png
 186.set=ANDROID_RESOURCE
 615.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\design_navigation_item_subheader.xml
 477.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\powered_by_google_dark.png
@@ -1913,9 +1913,9 @@ count=709
 25.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 498.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 669.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
-174.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\quantum_ic_cast_connected_white_24.png
+174.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_17_light.png
 489.set=ANDROID_RESOURCE
-345.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\quantum_ic_pause_white_24.png
+345.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\cast_ic_stop_circle_filled_white.png
 695.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\design_fab_background.xml
 412.set=ANDROID_RESOURCE
 58.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -2019,14 +2019,14 @@ count=709
 433.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_16_light.png
 416.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 451.set=ANDROID_RESOURCE
-295.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_22_dark.png
+295.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png
 278.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 449.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 125.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_tv_light.png
 646.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\cast_tracks_chooser_dialog_layout.xml
 158.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-land\\activity_main.xml
 329.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_plusone_small_off_client.png
-679.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_cast_disabled_light.png
+679.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_media_route_connecting_16_dark.png
 252.set=ANDROID_RESOURCE
 68.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\raw\\department64_draw.ogg
 680.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -2118,7 +2118,7 @@ count=709
 399.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
 12.set=ANDROID_RESOURCE
 229.base=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_
-246.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\ic_play_light.png
+246.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\places_ic_search.png
 596.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml
 291.set=ANDROID_RESOURCE
 109.file=C\:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_btn_colored_text_material.xml

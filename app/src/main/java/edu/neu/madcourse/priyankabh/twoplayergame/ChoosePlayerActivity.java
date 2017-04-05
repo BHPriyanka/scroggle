@@ -66,10 +66,10 @@ public class ChoosePlayerActivity extends Activity {
                 String networkStatus = isNetworkAvailable ? "connected" : "disconnected";
 
                 if(networkStatus.equals("connected")){
-                    Log.d("MainActivity","networkStatus :" +networkStatus +" "+dialog.isShowing()+" "+dialog);
+                   // Log.d("MainActivity","networkStatus :" +networkStatus +" "+dialog.isShowing()+" "+dialog);
 //                    text.setText("Internet connected");
                     if(dialog!=null && dialog.isShowing()){
-                        Log.d("MainActivity", "onReceive: ...................");
+                       // Log.d("MainActivity", "onReceive: ...................");
                         dialog.cancel();
                         dialog.dismiss();
                         dialog.hide();
@@ -77,7 +77,7 @@ public class ChoosePlayerActivity extends Activity {
                 } else {
                     Log.d("MainActivity","networkStatus :" +networkStatus);
                     if(dialog == null){
-                        Log.d("MainActivity", "onReceive:d ");
+                      ///  Log.d("MainActivity", "onReceive:d ");
                         dialog = new Dialog(ChoosePlayerActivity.this);
                         dialog.setContentView(R.layout.internet_connectivity);
                         dialog.setCancelable(false);
@@ -85,7 +85,7 @@ public class ChoosePlayerActivity extends Activity {
                         text.setText("Internet Disconnected");
                         dialog.show();
                     } else if(dialog != null && !dialog.isShowing()){
-                        Log.d("MainActivity", "onReceive:d.. ");
+                       // Log.d("MainActivity", "onReceive:d.. ");
                         dialog.show();
                     }
                 }

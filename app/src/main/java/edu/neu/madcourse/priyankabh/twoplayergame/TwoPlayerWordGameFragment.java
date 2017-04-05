@@ -40,7 +40,7 @@ import edu.neu.madcourse.priyankabh.R;
 
 public class TwoPlayerWordGameFragment extends Fragment {
     private ProgressDialog progressDialog;
-    private boolean isPlayer2;
+    private boolean isPlayer1 =true;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -49,7 +49,7 @@ public class TwoPlayerWordGameFragment extends Fragment {
         Bundle  b = getActivity().getIntent().getExtras();
 
         if (b != null) {
-            isPlayer2 = b.getBoolean("isPlayer2");
+            isPlayer1 = b.getBoolean("isPlayer1");
         }
 
         final GlobalClass globalVariable = (GlobalClass) getActivity().getApplicationContext();
@@ -77,7 +77,7 @@ public class TwoPlayerWordGameFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ScroggleTwoPlayerGameActivity.class);
-                intent.putExtra("isPlayer2", isPlayer2);
+                intent.putExtra("isPlayer1", isPlayer1);
                 getActivity().startActivity(intent);
             }
         });

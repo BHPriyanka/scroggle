@@ -68,7 +68,7 @@ public class TwoPlayerWordGameMessagingService extends FirebaseMessagingService 
      */
     private void sendNotification(String messageBody) {
         Intent intent = new Intent(this, OpponentProfileActivity.class);
-        intent.putExtra("isPlayer2", false);
+        intent.putExtra("isPlayer1", false);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);

@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -108,8 +109,10 @@ public class TwoPlayerScroggleFragment extends Fragment {
     public int mPhaseOnePoints = 0;
     public MediaPlayer mediaPlayer;
     private String color="green";
+    private long totalPlayerTime;
     private Bundle b;
-    private boolean isPlayer2 = true;
+    private boolean isPlayer1 = true;
+    private long totalGameTime;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -127,13 +130,15 @@ public class TwoPlayerScroggleFragment extends Fragment {
         }
 
         if (b != null) {
-            isPlayer2 = b.getBoolean("isPlayer2");
+            totalPlayerTime = b.getLong("totalPlayerTime");
+            totalGameTime = b.getLong("totalGameTime");
+            isPlayer1 = b.getBoolean("isPlayer1");
             //if (b.getInt("player") == 1) {
-            if(isPlayer2){
-                player = 2;
+            if(isPlayer1){
+                player = 1;
                 color = "green";
             } else {//if (b.getInt("player") == 2) {
-                player = 1;
+                player = 2;
                 color="red";
             }
           //  gameData = b.getString("gameState");
@@ -199,13 +204,20 @@ public class TwoPlayerScroggleFragment extends Fragment {
             startGame(rootView);
         }
         updateAllTiles();
-        if (!isPlayer2) {
+        if (isPlayer1) {
+            if(totalGameTime == 165000){
+                ((ScroggleTwoPlayerGameActivity) getActivity()).sFragment.getView().setVisibility(View.INVISIBLE);
+            }
+            Log.d("Priyanka- player1", "TotalGameTime: " + totalGameTime);
+            Log.d("Priyanka- player1","TotalPlayerTime: " + totalPlayerTime);
             if (timeRemaning < 1000) {
                 countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(15000, interval);
             } else {
                 countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(timeRemaning, interval);
             }
         } else {
+            Log.d("Priyanka- player2", "TotalGameTime: " + totalGameTime);
+            Log.d("Priyanka- player2","TotalPlayerTime: " + totalPlayerTime);
             if (timeRemaning > 0) {
                 countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(timeRemaning, interval);
             } else {
@@ -632,7 +644,28 @@ public class TwoPlayerScroggleFragment extends Fragment {
     }
 
 
+    public long getRemainingTime(){
+        long time;
+        final GlobalClass globalVariable = (GlobalClass) getActivity().getApplicationContext();
+      //  if (globalVariable.usersMap.containsKey(getTokenInstance)) {
+            Map<String, Object> p = (Map<String, Object>) globalVariable.usersMap.get(getTokenInstance);
+            time = (long)p.get("totalPlayerTime");
+      //  }
+        time = time - 15000;
+        return time;
+    }
+
+    public long getGameRemainingTime(){
+        long gameTime;
+        final GlobalClass globalVariable = (GlobalClass) getActivity().getApplicationContext();
+        Map<String, Object> p = (Map<String, Object>) globalVariable.usersMap.get(getTokenInstance);
+        gameTime = (long)p.get("totalGameTime");
+        gameTime = gameTime - 15000;
+        return gameTime;
+    }
+
     /**
+     *
      * Create a string containing the state of the game.
      */
     public String getState() {
@@ -743,7 +776,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
 
                         @Override
                         public void onClick(View v) {
-                            if (player == 1) {
+                           if (player == 1) {
                                 player = 2;
                             } else if (player == 2) {
                                 player = 1;
@@ -753,6 +786,8 @@ public class TwoPlayerScroggleFragment extends Fragment {
                             Intent intent = new Intent(getActivity(), ScroggleTwoPlayerGameActivity.class);
                             intent.putExtra("player", player);
                             intent.putExtra("gameState", getState());
+                            intent.putExtra("totalPlayerTime", getRemainingTime());
+                            intent.putExtra("totalGameTime", getGameRemainingTime());
                             startActivity(intent);
                             mediaPlayer.pause();
                             getActivity().finish();
@@ -791,7 +826,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
                     mDialog.setCancelable(false);
 
                     TextView textView = (TextView) mDialog.findViewById(R.id.alert);
-                    textView.setText("END: PHASE ONE\nYour Phase 1 Score: " + mPhaseOnePoints);
+                    textView.setText("END: 15 seconds " + mPhaseOnePoints);
 
                     Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
                     ok_button.setOnClickListener(new View.OnClickListener() {
@@ -808,6 +843,8 @@ public class TwoPlayerScroggleFragment extends Fragment {
                             Intent intent = new Intent(getActivity(), ScroggleTwoPlayerGameActivity.class);
                             intent.putExtra("player", player);
                             intent.putExtra("gameState", getState());
+                            intent.putExtra("totalPlayerTime", getRemainingTime());
+                            intent.putExtra("totalGameTime", getGameRemainingTime());
                             startActivity(intent);
                             mediaPlayer.pause();
                             getActivity().finish();
@@ -1179,6 +1216,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
          * @param postRef
          */
     private void onAddGameState(DatabaseReference postRef, String player) {
+        final String p =player;
         postRef
                 .child("players")
                 .child(player)
@@ -1192,6 +1230,10 @@ public class TwoPlayerScroggleFragment extends Fragment {
 
                         //u.score = String.valueOf(computeScore());
                         //u.wordFormed = wordTyped;
+                        u.totalGameTime = Long.valueOf(totalGameTime);
+                        if(p == getTokenInstance) {
+                            u.totalPlayerTime = Long.valueOf(totalPlayerTime);
+                        }
                         u.gameState = String.valueOf(gameData);
                         mutableData.setValue(u);
                         return Transaction.success(mutableData);
