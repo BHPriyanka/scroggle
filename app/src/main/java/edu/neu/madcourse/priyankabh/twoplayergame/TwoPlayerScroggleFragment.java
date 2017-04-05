@@ -110,7 +110,6 @@ public class TwoPlayerScroggleFragment extends Fragment {
     private String color="green";
     private Bundle b;
     private boolean isPlayer2 = true;
-    private long totalTime = 180000;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -119,10 +118,8 @@ public class TwoPlayerScroggleFragment extends Fragment {
 
         b = getActivity().getIntent().getExtras();
         try {
-            //if (b == null) {
                 listOfWords = new TwoPlayerScroggleFragment.getWords().execute().get();
                 placeLettersInGrids();
-            //}
         } catch (InterruptedException ie) {
             System.err.print(ie);
         } catch (ExecutionException ce) {
@@ -905,7 +902,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
         this.setTime(timeRemaning);
         player = Integer.parseInt(fields[index++]);
         this.setPhase(player);
-    
+
         int lengthOfListOfSmallIds = Integer.parseInt(fields[index++]);
         for(int i=0 ; i< lengthOfListOfSmallIds;i++){
             String wordFormed = fields[index++];

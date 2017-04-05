@@ -95,7 +95,7 @@ public class RegisterActivity extends Activity {
                 String str = "User already registered";
                 Toast.makeText(RegisterActivity.this, str, Toast.LENGTH_SHORT).show();
                 Intent intent;
-                if(globalVariable.usersMap.size() == 0 || (globalVariable.usersMap.size() == 1 &&
+                if(globalVariable.usersMap == null || (globalVariable.usersMap.size() == 1 &&
                 globalVariable.usersMap.containsKey(token))){
                     intent = new Intent(RegisterActivity.this,WordGame.class);
                 }else {
@@ -107,7 +107,7 @@ public class RegisterActivity extends Activity {
                 String msg = "Registered Successfully";
                 Toast.makeText(RegisterActivity.this, msg, Toast.LENGTH_SHORT).show();
                 Intent intent;
-                if(globalVariable.usersMap.size() == 0 || (globalVariable.usersMap.size() == 1 &&
+                if(globalVariable.usersMap == null || (globalVariable.usersMap.size() == 1 &&
                         globalVariable.usersMap.containsKey(token))){
                     intent = new Intent(RegisterActivity.this,WordGame.class);
                 }else {
