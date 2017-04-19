@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.neu.madcourse.priyankabh.numad17s_priyankabh"
-    android:versionCode="35"
-    android:versionName="5.0" >
+    android:versionCode="36"
+    android:versionName="5.1" >
 
     <uses-sdk
         android:minSdkVersion="16"
