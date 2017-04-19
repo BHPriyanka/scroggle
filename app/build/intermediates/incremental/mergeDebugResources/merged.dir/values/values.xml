@@ -1085,6 +1085,7 @@ both sides in the larger game.
     <string name="continue_label">Continue</string>
     <string name="create_calendar_message">Allow Ad to create a calendar event?</string>
     <string name="create_calendar_title">Create calendar event</string>
+    <string name="date_activity_main">DatePicker</string>
     <string name="debug_menu_ad_information">Ad Information</string>
     <string name="debug_menu_creative_preview">Creative Preview</string>
     <string name="debug_menu_title">Select a Debug Mode</string>
@@ -1093,6 +1094,8 @@ both sides in the larger game.
     <string name="decline">Decline</string>
     <string name="default_web_client_id" translatable="false">947120745863-klra7vdqjm5r3fooqpuf182q0gu3gpp1.apps.googleusercontent.com</string>
     <string name="dictionary_label">Dictionary</string>
+    <string name="endTime">End Time</string>
+    <string name="eventTime_activity_main">EventTimePicker</string>
     <string name="firebase_database_url" translatable="false">https://numad17s-priyankabh.firebaseio.com</string>
     <string name="gcm_defaultSenderId" translatable="false">947120745863</string>
     <string name="generate_error_label">Generate Error</string>
@@ -1200,6 +1203,8 @@ both sides in the larger game.
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
+    <string name="pick_date">Set Date</string>
+    <string name="pick_time">Set Time</string>
     <string name="place_autocomplete_clear_button">Clear search</string>
     <string name="place_autocomplete_search_hint">Search</string>
     <string name="quickstart_message">The Log Token button logs the Registration token to the log. The Send Notification Button sends the notification to the client device.</string>
@@ -1231,6 +1236,7 @@ both sides in the larger game.
     <string name="scroggle_app_name">Scroggle</string>
     <string name="search_menu_title">Search</string>
     <string name="send_notification">Send Notification</string>
+    <string name="startTime">Start Time</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="store_picture_message">"Allow Ad to store image in Picture gallery?"</string>
     <string name="store_picture_title">Save image</string>
@@ -1239,6 +1245,7 @@ both sides in the larger game.
     <string name="tagmanager_preview_dialog_title">Preview</string>
     <string name="text_entry">Enter Word</string>
     <string name="tictactoe_label">TicTacToe</string>
+    <string name="time_activity_main">TimePicker</string>
     <string name="username">User Name</string>
     <string name="wallet_buy_button_place_holder">Buy with Google</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
@@ -2338,6 +2345,12 @@ both sides in the larger game.
       <!-- Used for the background -->
       <item name="android:background">#4CAF50</item>
    </style>
+    <style name="Note2MapAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
 

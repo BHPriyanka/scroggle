@@ -38,6 +38,7 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
     public static String PREF_RESTORE = "pref_restore";
 
     public TwoPlayerScroggleFragment sFragment;
+    public TwoPlayerControlFragment cFragment;
     private MediaPlayer mediaPlayer;
     private int playerOnePoints = 0;
    // private int phaseTwoPoints = 0;
@@ -62,7 +63,6 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
         final GlobalClass globalVariable = (GlobalClass) this.getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_twoplayer_scroggle);
-
 
         IntentFilter intentFilter = new IntentFilter(DetectNetworkActivity.NETWORK_AVAILABLE_ACTION);
         LocalBroadcastManager.getInstance(this).registerReceiver(new BroadcastReceiver() {
@@ -100,34 +100,13 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
 
         getTokenInstance = FirebaseInstanceId.getInstance().getToken();
 
-        Bundle b = this.getIntent().getExtras();
-        if (b != null) {
-            totalTime = b.getLong("totalTime");
-            isPlayer1 = b.getBoolean("isPlayer1");
-
-            if (b.getInt("player") == 1) {
-                player = 2;
-            } else if (b.getInt("player") == 2) {
-                player = 1;
-            }
-
-        }
-
-
-        if (globalVariable.usersMap.containsKey(getTokenInstance)) {
-            Map entry = (Map) globalVariable.usersMap.get(getTokenInstance);
-            if (((String) entry.get("gameState")).equals("")) {
-                if(b!=null){
-                    gameData = b.getString("gameData");
-                }
-            }  else{
-                gameData = (String) entry.get("gameState");
-            }
-
-        }
 
         sFragment = (TwoPlayerScroggleFragment) getFragmentManager()
                 .findFragmentById(R.id.fragment_scroggle_twoplayer);
+
+        cFragment = (TwoPlayerControlFragment) getFragmentManager()
+                .findFragmentById(R.id.fragment_scroggle_controls);
+
         scoreView = (TextView) findViewById(R.id.large_score);
 
         boolean restore = getIntent().getBooleanExtra(KEY_RESTORE, false);
@@ -140,11 +119,8 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
             }
 
         }
-      //  if (phase == 1) {
+
         scoreView.setText("Total Points = " + String.valueOf(this.playerOnePoints));
-      //  } else {
-      //      scoreView.setText("Total Points = " + String.valueOf(this.phaseOnePoints + this.phaseTwoPoints));
-      //  }
 
         // ShakeDetector initialization
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -215,24 +191,17 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.happy_music);
         mediaPlayer.setVolume(0.5f, 0.5f);
         mediaPlayer.setLooping(true);
-        // mediaPlayer.start();
-       // if (phase == 1) {
-          scoreView.setText("Total Points = " + String.valueOf(this.playerOnePoints));
-       // } else {
-      //      scoreView.setText("Total Points = " + String.valueOf(this.phaseOnePoints + this.phaseTwoPoints));
-     //   }
 
+        scoreView.setText("Total Points = " + String.valueOf(this.playerOnePoints));
         mSensorManager.registerListener(mShakeDetector, mAccelerometer,SensorManager.SENSOR_DELAY_UI);
         GlobalClass.activityResumed();// On Resume notify the Application
     }
 
 
     public void stopThinking() {
-      //  if (phase == 1) {
-            scoreView.setText("Total Score: " + String.valueOf(this.playerOnePoints));
-      //  } else {
-      //      scoreView.setText("Total Score: " + String.valueOf(this.phaseTwoPoints + this.phaseOnePoints));
-      //  }
+
+        scoreView.setText("Total Score: " + String.valueOf(this.playerOnePoints));
+
     }
 
     public void setPhaseOnePoints(int points) {

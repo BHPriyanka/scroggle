@@ -145,13 +145,6 @@ public class ViewScoreActivity extends AppCompatActivity {
                                 userName2.setText((String)singleUser.get("username"));
                                 word2.setText((String)singleUser.get("wordFormed"));
                             }
-                            /*for(int i=0;i<users.size();i++){
-                                TableRow row = new TableRow(getApplicationContext());
-                                TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT);
-                                row.setLayoutParams(lp);
-
-                            }*/
-
                             Log.e(TAG, "onaddValueEvent: dataSnapshot = " + entry.getValue());
 
                         }

@@ -15,18 +15,19 @@ import edu.neu.madcourse.priyankabh.scroggle.ScroggleGameActivity;
  */
 
 public class TwoPlayerControlFragment extends Fragment {
-
+    public static View rootView;
     private TwoPlayerScroggleFragment sFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView =
+        rootView =
                 inflater.inflate(R.layout.twoplayer_scroggle_fragment_control, container, false);
         final View pause = rootView.findViewById(R.id.player_pause_button);
         final View resume = rootView.findViewById(R.id.player_button_resume);
         final View quit = rootView.findViewById(R.id.player_quit_button);
 
+        setRootView(rootView);
         resume.setVisibility(View.INVISIBLE);
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,5 +77,20 @@ public class TwoPlayerControlFragment extends Fragment {
         return rootView;
     }
 
+    public static View getRootView(){
+        return rootView;
+    }
+
+    public void setRootView(View root){
+        rootView = root;
+    }
+
+    public void setControlFragmentInvisible() {
+        getRootView().setVisibility(View.INVISIBLE);
+    }
+
+    public void setControlFragmentVisible() {
+        getRootView().setVisibility(View.VISIBLE);
+    }
 }
 

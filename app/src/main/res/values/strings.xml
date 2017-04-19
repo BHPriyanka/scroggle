@@ -213,4 +213,13 @@ both sides in the larger game.
         </b> http://www.androidhive.info/2015/09/android-material-design-snackbar-example/
         \n\
     </string>
+
+    <string name="time_activity_main">TimePicker</string>
+    <string name="date_activity_main">DatePicker</string>
+    <string name="eventTime_activity_main">EventTimePicker</string>
+    <string name="pick_time">Set Time</string>
+    <string name="pick_date">Set Date</string>
+    <string name="startTime">Start Time</string>
+    <string name="endTime">End Time</string>
+
     </resources>

@@ -57,7 +57,7 @@ public class OpponentProfileActivity extends Activity {
                 String networkStatus = isNetworkAvailable ? "connected" : "disconnected";
 
                 if(networkStatus.equals("connected")){
-                    Log.d("MainActivity","networkStatus :" +networkStatus +" "+dialog.isShowing()+" "+dialog);
+                  //  Log.d("MainActivity","networkStatus :" +networkStatus +" "+dialog.isShowing()+" "+dialog);
 //                    text.setText("Internet connected");
                     if(dialog!=null && dialog.isShowing()){
                         Log.d("MainActivity", "onReceive: ...................");
@@ -95,11 +95,13 @@ public class OpponentProfileActivity extends Activity {
 
         if (b != null) {
            isPlayer1 = b.getBoolean("isPlayer1");
-            Map<String, Object> q = (Map<String, Object>) globalVariable.usersMap.get(token);
-            String o = (String) q.get("opponent");
-            Map<String, Object> opp = (Map<String, Object>) globalVariable.usersMap.get(o);
-            playername.setText((String) opp.get("username"));
-            playerscore.setText((String) opp.get("score"));
+            if(globalVariable.usersMap != null && globalVariable.pairPlayers.containsKey(token)) {
+                Map<String, Object> q = (Map<String, Object>) globalVariable.usersMap.get(token);
+                String o = (String) q.get("opponent");
+                Map<String, Object> opp = (Map<String, Object>) globalVariable.usersMap.get(o);
+                playername.setText((String) opp.get("username"));
+                playerscore.setText((String) opp.get("score"));
+            }
         } else {
             if (globalVariable.pairPlayers != null && globalVariable.pairPlayers.containsKey(token)) {
                 Map<String, Object> p = (Map<String, Object>) globalVariable.usersMap.get(globalVariable.pairPlayers.get(token));

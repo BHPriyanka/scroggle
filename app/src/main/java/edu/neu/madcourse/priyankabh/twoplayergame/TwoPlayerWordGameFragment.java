@@ -94,7 +94,14 @@ public class TwoPlayerWordGameFragment extends Fragment {
 
                 //set up text
                 TextView text = (TextView) mDialog.findViewById(R.id.ack_scroggle);
-
+                text.setText("Links referred: " +
+                        "1. https://developers.google.com/games/services/android/turnbasedMultiplayer" +
+                        "\n"
+                        + "2. http://stackoverflow.com/questions/5271448/how-to-detect-shake-event-with-android+" +
+                        "\n"+
+                "3. http://www.vogella.com/tutorials/AndroidBroadcastReceiver/article.html" +
+                "\n"+
+                "4. https://github.com/playgameservices/android-basic-samples");
                 Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
                 ok_button.setOnClickListener(new View.OnClickListener() {
 
@@ -121,6 +128,13 @@ public class TwoPlayerWordGameFragment extends Fragment {
 
                 //set up text
                 TextView text = (TextView) mDialog.findViewById(R.id.ins_button);
+                text.setText("Scroggle is a 2-player board game to identify words in 3 minutes from a 9x9 grid. Each player forms words on the board and switches turns every 15 seconds. Words formed in smaller 3x3 grids fetch triple the points than those across the 3x3 grids. The letters once used to form a word cannot be reused to form other words through the rest of the game. At the end of each turn, the board is refreshed. However, the previously used letters stay intact. \n" +
+                        "\n" +
+                        "During player A’s turn, if player B finds arbitrage opportunities where player A may score more, then, player B might disturb the board by shaking his/her phone. This cheat leads to player B losing points worth 15% of his/her score. Player A then restarts his/her turn as if it were a new turn and is rewarded the points that player B lost. When a player quits in the middle of the game, the opponent wins.\n" +
+                        "\n" +
+                        "In the synchronous mode, a player may choose an opponent to play with or may play a random online opponent. In the asynchronous mode, when a player starts a new game, he/she is added to a player queue and awaits other players to join as opponents. If the player queue is not empty, the first player from the player queue is matched as an opponent to the waiting player. Push notifications are then sent to both players to accept the game with their opponents. If either player rejects the opponent, he/she is added at the end of the player queue and is re-matched with a new player from the queue. Note: If there are only two players and if either of them reject the other, then the queue may repoll the same player again. \n" +
+                        "\n" +
+                        "If either of the players are offline, the game enters into an asynchronous mode, and the offline player is notified of his/her turn after the online player has finished his/her turn.\n");
 
                 Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
                 ok_button.setOnClickListener(new View.OnClickListener() {

@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+
     <application
         android:name=".GlobalClass"
         android:allowBackup="true"
@@ -126,5 +128,20 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".note2map.Note2MapMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Note2MapAppTheme">
+            <intent-filter>
+                <action android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapMainActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="edu.neu.madcourse.priyankabh.note2map.SelectEventTimeActivity"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
+        <service android:name=".note2map.MyLocationService" />
     </application>
 </manifest>

@@ -27,12 +27,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.lang.reflect.Array;
@@ -43,6 +46,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
@@ -53,6 +57,8 @@ import edu.neu.madcourse.priyankabh.MainActivity;
 import edu.neu.madcourse.priyankabh.R;
 import edu.neu.madcourse.priyankabh.communication.realtimedatabase.EnterWordToDatabaseActivity;
 import edu.neu.madcourse.priyankabh.communication.realtimedatabase.models.User;
+import edu.neu.madcourse.priyankabh.scroggle.ScroggleGameActivity;
+import edu.neu.madcourse.priyankabh.tictactoe.ControlFragment;
 import edu.neu.madcourse.priyankabh.twoplayergame.models.Player;
 
 /**
@@ -69,10 +75,12 @@ public class TwoPlayerScroggleFragment extends Fragment {
             R.id.small4, R.id.small5, R.id.small6, R.id.small7, R.id.small8,
             R.id.small9,};
 
+    private Map<String,Object> dataMap = new HashMap<String,Object>();
     private Boolean isResume = ScroggleTwoPlayerGameActivity.isResume;
     private TwoPlayerScroggleTile mEntireBoard = new TwoPlayerScroggleTile(this);
     private int playerOneScore = 0;
     private int count = 0;
+    private  TwoPlayerControlFragment controlFragment;
     private String getTokenInstance="";
     private TwoPlayerScroggleTile mLargeTiles[] = new TwoPlayerScroggleTile[9];
     private TwoPlayerScroggleTile mSmallTiles[][] = new TwoPlayerScroggleTile[9][9];
@@ -84,7 +92,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
     static private List<String> listOfWords = new ArrayList<String>();
     public TwoPlayerScroggleFragment.GameCountDownTimer countDownTimer;
     public Handler mHandler = new Handler();
-    private final long interval = 1000;
+    private final int interval = 1000;
     public long timeRemaning = 0;
     private DatabaseReference mDatabase;
     private TextView text;
@@ -109,54 +117,86 @@ public class TwoPlayerScroggleFragment extends Fragment {
     public int mPhaseOnePoints = 0;
     public MediaPlayer mediaPlayer;
     private String color="green";
-    private long totalPlayerTime;
+    private int totalPlayerTime;
     private Bundle b;
     private boolean isPlayer1 = true;
-    private long totalGameTime;
+    private int totalGameTime;
+    public GlobalClass globalVariable;
+    public char[][] finalLetters = new char[9][9];
+    public StringBuilder finalLettersBuilder = new StringBuilder();
+    private  View rootView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        getTokenInstance = FirebaseInstanceId.getInstance().getToken();
 
         b = getActivity().getIntent().getExtras();
+
+        if (b != null) {
+            totalPlayerTime = b.getInt("totalPlayerTime");
+            totalGameTime = b.getInt("totalGameTime");
+            isPlayer1 = b.getBoolean("isPlayer1");
+           }
+
         try {
+            if(isPlayer1) {
                 listOfWords = new TwoPlayerScroggleFragment.getWords().execute().get();
                 placeLettersInGrids();
+               // char[][] cArray = new char[9][9];
+
+                for (int large = 0; large < letterPostions.size(); large++) {
+                    finalLettersBuilder.append(large);
+                    finalLettersBuilder.append(',');
+                    List<Integer> pos = letterPostions.get(large);
+                    String s = listOfWords.get(large);
+                    for (Integer small = 0; small < pos.size(); small++) {
+                        int i = pos.get(small);
+                        //finalLetters[large][i] = s.charAt(small);
+                        finalLettersBuilder.append(i);
+                        finalLettersBuilder.append(',');
+                        finalLettersBuilder.append(s.charAt(i));
+                        finalLettersBuilder.append(',');
+                    }
+                }
+
+                // add list of Words and letterpositions to the firebase
+                TwoPlayerScroggleFragment.this.onAddWordsAndPositions(mDatabase, getTokenInstance);
+            }
+
+
+            globalVariable = (GlobalClass) getActivity().getApplicationContext();
+
+            if(!isPlayer1) {
+                Map entry = (Map) globalVariable.usersMap.get(getTokenInstance);
+                String opposite = (String) entry.get("opponent");
+
+                Map opp_entry = (Map) globalVariable.usersMap.get(opposite);
+           //     finalLetters= (char[][]) opp_entry.get("grids");
+                finalLettersBuilder = new StringBuilder((String)opp_entry.get("grids"));
+                TwoPlayerScroggleFragment.this.onAddWordsAndPositions(mDatabase, getTokenInstance);
+            }
+
         } catch (InterruptedException ie) {
             System.err.print(ie);
         } catch (ExecutionException ce) {
             System.err.print(ce);
         }
 
-        if (b != null) {
-            totalPlayerTime = b.getLong("totalPlayerTime");
-            totalGameTime = b.getLong("totalGameTime");
-            isPlayer1 = b.getBoolean("isPlayer1");
-            //if (b.getInt("player") == 1) {
-            if(isPlayer1){
-                player = 1;
-                color = "green";
-            } else {//if (b.getInt("player") == 2) {
-                player = 2;
-                color="red";
-            }
-          //  gameData = b.getString("gameState");
-        }
-       final GlobalClass globalVariable = (GlobalClass) getActivity().getApplicationContext();
-        getTokenInstance = FirebaseInstanceId.getInstance().getToken();
         if (globalVariable.usersMap.containsKey(getTokenInstance)) {
             Map entry = (Map) globalVariable.usersMap.get(getTokenInstance);
-            if (((String) entry.get("gameState")).equals("") || (String) entry.get("gameState") == null) {
-                if(b!=null){
+                if (((String) entry.get("gameState")).equals("") || (String) entry.get("gameState") == null) {
+                    if (b != null) {
+                        gameData = b.getString("gameState");
+                    }
+                } else {
                     gameData = b.getString("gameState");
                 }
-            }  else{
-                //gameData = (String) entry.get("gameState");
-                gameData = b.getString("gameState");
+
             }
 
-        }
 
         initGame();
 
@@ -172,58 +212,74 @@ public class TwoPlayerScroggleFragment extends Fragment {
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final GlobalClass globalVariable = (GlobalClass) getActivity().getApplicationContext();
 
-        View rootView = inflater.inflate(R.layout.large_scroggle, container, false);
+       rootView = inflater.inflate(R.layout.large_scroggle, container, false);
         rView = rootView;
         initViews(rootView);
 
         if (gameData != "" && gameData != null) {
-            mDatabase = FirebaseDatabase.getInstance().getReference();
-            String userToken = FirebaseInstanceId.getInstance().getToken();
-
-            String chosenUser1="",chosenUser2="";
-            for (Map.Entry<String, Object> entry : globalVariable.usersMap.entrySet()){
-                //Get user map
-                if(entry.getKey().equalsIgnoreCase(userToken)){
-                    chosenUser1 = entry.getKey();
-                } else{
-                    chosenUser2 = entry.getKey();
-                }
-
-            }
-            //TwoPlayerScroggleFragment.this.onAddGameState(mDatabase, userToken.equals(chosenUser1) ? chosenUser1 : chosenUser2);
             TwoPlayerScroggleFragment.this.onAddGameState(mDatabase, getTokenInstance);
-            TwoPlayerScroggleFragment.this.onAddGameState(mDatabase, globalVariable.pairPlayers.get(getTokenInstance));
+//            TwoPlayerScroggleFragment.this.onAddGameState(mDatabase, globalVariable.pairPlayers.get(getTokenInstance));
             startGame(rootView);
             putState(gameData);
         } else {
             startGame(rootView);
         }
         updateAllTiles();
-        if (isPlayer1) {
-            if(totalGameTime == 165000){
-                ((ScroggleTwoPlayerGameActivity) getActivity()).sFragment.getView().setVisibility(View.INVISIBLE);
-            }
-            Log.d("Priyanka- player1", "TotalGameTime: " + totalGameTime);
-            Log.d("Priyanka- player1","TotalPlayerTime: " + totalPlayerTime);
-            if (timeRemaning < 1000) {
-                countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(15000, interval);
-            } else {
-                countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(timeRemaning, interval);
-            }
-        } else {
-            Log.d("Priyanka- player2", "TotalGameTime: " + totalGameTime);
-            Log.d("Priyanka- player2","TotalPlayerTime: " + totalPlayerTime);
-            if (timeRemaning > 0) {
-                countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(timeRemaning, interval);
-            } else {
-                countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(15000, interval);
-            }
-        }
+//        if (isPlayer1) {
+//            if(totalGameTime == 165000 || totalGameTime == 135000 || totalGameTime == 105000 ||
+//                    totalGameTime == 75000 || totalGameTime == 45000 || totalGameTime == 15000){
+//                rootView.setVisibility(View.INVISIBLE);
+//                /* View pause = TwoPlayerControlFragment.getRootView().findViewById(R.id.player_pause_button);
+//                 pause.setVisibility(View.INVISIBLE);
+//
+//                View resume = TwoPlayerControlFragment.getRootView().findViewById(R.id.player_button_resume);
+//                resume.setVisibility(View.INVISIBLE);*/
+//
+//            } else if(totalGameTime == 180000 || totalGameTime == 150000 || totalGameTime == 120000 || totalGameTime == 90000
+//                    || totalGameTime == 60000 || totalGameTime == 30000 || totalGameTime == 0){
+//                rootView.setVisibility(View.VISIBLE);
+//                /*View pause = ((ScroggleTwoPlayerGameActivity) getActivity()).cFragment.getView().findViewById(R.id.player_pause_button);
+//                pause.setVisibility(View.VISIBLE);
+//                View resume = TwoPlayerControlFragment.getRootView().findViewById(R.id.player_button_resume);
+//                resume.setVisibility(View.VISIBLE);*/
+//            }
+//
+//            if (timeRemaning < 1000) {
+//                countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(15000, interval);
+//            } else {
+//                countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(timeRemaning, interval);
+//            }
+//        } else {
+//
+//            if(totalGameTime == 180000 || totalGameTime == 150000 || totalGameTime == 120000 || totalGameTime == 90000
+//                    || totalGameTime == 60000 || totalGameTime == 30000 || totalGameTime == 0){
+//                //public void setFragmentInvisible() {
+//                rootView.setVisibility(View.INVISIBLE);
+//                /* View pause = controlFragment.getRootView().findViewById(R.id.player_pause_button);
+//                pause.setVisibility(View.INVISIBLE);
+//                View resume = controlFragment.getRootView().findViewById(R.id.player_button_resume);
+//                resume.setVisibility(View.INVISIBLE);*/
+//
+//            } else  if(totalGameTime == 165000 || totalGameTime == 135000 || totalGameTime == 105000 ||
+//                    totalGameTime == 75000 || totalGameTime == 45000 || totalGameTime == 15000){
+//                rootView.setVisibility(View.VISIBLE);
+////                ((ScroggleTwoPlayerGameActivity) getActivity()).cFragment.setControlFragmentVisible();
+//               /* View pause = controlFragment.getRootView().findViewById(R.id.player_pause_button);
+//                pause.setVisibility(View.VISIBLE);
+//                View resume = controlFragment.getRootView().findViewById(R.id.player_button_resume);
+//                resume.setVisibility(View.VISIBLE);*/
+//            }
+//
+//            if (timeRemaning > 0) {
+//                countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(timeRemaning, interval);
+//            } else {
+//                countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(15000, interval);
+//            }
+//        }
         text = (TextView) rootView.findViewById(R.id.timer);
         countDownTimer.start();
         return rootView;
@@ -231,33 +287,42 @@ public class TwoPlayerScroggleFragment extends Fragment {
     }
 
     private void startGame(View rootView) {
-        mEntireBoard.setView(rootView);
-
-        for (int large = 0; large < 9; large++) {
-            View outer = rootView.findViewById(mLargeIds[large]);
-            mLargeTiles[large].setView(outer);
-            List<Integer> pos = letterPostions.get(large);
-            String s = listOfWords.get(large);
-            for (int small = 0; small < 9; small++) {
-                int i = pos.get(small);
-                Button inner = (Button) outer.findViewById(mSmallIds[i]);
-                inner.setText(String.valueOf(s.charAt(small)));
-                final TwoPlayerScroggleTile smallTile = mSmallTiles[large][i];
-                letterState[large][i] = s.charAt(small);
-                smallTile.setLetter(String.valueOf(s.charAt(small)));
+        String[] fields = finalLettersBuilder.toString().split(",");
+        int index = 0;
+        for(int large = 0; large<9;large++){
+            int i = Integer.parseInt(fields[index++]);
+            for(int small =0;small<9;small++){
+                int j = Integer.parseInt(fields[index++]);
+                finalLetters[i][j] = fields[index++].charAt(0);
             }
         }
+
+        mEntireBoard.setView(rootView);
+        for(int large = 0; large< finalLetters.length;large++){
+            View outer = rootView.findViewById(mLargeIds[large]);
+            mLargeTiles[large].setView(outer);
+
+            for (Integer small = 0; small < finalLetters[0].length; small++) {
+                Button inner = (Button) outer.findViewById(mSmallIds[small]);
+                inner.setText(String.valueOf(finalLetters[large][small]));
+                final TwoPlayerScroggleTile smallTile = mSmallTiles[large][small];
+                letterState[large][small] = finalLetters[large][small];
+                smallTile.setLetter(String.valueOf(finalLetters[large][small]));
+            }
+        }
+
+
     }
 
     public void initGame() {
         mEntireBoard = new TwoPlayerScroggleTile(this);
         // Create all the tiles
         for (int large = 0; large < 9; large++) {
-            mLargeTiles[large] = new TwoPlayerScroggleTile(this);
+            mLargeTiles[((int) large)] = new TwoPlayerScroggleTile(this);
             for (int small = 0; small < 9; small++) {
-                mSmallTiles[large][small] = new TwoPlayerScroggleTile(this);
+                mSmallTiles[((int) large)][((int) small)] = new TwoPlayerScroggleTile(this);
             }
-            mLargeTiles[large].setSubTiles(mSmallTiles[large]);
+            mLargeTiles[((int) large)].setSubTiles(mSmallTiles[((int) large)]);
         }
         mEntireBoard.setSubTiles(mLargeTiles);
         // If the player moves first set which spots are available
@@ -272,13 +337,13 @@ public class TwoPlayerScroggleFragment extends Fragment {
         mEntireBoard.setView(rootView);
 
         for (int large = 0; large < 9; large++) {
-            final View outer = rootView.findViewById(mLargeIds[large]);
-            mLargeTiles[large].setView(outer);
+            final View outer = rootView.findViewById((int)(mLargeIds[((int) large)]));
+            mLargeTiles[((int) large)].setView(outer);
             for (int small = 0; small < 9; small++) {
                 final int fLarge = large;
                 final int fSmall = small;
-                final TwoPlayerScroggleTile smallTile = mSmallTiles[large][small];
-                final Button inner = (Button) outer.findViewById(mSmallIds[small]);
+                final TwoPlayerScroggleTile smallTile = mSmallTiles[((int) large)][((int) small)];
+                final Button inner = (Button) outer.findViewById((int)mSmallIds[((int) small)]);
                 smallTile.setView(inner);
 
                 inner.setOnClickListener(new View.OnClickListener() {
@@ -328,12 +393,12 @@ public class TwoPlayerScroggleFragment extends Fragment {
                                         isAWord[mLastLarge] = isWordPresent;
                                         listOfWordsFormed.put(fLarge, word);*/
 //                                        word = "";
-                                    mSmallTiles[fLarge][fSmall].setChosen(true);
+                                    mSmallTiles[((int) fLarge)][((int) fSmall)].setChosen(true);
                                     setAllNextMoves();
                                     for (int l = 0; l < 9; l++) {
                                         for (int small = 0; small < 9; small++) {
-                                            final TwoPlayerScroggleTile otherTile = mSmallTiles[l][small];
-                                            final Button innerButton = (Button) outer.findViewById(mSmallIds[small]);
+                                            final TwoPlayerScroggleTile otherTile = mSmallTiles[((int) l)][((int) small)];
+                                            final Button innerButton = (Button) outer.findViewById((int)(mSmallIds[((int) small)]));
                                             otherTile.setView(innerButton);
                                             if (smallIdsWhichFormWordPhaseOne.get(l) != null && l == fLarge) {
                                                 if (smallIdsWhichFormWordPhaseOne.get(l).contains(small)) {
@@ -367,7 +432,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
                                     }
                                     playerOneScore = 0;
                                     for (int i = 0; i < word.length(); i++) {
-                                        playerOneScore += getLetterScore(word.charAt(i));
+                                        playerOneScore += getLetterScore(word.charAt(((int) i)));
                                     }
                                     scoresForWords.put(word, playerOneScore);
 
@@ -381,7 +446,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
                                     for (int l = 0; l < 9; l++) {
                                         for (int small = 0; small < 9; small++) {
                                             final TwoPlayerScroggleTile otherTile = mSmallTiles[l][small];
-                                            final Button innerButton = (Button) outer.findViewById(mSmallIds[small]);
+                                            final Button innerButton = (Button) outer.findViewById(mSmallIds[(small)]);
                                             otherTile.setView(innerButton);
 
                                             if (smallIdsWhichFormWordPhaseOne.get(l) != null && smallIdsWhichFormWordPhaseOne.get(l).contains(small)) {
@@ -413,7 +478,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
 
                             } else {
                                 setValidNextMove(mLastLarge, mLastSmall);
-                                scoreForPhaseOneWordsFormed[fLarge] = 0;
+                                scoreForPhaseOneWordsFormed[((int) fLarge)] = 0;
                             }
 
                         }
@@ -421,8 +486,8 @@ public class TwoPlayerScroggleFragment extends Fragment {
                         clearMove();
                         for (int large = 0; large < 9; large++) {
                             for (int small = 0; small < 9; small++) {
-                                if (!mSmallTiles[large][small].getIsChosen()) {
-                                    addMove(mSmallTiles[large][small]);
+                                if (!mSmallTiles[((int) large)][((int) small)].getIsChosen()) {
+                                    addMove(mSmallTiles[((int) large)][((int) small)]);
                                 }
                             }
                         }
@@ -530,7 +595,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
                 Random randomGenerator;
                 randomGenerator = new Random();
                 int index = randomGenerator.nextInt(globalVariable.nineLetterWords.size());
-                String item = globalVariable.nineLetterWords.get(index);
+                String item = globalVariable.nineLetterWords.get(((int) index));
                 str.add(item);
             }
             return str;
@@ -602,9 +667,9 @@ public class TwoPlayerScroggleFragment extends Fragment {
                         if (isWordPresent) {
                             display();
                         } else {
-                            scoreForPhaseOneWordsFormed[mLastLarge] = 0;
+                            scoreForPhaseOneWordsFormed[((int) mLastLarge)] = 0;
                         }
-                        isAWord[mLastLarge] = isWordPresent;
+                        isAWord[((int) mLastLarge)] = isWordPresent;
 
                     }
                 }
@@ -620,7 +685,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
         // Make all the tiles at the destination available
         if (small != -1) {
             for (int dest = 0; dest < 9; dest++) {
-                TwoPlayerScroggleTile tile = mSmallTiles[small][dest];
+                TwoPlayerScroggleTile tile = mSmallTiles[((int) small)][((int) dest)];
                 if (!tile.getIsChosen()) {
                     addAvailable(tile);
                 }
@@ -635,7 +700,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
     private void setAllAvailable() {
         for (int large = 0; large < 9; large++) {
             for (int small = 0; small < 9; small++) {
-                TwoPlayerScroggleTile tile = mSmallTiles[large][small];
+                TwoPlayerScroggleTile tile = mSmallTiles[((int) large)][((int) small)];
                 if (!tile.getIsChosen()) {
                     addAvailable(tile);
                 }
@@ -649,7 +714,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
         final GlobalClass globalVariable = (GlobalClass) getActivity().getApplicationContext();
       //  if (globalVariable.usersMap.containsKey(getTokenInstance)) {
             Map<String, Object> p = (Map<String, Object>) globalVariable.usersMap.get(getTokenInstance);
-            time = (long)p.get("totalPlayerTime");
+            time = (long) p.get("totalPlayerTime");
       //  }
         time = time - 15000;
         return time;
@@ -679,16 +744,6 @@ public class TwoPlayerScroggleFragment extends Fragment {
         builder.append(',');
         builder.append(player);
         builder.append(',');
-     /*   for (int large = 0; large < 9; large++) {
-            for (int small = 0; small < 9; small++) {
-                builder.append(mSmallTiles[large][small].getLetter());
-                builder.append(',');
-                builder.append(mSmallTiles[large][small].getIsChosen());
-                builder.append(',');
-                builder.append(letterState[large][small]);
-                builder.append(',');
-            }
-        }*/
 
         builder.append(listOfSmallIds.size());
         builder.append(',');
@@ -756,11 +811,12 @@ public class TwoPlayerScroggleFragment extends Fragment {
 
         public GameCountDownTimer(long startTime, long interval) {
             super(startTime, interval);
+            Log.d("countdowntimer", "GameCountDownTimer: ..........");
         }
 
         @Override
         public void onFinish() {
-            if (player == 1) {
+         //   if (player == 1) {
                 if (listOfSmallIds.size() > 0) {
                     ((ScroggleTwoPlayerGameActivity) getActivity()).setFragmentInvisible();
                     final Dialog mDialog = new Dialog(getActivity());
@@ -769,19 +825,13 @@ public class TwoPlayerScroggleFragment extends Fragment {
                     mDialog.setCancelable(false);
 
                     TextView textView = (TextView) mDialog.findViewById(R.id.alert);
-                    textView.setText("END: PHASE ONE\nBEGIN: PHASE TWO\nYour Phase 1 Score: " + mPhaseOnePoints);
+                    textView.setText("Turn Over: " + mPhaseOnePoints);
 
                     Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
                     ok_button.setOnClickListener(new View.OnClickListener() {
 
                         @Override
                         public void onClick(View v) {
-                           if (player == 1) {
-                                player = 2;
-                            } else if (player == 2) {
-                                player = 1;
-                            }
-
                             timeRemaning = 0;
                             Intent intent = new Intent(getActivity(), ScroggleTwoPlayerGameActivity.class);
                             intent.putExtra("player", player);
@@ -790,7 +840,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
                             intent.putExtra("totalGameTime", getGameRemainingTime());
                             startActivity(intent);
                             mediaPlayer.pause();
-                            getActivity().finish();
+                            //getActivity().finish();
                         }
                     });
                     //now that the dialog is set up, it's time to show it
@@ -802,21 +852,28 @@ public class TwoPlayerScroggleFragment extends Fragment {
                     mDialog.setCancelable(false);
 
                     TextView textView = (TextView) mDialog.findViewById(R.id.alert);
-                    textView.setText("Game Over");
+                    textView.setText("Turn Over");
 
                     Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
                     ok_button.setOnClickListener(new View.OnClickListener() {
 
                         @Override
                         public void onClick(View v) {
+                            timeRemaning = 0;
+                            Intent intent = new Intent(getActivity(), ScroggleTwoPlayerGameActivity.class);
+                            intent.putExtra("player", player);
+                            intent.putExtra("gameState", getState());
+                            intent.putExtra("totalPlayerTime", getRemainingTime());
+                            intent.putExtra("totalGameTime", getGameRemainingTime());
+                            startActivity(intent);
                             mediaPlayer.pause();
-                            getActivity().finish();
+                          //  getActivity().finish();
                         }
                     });
                     //now that the dialog is set up, it's time to show it
                     mDialog.show();
                 }
-            } else {
+            /*} else {
 
                 if (listOfSmallIds.size() > 0) {
                     ((ScroggleTwoPlayerGameActivity) getActivity()).setFragmentInvisible();
@@ -826,19 +883,13 @@ public class TwoPlayerScroggleFragment extends Fragment {
                     mDialog.setCancelable(false);
 
                     TextView textView = (TextView) mDialog.findViewById(R.id.alert);
-                    textView.setText("END: 15 seconds " + mPhaseOnePoints);
+                    textView.setText("Turn Over" + mPhaseOnePoints);
 
                     Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
                     ok_button.setOnClickListener(new View.OnClickListener() {
 
                         @Override
                         public void onClick(View v) {
-                            if (player == 1) {
-                                player = 2;
-                            } else if (player == 2) {
-                                player = 1;
-                            }
-
                             timeRemaning = 0;
                             Intent intent = new Intent(getActivity(), ScroggleTwoPlayerGameActivity.class);
                             intent.putExtra("player", player);
@@ -847,7 +898,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
                             intent.putExtra("totalGameTime", getGameRemainingTime());
                             startActivity(intent);
                             mediaPlayer.pause();
-                            getActivity().finish();
+                         //   getActivity().finish();
                         }
                     });
                     //now that the dialog is set up, it's time to show it
@@ -863,21 +914,28 @@ public class TwoPlayerScroggleFragment extends Fragment {
 
                     TextView textView = (TextView) mDialog.findViewById(R.id.alert);
                     int total = mPhaseOnePoints;// + mPhaseTwoPoints;
-                    textView.setText("Game Over\nYour Total Score: " + total);
+                    textView.setText("Turn Over: " + total);
 
                     Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
                     ok_button.setOnClickListener(new View.OnClickListener() {
 
                         @Override
                         public void onClick(View v) {
+                            timeRemaning = 0;
+                            Intent intent = new Intent(getActivity(), ScroggleTwoPlayerGameActivity.class);
+                            intent.putExtra("player", player);
+                            intent.putExtra("gameState", getState());
+                            intent.putExtra("totalPlayerTime", getRemainingTime());
+                            intent.putExtra("totalGameTime", getGameRemainingTime());
+                            startActivity(intent);
                             mediaPlayer.pause();
-                            getActivity().finish();
+                         //   getActivity().finish();
                         }
                     });
                     //now that the dialog is set up, it's time to show it
                     mDialog.show();
                 }
-            }
+            }*/
 
         }
 
@@ -902,6 +960,58 @@ public class TwoPlayerScroggleFragment extends Fragment {
                 text.setText("Time Remaning: " + time);
             }
             timeRemaning = millisUnitFInished;
+
+            if (isPlayer1) {
+                if(millisUnitFInished == 165000 || millisUnitFInished == 135000 || millisUnitFInished == 105000 ||
+                        millisUnitFInished == 75000 || millisUnitFInished == 45000 || millisUnitFInished == 15000){
+                    rootView.setVisibility(View.INVISIBLE);
+                /* View pause = TwoPlayerControlFragment.getRootView().findViewById(R.id.player_pause_button);
+                 pause.setVisibility(View.INVISIBLE);
+
+                View resume = TwoPlayerControlFragment.getRootView().findViewById(R.id.player_button_resume);
+                resume.setVisibility(View.INVISIBLE);*/
+
+                } else if(millisUnitFInished == 180000 || millisUnitFInished == 150000 || millisUnitFInished == 120000 || millisUnitFInished == 90000
+                        || millisUnitFInished == 60000 || millisUnitFInished == 30000 || millisUnitFInished == 0){
+                    rootView.setVisibility(View.VISIBLE);
+                /*View pause = ((ScroggleTwoPlayerGameActivity) getActivity()).cFragment.getView().findViewById(R.id.player_pause_button);
+                pause.setVisibility(View.VISIBLE);
+                View resume = TwoPlayerControlFragment.getRootView().findViewById(R.id.player_button_resume);
+                resume.setVisibility(View.VISIBLE);*/
+                }
+
+                if (timeRemaning < 1000) {
+                    countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(15000, interval);
+                } else {
+                    countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(timeRemaning, interval);
+                }
+            } else {
+
+                if(millisUnitFInished == 180000 || millisUnitFInished == 150000 || millisUnitFInished == 120000 || millisUnitFInished == 90000
+                        || millisUnitFInished == 60000 || millisUnitFInished == 30000 || millisUnitFInished == 0){
+                    //public void setFragmentInvisible() {
+                    rootView.setVisibility(View.INVISIBLE);
+                /* View pause = controlFragment.getRootView().findViewById(R.id.player_pause_button);
+                pause.setVisibility(View.INVISIBLE);
+                View resume = controlFragment.getRootView().findViewById(R.id.player_button_resume);
+                resume.setVisibility(View.INVISIBLE);*/
+
+                } else  if(millisUnitFInished == 165000 || millisUnitFInished == 135000 || millisUnitFInished == 105000 ||
+                        millisUnitFInished == 75000 || millisUnitFInished == 45000 || millisUnitFInished == 15000){
+                    rootView.setVisibility(View.VISIBLE);
+//                ((ScroggleTwoPlayerGameActivity) getActivity()).cFragment.setControlFragmentVisible();
+               /* View pause = controlFragment.getRootView().findViewById(R.id.player_pause_button);
+                pause.setVisibility(View.VISIBLE);
+                View resume = controlFragment.getRootView().findViewById(R.id.player_button_resume);
+                resume.setVisibility(View.VISIBLE);*/
+                }
+
+                if (timeRemaning > 0) {
+                    countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(timeRemaning, interval);
+                } else {
+                    countDownTimer = new TwoPlayerScroggleFragment.GameCountDownTimer(15000, interval);
+                }
+            }
         }
     }
 
@@ -922,11 +1032,6 @@ public class TwoPlayerScroggleFragment extends Fragment {
     }
 
 
-    private void switchTurns() {
-        player = player == 1 ? 2 : 1;
-
-    }
-
     public void putState(String data) {
         String[] fields = data.split(",");
         int index = 0;
@@ -935,7 +1040,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
         ((ScroggleTwoPlayerGameActivity) getActivity()).setPhaseOnePoints(mPhaseOnePoints);
         word = fields[index++];
         this.setWord(word);
-        timeRemaning = Long.parseLong(fields[index++]);
+        timeRemaning = Integer.parseInt(fields[index++]);
         this.setTime(timeRemaning);
         player = Integer.parseInt(fields[index++]);
         this.setPhase(player);
@@ -954,7 +1059,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
                     listI.add(Integer.parseInt(favs2[k]));
                 }
 
-                largeSmallIds.put(large, listI);
+                largeSmallIds.put(((int) large), listI);
 
             }
             listOfSmallIds.put(wordFormed,largeSmallIds);
@@ -968,9 +1073,9 @@ public class TwoPlayerScroggleFragment extends Fragment {
                 List<Integer> smallIds = entry.getValue();
                 for(Integer i : smallIds) {
                     String letter = (fields[index++]);
-                    mSmallTiles[entry.getKey()][i].setLetter(letter);
+                    mSmallTiles[entry.getKey().intValue()][i.intValue()].setLetter(letter);
                     Boolean isChosen = Boolean.valueOf(fields[index++]);
-                    mSmallTiles[entry.getKey()][i].setChosen(isChosen);
+                    mSmallTiles[entry.getKey().intValue()][i.intValue()].setChosen(isChosen);
                     //char state = fields[index++].charAt(0);
                     // letterState[entry.getKey()][i] = state;
                 }
@@ -994,10 +1099,10 @@ public class TwoPlayerScroggleFragment extends Fragment {
 
         for (int l = 0; l < 9; l++) {
             mEntireBoard.setView(rView);
-            final View outer = rView.findViewById(mLargeIds[l]);
-            mLargeTiles[l].setView(outer);
+            final View outer = rView.findViewById((int)(mLargeIds[((int) l)]));
+            mLargeTiles[((int) l)].setView(outer);
             for (int s = 0; s < 9; s++) {
-                Button button = (Button) outer.findViewById(mSmallIds[s]);
+                Button button = (Button) outer.findViewById((int)(mSmallIds[((int) s)]));
                 TwoPlayerScroggleTile tinyTile = mSmallTiles[l][s];
                 if (smallIdsWhichFormWordPhaseOne.get(l) != null) {
                     if (smallIdsWhichFormWordPhaseOne.get(l).contains(s)) {
@@ -1007,6 +1112,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
                         button.setClickable(false);
                         button.setEnabled(false);
                         if(player == 1) {
+                       // if(isPlayer1){
                             button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_green));
                         } else {
                             button.setBackgroundDrawable(getResources().getDrawable(R.drawable.letter_red));
@@ -1033,9 +1139,9 @@ public class TwoPlayerScroggleFragment extends Fragment {
     private void updateAllTiles() {
         mEntireBoard.updateDrawableState();
         for (int large = 0; large < 9; large++) {
-            mLargeTiles[large].updateDrawableState();
+            mLargeTiles[((int) large)].updateDrawableState();
             for (int small = 0; small < 9; small++) {
-                mSmallTiles[large][small].updateDrawableState();
+                mSmallTiles[((int) large)][((int) small)].updateDrawableState();
             }
         }
     }
@@ -1045,8 +1151,8 @@ public class TwoPlayerScroggleFragment extends Fragment {
         if (sLarge != -1 && sSmall != -1) {
             List<Integer> moves = getPossibleMoves(sSmall);
             for (int i = 0; i < moves.size(); i++) {
-                int gridId = moves.get(i);
-                TwoPlayerScroggleTile smallTile = mSmallTiles[sLarge][gridId];
+                int gridId = moves.get(((int) i));
+                TwoPlayerScroggleTile smallTile = mSmallTiles[((int) sLarge)][((int) gridId)];
                 if (!smallTile.getIsChosen()) {
                     addMove(smallTile);
                 }
@@ -1055,7 +1161,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
             for (int large = 0; large < 9; large++) {
                 for (int small = 0; small < 9; small++) {
                     if (large != sLarge) {
-                        addMove(mSmallTiles[large][small]);
+                        addMove(mSmallTiles[((int) large)][((int) small)]);
                     }
                 }
             }
@@ -1069,7 +1175,7 @@ public class TwoPlayerScroggleFragment extends Fragment {
     public void setAllNextMoves() {
         for (int large = 0; large < 9; large++) {
             for (int small = 0; small < 9; small++) {
-                addMove(mSmallTiles[large][small]);
+                addMove(mSmallTiles[((int) large)][((int) small)]);
             }
         }
     }
@@ -1225,14 +1331,12 @@ public class TwoPlayerScroggleFragment extends Fragment {
                     public Transaction.Result doTransaction(MutableData mutableData) {
                         Player u = mutableData.getValue(Player.class);
                         if (u == null) {
-                            return Transaction.success(mutableData);
+                            return Transaction.abort();
                         }
 
-                        //u.score = String.valueOf(computeScore());
-                        //u.wordFormed = wordTyped;
-                        u.totalGameTime = Long.valueOf(totalGameTime);
+                        u.totalGameTime = Integer.valueOf(totalGameTime);
                         if(p == getTokenInstance) {
-                            u.totalPlayerTime = Long.valueOf(totalPlayerTime);
+                            u.totalPlayerTime = Integer.valueOf(totalPlayerTime);
                         }
                         u.gameState = String.valueOf(gameData);
                         mutableData.setValue(u);
@@ -1246,6 +1350,42 @@ public class TwoPlayerScroggleFragment extends Fragment {
                 });
     }
 
+    /**
+     * Called on word add
+     * @param postRef
+     */
+    private void onAddWordsAndPositions(DatabaseReference postRef, final String player) {
+    //    final String p =player;
+        postRef
+                .child("players")
+                .child(player)
+                .runTransaction(new Transaction.Handler() {
+                    @Override
+                    public Transaction.Result doTransaction(MutableData mutableData) {
+                        Player u = mutableData.getValue(Player.class);
+                        GenericTypeIndicator<Map<String,Object>> genericTypeIndicator = new GenericTypeIndicator<Map<String, Object>>(){};
+                        Map<String,Object> map = mutableData.getValue(genericTypeIndicator);
 
+                        if (u == null || map == null) {
+                            Log.d("onAddWordsAndPositions","Transaction failed");
+                            return Transaction.abort();
+                        }
+
+
+                        map.put("grids", finalLetters);
+                        globalVariable.usersMap.put(player, map);
+
+                        u.grids = finalLettersBuilder.toString();
+
+                        mutableData.setValue(u);
+                        return Transaction.success(mutableData);
+                    }
+
+                    @Override
+                    public void onComplete(DatabaseError databaseError, boolean b,
+                                           DataSnapshot dataSnapshot) {
+                    }
+                });
+    }
 }
 

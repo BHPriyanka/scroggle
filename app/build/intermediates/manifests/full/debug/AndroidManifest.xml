@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.neu.madcourse.priyankabh.numad17s_priyankabh"
-    android:versionCode="34"
-    android:versionName="4.2" >
+    android:versionCode="35"
+    android:versionName="5.0" >
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -14,6 +14,7 @@
     <!-- This permissions are neccessary for broadcast receiver -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- Optional permission for Analytics to run. -->
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Permissions required for GCM -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -167,6 +168,23 @@
             </intent-filter>
         </receiver>
 
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Note2MapAppTheme" >
+            <intent-filter>
+                <action android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapMainActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.note2map.SelectEventTimeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+        </activity>
+
+        <service android:name="edu.neu.madcourse.priyankabh.note2map.MyLocationService" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
