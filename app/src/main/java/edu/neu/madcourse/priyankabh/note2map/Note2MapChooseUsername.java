@@ -1,8 +1,8 @@
 package edu.neu.madcourse.priyankabh.note2map;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -56,13 +56,12 @@ public class Note2MapChooseUsername extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-
         childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 User user = dataSnapshot.getValue(User.class);
                 usernames.add(user.username);
-                Log.d("log users", usernames.toString());
+                Log.d("log users", usernames.toString().toLowerCase());
             }
 
             @Override

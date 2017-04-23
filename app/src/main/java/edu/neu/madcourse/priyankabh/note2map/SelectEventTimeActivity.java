@@ -1,15 +1,17 @@
 package edu.neu.madcourse.priyankabh.note2map;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -21,14 +23,18 @@ import java.util.TimeZone;
 
 import edu.neu.madcourse.priyankabh.R;
 
+import static edu.neu.madcourse.priyankabh.note2map.Note2MapChooseNoteType.NOTE_TYPE;
+
 /**
  * Created by priya on 4/11/2017.
  */
 
-public class SelectEventTimeActivity extends Activity {
+public class SelectEventTimeActivity extends AppCompatActivity {
+    final static String NOTE_TIME = "note_time";
     public static TextView datePicker;
     public static TextView startTime;
     public static TextView endTime;
+    private Button continueButton;
 
     public static class StartTimePickerFragment extends DialogFragment
             implements TimePickerDialog.OnTimeSetListener {
@@ -64,7 +70,14 @@ public class SelectEventTimeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eventtime_select);
+        setContentView(R.layout.n2m_eventtime_select_activity);
+        final String noteType = getIntent().getStringExtra(NOTE_TYPE);
+        //toolbar
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.n2m_my_toolbar_select_time);
+        setSupportActionBar(myToolbar);
+
+        getSupportActionBar().setTitle("Set Time");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         startTime = (TextView) findViewById(R.id.startValue);
         endTime = (TextView) findViewById(R.id.endValue);
@@ -72,12 +85,27 @@ public class SelectEventTimeActivity extends Activity {
         Calendar datetime = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH : mm ");
 
-        endTime.setText(simpleDateFormat.format(datetime.getTime()));
+        endTime.setText("0h 0m");
         startTime.setText(simpleDateFormat.format(datetime.getTime()));
 
         datePicker = (TextView) findViewById(R.id.dateValue);
         String date = new SimpleDateFormat("MM/dd/yy").format(new Date());
         datePicker.setText(date);
+
+        continueButton = (Button) findViewById(R.id.n2m_select_time_continue_button);
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SelectEventTimeActivity.this, Note2MapSearchLocationActivity.class);
+                intent.putExtra(NOTE_TYPE,noteType);
+                //Append all times pipe separated to the last screen to select location before create it
+                intent.putExtra(NOTE_TIME,
+                        datePicker.getText().toString() + "|" +
+                                startTime.getText().toString() + "|" +
+                                endTime.getText().toString());
+                startActivity(intent);
+            }
+        });
     }
 
     public void showDatePickerDialog(View v) {
@@ -85,30 +113,6 @@ public class SelectEventTimeActivity extends Activity {
         newFragment.show(getFragmentManager(), "datePicker");
     }
 
-
-    /*
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.menu_main, menu);
-            return true;
-        }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            // Handle action bar item clicks here. The action bar will
-            // automatically handle clicks on the Home/Up button, so long
-            // as you specify a parent activity in AndroidManifest.xml.
-            int id = item.getItemId();
-
-            //noinspection SimplifiableIfStatement
-            if (id == R.string.action_settings) {
-                return true;
-            }
-
-            return super.onOptionsItemSelected(item);
-        }
-    */
     public static class EndTimePickerFragment extends DialogFragment
             implements TimePickerDialog.OnTimeSetListener {
 
@@ -120,17 +124,21 @@ public class SelectEventTimeActivity extends Activity {
             int minute = c.get(Calendar.MINUTE);
 
             // Create a new instance of TimePickerDialog and return it
-            return new TimePickerDialog(getActivity(), this, hour, minute,
+            TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), this, 0, 0,
                     DateFormat.is24HourFormat(getActivity()));
+            return timePickerDialog;
         }
 
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             Calendar datetime = Calendar.getInstance();
             datetime.set(Calendar.HOUR_OF_DAY, hourOfDay);
             datetime.set(Calendar.MINUTE, minute);
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH : mm ");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH : mm");
+            String duration = simpleDateFormat.format(datetime.getTime());
+            duration = (duration.charAt(0) == '0' ? duration.substring(1,2) : duration.substring(0,2)) + "h "
+                    + (duration.charAt(5) == '0' ? duration.substring(6,7) : duration.substring(5,7)) + "m";
 
-            endTime.setText(simpleDateFormat.format(datetime.getTime()));
+            endTime.setText(duration);
         }
     }
 
@@ -146,7 +154,9 @@ public class SelectEventTimeActivity extends Activity {
             int day = c.get(Calendar.DAY_OF_MONTH);
 
             // Create a new instance of DatePickerDialog and return it
-            return new DatePickerDialog(getActivity(), this, year, month, day);
+            DatePickerDialog datePickerDialog =  new DatePickerDialog(getActivity(), this, year, month, day);
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+            return datePickerDialog;
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -155,5 +165,15 @@ public class SelectEventTimeActivity extends Activity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
 

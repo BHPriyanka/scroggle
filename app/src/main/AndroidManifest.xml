@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:taskAffinity="edu.neu.madcourse.priyankabh.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,36 +28,18 @@
             </intent-filter>
         </activity>
 
-        <!--activity android:name=".note2map.Note2MapMainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Note2MapAppTheme">
-            <intent-filter>
-                    <action android:name="android.intent.action.MAIN" />
-
-                    <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-->
-
         <activity android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapMainActivity"
+            android:allowBackup="true"
+            android:icon="@mipmap/n2m_ic_launcher"
+            android:label="@string/app_name"
+            android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait">
+            android:taskAffinity=".note2map.Note2MapMainActivity">
             <intent-filter>
-                <action android:name="edu.neu.madcourse.priyankabh.NOTE2MAPACTIVITY"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name="edu.neu.madcourse.priyankabh.note2map.SelectEventTimeActivity"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name=".note2map.Note2MapSearchLocationActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
-
-        <service android:name=".note2map.MyLocationService" />
 
         <activity
             android:name="edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity"
@@ -154,15 +137,35 @@
             </intent-filter>
         </service-->
 
-        <activity android:name=".note2map.Note2MapFriendActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".note2map.Note2MapChooseUsername"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".note2map.Note2MapAllUsersActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        <receiver
+            android:name=".twoplayergame.DetectNetworkActivity"
+            android:enabled="true" >
+            <intent-filter>
+
+                <!-- Intent filters for broadcast receiver -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <!--action android:name="android.net.wifi.WIFI_STATE_CHANGED" /-->
+                <!--action android:name="android.net.wifi.STATE_CHANGE" /-->
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".note2map.SelectEventTimeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+
+        <activity
+            android:name=".note2map.Note2MapSearchLocationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <service android:name=".note2map.MyLocationService"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBWHu2v4RKujUpKxPH53UvkIVdhDrnolCU" />
 
         <service android:name=".note2map.InstanceIDService">
             <intent-filter>
@@ -175,17 +178,25 @@
             </intent-filter>
         </service>
 
-        <receiver
-            android:name=".twoplayergame.DetectNetworkActivity"
-            android:enabled="true" >
-            <intent-filter>
-
-                <!-- Intent filters for broadcast receiver -->
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <!--action android:name="android.net.wifi.WIFI_STATE_CHANGED" /-->
-                <!--action android:name="android.net.wifi.STATE_CHANGE" /-->
-            </intent-filter>
-        </receiver>
+        <activity
+            android:name=".note2map.Note2MapFriendActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".note2map.Note2MapChooseUsername"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name=".note2map.Note2MapChooseNoteType"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name=".note2map.Note2MapAllUsersActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
 
       </application>
 </manifest>

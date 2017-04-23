@@ -2,18 +2,18 @@ package edu.neu.madcourse.priyankabh.note2map;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -42,11 +42,13 @@ public class Note2MapFriendActivity extends AppCompatActivity {
     private User currentUser;
     private Bundle b;
     private ListView listView;
+    private Button quitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.n2m_friend_activity);
+
         b = getIntent().getExtras();
 
         if (b != null) {
@@ -82,6 +84,15 @@ public class Note2MapFriendActivity extends AppCompatActivity {
             }
         });
 
+        quitButton = (Button) findViewById(R.id.n2m_friend_quitButton);
+        quitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Note2MapFriendActivity.this.finish();
+                System.exit(0);
+            }
+        });
+
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
@@ -109,7 +120,6 @@ public class Note2MapFriendActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         mDrawerToggle.setDrawerIndicatorEnabled(true);
 
-
         mDatabase = FirebaseDatabase.getInstance().getReference();
         usernames = new ArrayList<String>();
 
@@ -131,8 +141,14 @@ public class Note2MapFriendActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.n2m_listviewlayout_friends);
 
+
         Note2MapCustomAdaptorForFriends customAdapter = new Note2MapCustomAdaptorForFriends(this, currentUser);
         listView.setAdapter(customAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -156,13 +172,12 @@ public class Note2MapFriendActivity extends AppCompatActivity {
             return true;
         }
         // Handle your other action bar items...
-        if(item.getItemId() == R.id.add_friend){
+        if(item.getItemId() == R.id.n2m_friend_add_friend){
             Intent intent = new Intent(Note2MapFriendActivity.this, Note2MapAllUsersActivity.class);
             intent.putExtra("username", usernames);
             intent.putExtra("currentUser", currentUser);
             startActivity(intent);
-            Note2MapFriendActivity.this.finish();
-
+            this.finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -175,7 +190,7 @@ public class Note2MapFriendActivity extends AppCompatActivity {
 
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.friend_menu, menu);
-        MenuItem item = menu.findItem(R.id.add_friend);
+        MenuItem item = menu.findItem(R.id.n2m_friend_add_friend);
         item.setVisible(true);
 
         MenuItem search = menu.findItem(R.id.n2m_action_search);
@@ -192,12 +207,9 @@ public class Note2MapFriendActivity extends AppCompatActivity {
 
         TextView textView = (TextView)vwParentRow.getChildAt(1);
         String newFriend = textView.getText().toString();
-        currentUser.friends.remove(newFriend);
+        currentUser.friends.remove(newFriend.toLowerCase());
 
         mDatabase.child("users").child(FirebaseInstanceId.getInstance().getToken()).setValue(currentUser);
-        for(String str: currentUser.friends){
-            Log.d("onClickRemoveFriend",str);
-        }
 
         Note2MapCustomAdaptorForFriends customAdapter = new Note2MapCustomAdaptorForFriends(this, currentUser);
         listView.setAdapter(customAdapter);

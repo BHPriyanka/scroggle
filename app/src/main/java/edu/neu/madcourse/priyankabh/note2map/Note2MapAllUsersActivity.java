@@ -37,7 +37,7 @@ public class Note2MapAllUsersActivity extends AppCompatActivity {
     private ArrayList<String> usernames;
     private User currentUser;
     private ListView listView;
-    private  Note2MapCustomAdaptorForAllUsers customAdapter;
+    private Note2MapCustomAdaptorForAllUsers customAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -48,20 +48,9 @@ public class Note2MapAllUsersActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.n2m_my_toolbar_allusers);
         setSupportActionBar(myToolbar);
 
-        getSupportActionBar().setTitle("Friends");
+        getSupportActionBar().setTitle("Manage Friends");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Note2MapAllUsersActivity.this, Note2MapFriendActivity.class);
-                intent.putExtra("currentUser", currentUser);
-                startActivity(intent);
-                Note2MapAllUsersActivity.this.finish();
-            }
-        });
 
         listView = (ListView) findViewById(R.id.n2m_listviewlayout_allusers);
 
@@ -77,9 +66,6 @@ public class Note2MapAllUsersActivity extends AppCompatActivity {
         customAdapter = new Note2MapCustomAdaptorForAllUsers(this, namesWithoutCurrentUser, currentUser);
         listView.setAdapter(customAdapter);
 
-        // smart search
-        listView.setTextFilterEnabled(true);
-
     }
 
     public void onClickAddFriend(View view){
@@ -92,15 +78,18 @@ public class Note2MapAllUsersActivity extends AppCompatActivity {
         TextView textView = (TextView)vwParentRow.getChildAt(1);
         String newFriend = textView.getText().toString();
         if(!newFriend.toLowerCase().equals(currentUser.username.toLowerCase()) && !currentUser.friends.contains(newFriend.toLowerCase())) {
-            currentUser.friends.add(newFriend);
+            currentUser.friends.add(newFriend.toLowerCase());
         }
         mDatabase.child("users").child(FirebaseInstanceId.getInstance().getToken()).setValue(currentUser);
         for(String str: currentUser.friends){
             Log.d("onClickAddFriend",str);
         }
 
-        Note2MapCustomAdaptorForAllUsers customAdapter = new Note2MapCustomAdaptorForAllUsers(this, usernames, currentUser);
+        customAdapter = new Note2MapCustomAdaptorForAllUsers(this, usernames, currentUser);
         listView.setAdapter(customAdapter);
+
+        // smart search
+        listView.setTextFilterEnabled(true);
     }
 
     @Override
@@ -108,7 +97,7 @@ public class Note2MapAllUsersActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.friend_menu, menu);
 
-        MenuItem item = menu.findItem(R.id.add_friend);
+        MenuItem item = menu.findItem(R.id.n2m_friend_add_friend);
         item.setVisible(false);
 
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.n2m_action_search));
@@ -139,10 +128,28 @@ public class Note2MapAllUsersActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-
         return true;
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle your other action bar items...
+        if(item.getItemId() == android.R.id.home){
+            Intent intent = new Intent(Note2MapAllUsersActivity.this, Note2MapFriendActivity.class);
+            intent.putExtra("currentUser", currentUser);
+            startActivity(intent);
+            Note2MapAllUsersActivity.this.finish();
+        }
 
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Note2MapAllUsersActivity.this, Note2MapFriendActivity.class);
+        intent.putExtra("currentUser", currentUser);
+        startActivity(intent);
+        Note2MapAllUsersActivity.this.finish();
+    }
 
 }
