@@ -1,6 +1,5 @@
 package edu.neu.madcourse.priyankabh.note2map;
 
-import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,15 +7,14 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -94,7 +92,7 @@ public class Note2MapAllUsersActivity extends AppCompatActivity {
         TextView textView = (TextView)vwParentRow.getChildAt(1);
         String newFriend = textView.getText().toString();
         if(!newFriend.toLowerCase().equals(currentUser.username.toLowerCase()) && !currentUser.friends.contains(newFriend.toLowerCase())) {
-            currentUser.friends.add(newFriend.toLowerCase());
+            currentUser.friends.add(newFriend);
         }
         mDatabase.child("users").child(FirebaseInstanceId.getInstance().getToken()).setValue(currentUser);
         for(String str: currentUser.friends){
@@ -118,33 +116,33 @@ public class Note2MapAllUsersActivity extends AppCompatActivity {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
         searchView.setIconifiedByDefault(false);
-        int searchPlateId = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-        EditText searchPlate = (EditText) searchView.findViewById(searchPlateId);
-        Log.d("TAG","susi........."+searchPlate+".........");
 
-        SearchView.OnQueryTextListener textChangeListener = new SearchView.OnQueryTextListener()
-        {
+        EditText searchPlate = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+
+        searchPlate.addTextChangedListener(new TextWatcher() {
+
             @Override
-            public boolean onQueryTextChange(String newText)
-            {
-                // this is your adapter that will be filtered
-                customAdapter.getFilter().filter(newText);
-                System.out.println("on text chnge text: "+newText);
-                return true;
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                // When user changed the Text
+                Note2MapAllUsersActivity.this.customAdapter.getFilter().filter(cs.toString());
             }
+
             @Override
-            public boolean onQueryTextSubmit(String query)
-            {
-                // this is your adapter that will be filtered
-                customAdapter.getFilter().filter(query);
-                System.out.println("on query submit: "+query);
-                return true;
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+                                          int arg3) {
+                // TODO Auto-generated method stub
+
             }
-        };
-        searchView.setOnQueryTextListener(textChangeListener);
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                // TODO Auto-generated method stub
+            }
+        });
 
         return true;
 
     }
+
 
 }

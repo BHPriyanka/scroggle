@@ -202,7 +202,8 @@
         <activity
             android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapAllUsersActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
 
         <service android:name="edu.neu.madcourse.priyankabh.note2map.InstanceIDService" >
