@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.neu.madcourse.priyankabh.numad17s_priyankabh"
-    android:versionCode="36"
-    android:versionName="5.1" >
+    android:versionCode="39"
+    android:versionName="5.4" >
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -45,6 +45,41 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--
+        activity android:name=".note2map.Note2MapMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Note2MapAppTheme">
+            <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+
+                    <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity
+        -->
+
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            <intent-filter>
+                <action android:name="edu.neu.madcourse.priyankabh.NOTE2MAPACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.note2map.SelectEventTimeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapSearchLocationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" />
+
+        <service android:name="edu.neu.madcourse.priyankabh.note2map.MyLocationService" />
+
         <activity
             android:name="edu.neu.madcourse.priyankabh.tictactoe.TicTacToeMainActivity"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
@@ -145,14 +180,39 @@
             </intent-filter>
         </service
         -->
-        <service android:name="edu.neu.madcourse.priyankabh.twoplayergame.TwoPlayerWordGameMessagingService" >
+        <!--
+        service android:name=".twoplayergame.TwoPlayerWordGameMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
-        <service android:name="edu.neu.madcourse.priyankabh.twoplayergame.TwoPlayerWordGameInstanceIDService" >
+        <service android:name=".twoplayergame.TwoPlayerWordGameInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service
+        -->
+
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapFriendActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapChooseUsername"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapAllUsersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+
+        <service android:name="edu.neu.madcourse.priyankabh.note2map.InstanceIDService" >
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name="edu.neu.madcourse.priyankabh.note2map.MessagingService" >
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
@@ -168,23 +228,6 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapMainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Note2MapAppTheme" >
-            <intent-filter>
-                <action android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapMainActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="edu.neu.madcourse.priyankabh.note2map.SelectEventTimeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
-        </activity>
-
-        <service android:name="edu.neu.madcourse.priyankabh.note2map.MyLocationService" />
         <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

@@ -33,7 +33,7 @@
             android:padding="@dimen/menu_button_padding"
             android:text="@string/ok_label"
             android:background="@color/black_color"
-            android:textColor="@color/white"/>
+            android:textColor="@color/colorWhite"/>
 
     </LinearLayout>
 </ScrollView>

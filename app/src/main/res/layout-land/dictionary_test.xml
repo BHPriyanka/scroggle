@@ -17,7 +17,7 @@
         android:layout_height="30dp"
         android:hint="@string/text_entry"
         android:inputType="text"
-        android:background="@color/white"
+        android:background="@color/colorWhite"
         android:longClickable="false"/>
 
     <ScrollView

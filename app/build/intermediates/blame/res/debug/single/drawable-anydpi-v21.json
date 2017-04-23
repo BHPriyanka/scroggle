@@ -4,6 +4,10 @@
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.2.0\\res\\drawable-anydpi-v21\\design_ic_visibility.xml"
     },
     {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_add_box_black_24dp.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_add_box_black_24dp.xml"
+    },
+    {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\design_ic_visibility_off.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.2.0\\res\\drawable-anydpi-v21\\design_ic_visibility_off.xml"
     }

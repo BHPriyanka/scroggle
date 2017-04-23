@@ -16,12 +16,12 @@
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\scroggle_ack.xml"
     },
     {
-        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
-        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.2.0\\res\\layout\\design_bottom_navigation_item.xml"
-    },
-    {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.2.0\\res\\layout\\design_bottom_navigation_item.xml"
     },
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\network_error.xml",
@@ -40,6 +40,10 @@
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\fragment_word_game.xml"
     },
     {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_search_location_n2m.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\activity_search_location_n2m.xml"
+    },
+    {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.2.0\\res\\layout\\design_navigation_item_separator.xml"
     },
@@ -48,12 +52,16 @@
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\activity_game_scroggle.xml"
     },
     {
-        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
-        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\n2m_drawer_list_item.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\n2m_drawer_list_item.xml"
     },
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
@@ -188,6 +196,10 @@
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\n2m_listview_element_allusers.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\n2m_listview_element_allusers.xml"
+    },
+    {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\thinking.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\thinking.xml"
     },
@@ -232,6 +244,10 @@
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\24.0.0\\res\\layout\\mr_chooser_list_item.xml"
     },
     {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\n2m_listview_element_friends.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\n2m_listview_element_friends.xml"
+    },
+    {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\place_autocomplete_item_prediction.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-places\\10.2.0\\res\\layout\\place_autocomplete_item_prediction.xml"
     },
@@ -272,6 +288,10 @@
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\mediarouter-v7\\24.0.0\\res\\layout\\mr_volume_control.xml"
     },
     {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\n2m_choose_username_activity.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\n2m_choose_username_activity.xml"
+    },
+    {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_firebase.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\activity_firebase.xml"
     },
@@ -290,6 +310,10 @@
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_item.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\list_item.xml"
     },
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\instructions.xml",
@@ -354,6 +378,10 @@
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\game_word.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\game_word.xml"
+    },
+    {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\n2m_friend_activity.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\n2m_friend_activity.xml"
     },
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
@@ -450,6 +478,10 @@
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.2.0\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\n2m_listview_allusers.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\layout\\n2m_listview_allusers.xml"
     },
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\layout\\connectivity_network.xml",

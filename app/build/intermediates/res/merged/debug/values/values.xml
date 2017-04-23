@@ -76,6 +76,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorWhite">#ffffff</color>
     <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>
     <color name="common_google_signin_btn_text_dark_disabled">#1F000000</color>
     <color name="common_google_signin_btn_text_dark_focused">@android:color/black</color>
@@ -161,7 +162,6 @@
     <color name="wallet_hint_foreground_holo_light">#808080</color>
     <color name="wallet_holo_blue_light">#ff33b5e5</color>
     <color name="wallet_link_text_light">#0000ee</color>
-    <color name="white">#ffffff</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode">
             
             <enum name="normal" value="0"/>
@@ -1094,6 +1094,8 @@ both sides in the larger game.
     <string name="decline">Decline</string>
     <string name="default_web_client_id" translatable="false">947120745863-klra7vdqjm5r3fooqpuf182q0gu3gpp1.apps.googleusercontent.com</string>
     <string name="dictionary_label">Dictionary</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="drawer_open">Open navigation drawer</string>
     <string name="endTime">End Time</string>
     <string name="eventTime_activity_main">EventTimePicker</string>
     <string name="firebase_database_url" translatable="false">https://numad17s-priyankabh.firebaseio.com</string>

@@ -27,7 +27,7 @@
         android:padding="@dimen/menu_button_padding"
         android:text="@string/ok_label"
         android:background="@color/black_color"
-        android:textColor="@color/white"
+        android:textColor="@color/colorWhite"
         android:layout_marginBottom="187dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />

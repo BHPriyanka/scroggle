@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\tick_friend.png",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\drawable-xxhdpi\\tick_friend.png"
+    },
+    {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\quit.png",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\drawable-xxhdpi\\quit.png"
     },
@@ -14,6 +18,10 @@
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\pause.png",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\drawable-xxhdpi\\pause.png"
+    },
+    {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_add_box_black_24dp.png",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_add_box_black_24dp.png"
     },
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\x_blue.png",

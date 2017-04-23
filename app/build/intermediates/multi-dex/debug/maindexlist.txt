@@ -414,6 +414,7 @@ com/google/android/gms/internal/zzre.class
 com/google/android/gms/common/api/GoogleApiClient$ConnectionCallbacks.class
 com/google/android/gms/internal/zzqs.class
 com/google/android/gms/internal/zzmb.class
+edu/neu/madcourse/priyankabh/note2map/models/NoteContent.class
 com/google/android/gms/internal/zzpn.class
 android/support/v7/widget/RecyclerView$ViewCacheExtension.class
 android/support/v4/view/ViewCompatBase.class
@@ -439,6 +440,7 @@ com/google/android/gms/ads/Correlator.class
 android/support/v4/media/session/MediaButtonReceiver.class
 android/support/v4/net/ConnectivityManagerCompat.class
 android/support/annotation/RequiresPermission.class
+edu/neu/madcourse/priyankabh/note2map/models/Note.class
 com/google/android/gms/internal/zzdg.class
 com/google/android/gms/ads/internal/overlay/zze$zza.class
 com/google/android/gms/internal/zzrc.class
@@ -1102,6 +1104,7 @@ android/support/v4/view/accessibility/AccessibilityRecordCompat.class
 android/support/design/widget/TabLayout$PagerAdapterObserver.class
 com/google/firebase/database/PropertyName.class
 com/google/android/gms/internal/zzfx.class
+edu/neu/madcourse/priyankabh/note2map/models/User.class
 android/support/v4/view/ViewCompatICSMr1.class
 com/google/android/gms/internal/zzbmj.class
 com/google/android/gms/ads/internal/overlay/zzj.class
