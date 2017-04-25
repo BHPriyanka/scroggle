@@ -44,19 +44,8 @@ import edu.neu.madcourse.priyankabh.note2map.models.User;
 public class Note2MapMainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 200;
 
-    private GoogleApiClient mGoogleApiClient;
-    private Location mCurrentLocation;
-    private LocationRequest mLocationRequest;
-    private boolean mRequestingLocationUpdates = true;
-    private EditText mLatitudeText;
-    private EditText mLongitudeText;
-    private String setLatitude = "";
-    private String setLongitude = "";
-    private TextView mCoordinatesText;
     private DatabaseReference mDatabase;
     Button quitButton;
-    private ValueEventListener valueEventListener;
-    private Button setCoordinates;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView mDrawerList;
@@ -268,6 +257,7 @@ public class Note2MapMainActivity extends AppCompatActivity {
             // action with ID action_refresh was selected
             case R.id.n2m_note_action_menu_new:
                 Intent intent = new Intent(Note2MapMainActivity.this, Note2MapChooseNoteType.class);
+                intent.putExtra("currentUser", currentUser);
                 this.startActivity(intent);
                 break;
             default:

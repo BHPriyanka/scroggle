@@ -160,6 +160,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
+        <activity
+            android:name=".note2map.Note2MapSelectFriendsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
         <service android:name=".note2map.MyLocationService"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 

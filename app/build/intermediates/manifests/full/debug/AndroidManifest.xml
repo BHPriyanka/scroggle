@@ -194,6 +194,10 @@
             android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapSearchLocationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapSelectFriendsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <service
             android:name="edu.neu.madcourse.priyankabh.note2map.MyLocationService"
