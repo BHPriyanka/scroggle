@@ -77,7 +77,9 @@ public class Note2MapFriendActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapter, View v, int position,
                                     long arg3) {
                 if(position == 0) {
-                    Intent intent = new Intent(Note2MapFriendActivity.this, Note2MapMainActivity.class);
+                    //Intent intent = new Intent(Note2MapFriendActivity.this, Note2MapMainActivity.class);
+                    Intent intent = new Intent(Note2MapFriendActivity.this, Note2MapNotesActivity.class);
+                    intent.putExtra("currentUser", currentUser);
                     startActivity(intent);
                     Note2MapFriendActivity.this.finish();
                 }

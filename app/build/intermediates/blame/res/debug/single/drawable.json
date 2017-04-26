@@ -16,12 +16,12 @@
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\drawable\\letter_background.xml"
     },
     {
-        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
-        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\drawable\\abc_ratingbar_indicator_material.xml"
-    },
-    {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\picture.jpg",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\drawable\\picture.jpg"
+    },
+    {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\drawable\\abc_ratingbar_indicator_material.xml"
     },
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_light_focused.xml",
@@ -30,6 +30,10 @@
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_notification_rewind.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\drawable\\cast_ic_notification_rewind.xml"
+    },
+    {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cover.jpg",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\drawable\\cover.jpg"
     },
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_notification_skip_prev.xml",
@@ -456,12 +460,12 @@
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.2.0\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
     {
-        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_mini_controller_pause.xml",
-        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\drawable\\cast_ic_mini_controller_pause.xml"
-    },
-    {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\letter_avail.xml",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\drawable\\letter_avail.xml"
+    },
+    {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_mini_controller_pause.xml",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-cast-framework\\10.2.0\\res\\drawable\\cast_ic_mini_controller_pause.xml"
     },
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_light.xml",
@@ -490,6 +494,10 @@
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\red_cross.png",
         "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\drawable\\red_cross.png"
+    },
+    {
+        "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\n2m_ic_launcher.png",
+        "source": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\src\\main\\res\\drawable\\n2m_ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\priya\\AndroidStudioProjects\\NUMAD17S-PriyankaBH\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_notification_stop_live_stream.xml",

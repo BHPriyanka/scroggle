@@ -23,6 +23,10 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="25.3.1" />
+
     <permission
         android:name="edu.neu.madcourse.priyankabh.numad17s_priyankabh.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
@@ -234,6 +238,12 @@
         </activity>
         <activity
             android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapAllUsersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapNotesActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateHidden" >

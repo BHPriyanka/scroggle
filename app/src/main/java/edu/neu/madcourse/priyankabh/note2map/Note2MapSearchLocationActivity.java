@@ -116,7 +116,7 @@ public class Note2MapSearchLocationActivity extends FragmentActivity implements 
                 listofNoteContents.add(noteContent);
                 // create a note and it the list of notes of the user
                 Note newNote = new Note(noteType, noteTime.substring(0, 8),
-                        noteTime.substring(9, 16), noteTime.substring(17), false, currentUser.username, listofNoteContents);
+                        noteTime.substring(9, 16), noteTime.substring(17), false, currentUser.username, listofNoteContents, location);
                 currentUser.notes.add(newNote);
                 mDatabase.child("users").child(FirebaseInstanceId.getInstance().getToken()).setValue(currentUser);
             }
