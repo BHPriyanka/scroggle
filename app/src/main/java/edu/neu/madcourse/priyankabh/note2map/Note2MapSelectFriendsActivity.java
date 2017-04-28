@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +27,6 @@ import static edu.neu.madcourse.priyankabh.note2map.SelectEventTimeActivity.NOTE
 
 public class Note2MapSelectFriendsActivity extends AppCompatActivity {
 
-    private ArrayList<String> usernames;
     private User currentUser;
     private ListView listView;
     private String noteTime;

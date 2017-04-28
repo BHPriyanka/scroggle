@@ -29,6 +29,9 @@ public class Note2MapCustomAdaptorToChooseFriends extends ArrayAdapter {
         this.currentUser = user;
         this.context = applicationContext;
         this.userList = user.friends;
+        if(!this.userList.contains(currentUser.username)) {
+            this.userList.add(currentUser.username);
+        }
         for(String s: userList){
             Friend f = new Friend(s, false);
             this.targetFriends.add(f);

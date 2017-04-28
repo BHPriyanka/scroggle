@@ -81,9 +81,6 @@ public class Note2MapAllUsersActivity extends AppCompatActivity {
             currentUser.friends.add(newFriend.toLowerCase());
         }
         mDatabase.child("users").child(FirebaseInstanceId.getInstance().getToken()).setValue(currentUser);
-        for(String str: currentUser.friends){
-            Log.d("onClickAddFriend",str);
-        }
 
         customAdapter = new Note2MapCustomAdaptorForAllUsers(this, usernames, currentUser);
         listView.setAdapter(customAdapter);
