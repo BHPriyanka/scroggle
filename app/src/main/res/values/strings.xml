@@ -232,4 +232,31 @@ both sides in the larger game.
         <item>24 hrs</item>
     </string-array>
 
+
+    <string name="project_ack">
+        <b>Internet Connectivity Example :</b>
+        <b>1.</b> http://viralpatel.net/blogs/android-internet-connection-status-network-change/
+        \n\
+        <b>2. </b> http://stackoverflow.com/questions/3141807/android-service-to-check-internet-connectivity
+        \n\
+        \n\
+        <b>Sources of Code Snippets obtained: </b>
+        \n\
+        <b>1. Pickers :</b> https://developer.android.com/guide/topics/ui/controls/pickers.html
+        \n\
+        <b>2. Google Maps API:</b> i. https://github.com/googlemaps/android-samples
+        \n\
+        ii. https://developers.google.com/maps/documentation/android-api/start
+        \n\
+        <b>3. Geocoding API:</b> i. https://developers.google.com/maps/documentation/geocoding/start
+        \n\
+        ii. https://developers.google.com/maps/documentation/javascript/geocoding
+        \n\
+        <b>4. Markers: </b> https://developers.google.com/maps/documentation/android-api/marker
+        \n\
+        <b>5. Intent Service: </b> http://www.peachpit.com/articles/article.aspx?p=1823692%20seqNum=4
+        \n\
+
+    </string>
+
 </resources>

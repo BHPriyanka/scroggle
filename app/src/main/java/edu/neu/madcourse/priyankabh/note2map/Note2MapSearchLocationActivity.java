@@ -1,10 +1,10 @@
-    package edu.neu.madcourse.priyankabh.note2map;
+package edu.neu.madcourse.priyankabh.note2map;
 
-    import android.Manifest;
-    import android.app.Dialog;
-    import android.content.BroadcastReceiver;
-    import android.content.Context;
-    import android.content.Intent;
+import android.Manifest;
+import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
     import android.content.IntentFilter;
     import android.content.pm.PackageManager;
     import android.location.Address;
@@ -32,7 +32,6 @@
     import android.widget.Filterable;
     import android.widget.TextView;
 
-    import com.google.android.gms.common.api.BooleanResult;
     import com.google.android.gms.maps.CameraUpdateFactory;
     import com.google.android.gms.maps.GoogleMap;
     import com.google.android.gms.maps.OnMapReadyCallback;

@@ -72,10 +72,7 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
                 String networkStatus = isNetworkAvailable ? "connected" : "disconnected";
 
                 if(networkStatus.equals("connected")){
-                   // Log.d("MainActivity","networkStatus :" +networkStatus +" "+dialog.isShowing()+" "+dialog);
-//                    text.setText("Internet connected");
                     if(dialog!=null && dialog.isShowing()){
-                   //     Log.d("MainActivity", "onReceive: ...................");
                         dialog.cancel();
                         dialog.dismiss();
                         dialog.hide();
@@ -83,7 +80,6 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
                 } else {
                     Log.d("MainActivity","networkStatus :" +networkStatus);
                     if(dialog == null){
-                       // Log.d("MainActivity", "onReceive:d ");
                         dialog = new Dialog(ScroggleTwoPlayerGameActivity.this);
                         dialog.setContentView(R.layout.internet_connectivity);
                         dialog.setCancelable(false);
@@ -91,7 +87,6 @@ public class ScroggleTwoPlayerGameActivity extends FragmentActivity {
                         text.setText("Internet Disconnected");
                         dialog.show();
                     } else if(dialog != null && !dialog.isShowing()){
-                      //  Log.d("MainActivity", "onReceive:d.. ");
                         dialog.show();
                     }
                 }
