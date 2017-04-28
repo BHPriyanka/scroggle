@@ -1,8 +1,6 @@
     package edu.neu.madcourse.priyankabh.note2map;
 
     import android.Manifest;
-    import android.app.AlarmManager;
-    import android.app.PendingIntent;
     import android.content.Context;
     import android.content.Intent;
     import android.content.pm.PackageManager;
@@ -10,14 +8,10 @@
     import android.location.Geocoder;
     import android.os.AsyncTask;
     import android.os.Bundle;
-    import android.os.SystemClock;
     import android.support.v4.app.ActivityCompat;
     import android.support.v7.app.AppCompatActivity;
     import android.support.v7.widget.Toolbar;
     import android.text.Editable;
-    import android.text.InputFilter;
-    import android.text.InputType;
-    import android.text.Spanned;
     import android.text.TextUtils;
     import android.text.TextWatcher;
     import android.util.Log;
@@ -61,7 +55,6 @@
     import java.util.ArrayList;
     import java.util.Arrays;
     import java.util.List;
-    import java.util.Map;
     import java.util.concurrent.ExecutionException;
 
     import edu.neu.madcourse.priyankabh.R;
@@ -152,12 +145,14 @@ public void onCreate(Bundle savedInstanceState) {
     }
     listOftargetedUsers.addAll(Arrays.asList(targetedUsersExtra.split(";")));
 
+    // noteTime
+    final String times[] = noteTime.split("[\\|]+");
     switch (noteType) {
         case "EVENT":
-            preEditText = "Event on " + noteTime.substring(0, 8) + " at " + noteTime.substring(9, 16).replace(" ", "") + ": ";
+            preEditText = "Event on " + times[0] + " at " + times[1] + " ";
             break;
         case "REMINDER":
-            preEditText = "Remind on " + noteTime.substring(0, 8) + " at " + noteTime.substring(9, 16).replace(" ", "") + ": ";
+            preEditText = "Remind on " + times[0] + " at " + times[1] + " ";
             break;
         case "DIRECTION":
             preEditText = "Direction:";
@@ -263,8 +258,8 @@ public void onCreate(Bundle savedInstanceState) {
             @Override
             public void onClick(View v) {
                 // create a note and it the list of notes of the user
-                final Note newNote = new Note(noteType, noteTime.substring(0, 8),
-                        noteTime.substring(9, 16), noteTime.substring(17), "notReceived", currentUser.username, listofNoteContents, listOftargetedUsers, location);
+                final Note newNote = new Note(noteType, times[0],
+                        times[1], times[2], "notReceived", currentUser.username, listofNoteContents, listOftargetedUsers, location);
                 currentUser.notes.add(newNote);
                 mDatabase.child("users").child(FirebaseInstanceId.getInstance().getToken()).setValue(currentUser);
 

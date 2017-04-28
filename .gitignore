@@ -11,3 +11,4 @@
 /app/app-release.apk
 /app/proguard-rules.pro
 /app/.gitignore
+/app/build/

@@ -138,59 +138,6 @@ public class Note2MapMainActivity extends AppCompatActivity {
                     System.exit(0);
                 }
             }
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
-
-
-
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////Slide Menu///////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    /*
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
-        mDrawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Pass the event to ActionBarDrawerToggle, if it returns
-        // true, then it has handled the app icon touch event
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        // Handle your other action bar items...
-        switch (item.getItemId()) {
-            // action with ID action_refresh was selected
-            case R.id.n2m_note_action_menu_new:
-                Intent intent = new Intent(Note2MapMainActivity.this, Note2MapChooseNoteType.class);
-                intent.putExtra("currentUser", currentUser);
-                this.startActivity(intent);
-                break;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.n2m_note_action_menu, menu);
-        return true;
-    }
-    */
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////
-
 }
