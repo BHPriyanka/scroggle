@@ -43,6 +43,7 @@ public class Note2MapFriendActivity extends AppCompatActivity {
     private Bundle b;
     private ListView listView;
     private Button quitButton;
+    private TextView noFriendTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +78,6 @@ public class Note2MapFriendActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapter, View v, int position,
                                     long arg3) {
                 if(position == 0) {
-                    //Intent intent = new Intent(Note2MapFriendActivity.this, Note2MapMainActivity.class);
                     Intent intent = new Intent(Note2MapFriendActivity.this, Note2MapNotesActivity.class);
                     intent.putExtra("currentUser", currentUser);
                     startActivity(intent);
@@ -143,6 +143,14 @@ public class Note2MapFriendActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.n2m_listviewlayout_friends);
 
+        if (currentUser.friends == null) {
+            currentUser.friends = new ArrayList<>();
+        }
+
+        noFriendTextView = (TextView) findViewById(R.id.n2m_no_friend_error);
+        if(currentUser.friends == null || currentUser.friends.size() == 0){
+            noFriendTextView.setVisibility(View.VISIBLE);
+        }
 
         Note2MapCustomAdaptorForFriends customAdapter = new Note2MapCustomAdaptorForFriends(this, currentUser);
         listView.setAdapter(customAdapter);
@@ -179,7 +187,7 @@ public class Note2MapFriendActivity extends AppCompatActivity {
             intent.putExtra("username", usernames);
             intent.putExtra("currentUser", currentUser);
             startActivity(intent);
-            this.finish();
+            Note2MapFriendActivity.this.finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -187,9 +195,6 @@ public class Note2MapFriendActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //MenuItem item = menu.findItem(R.id.add_friend);
-        //item.setVisible(true);
-
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.friend_menu, menu);
         MenuItem item = menu.findItem(R.id.n2m_friend_add_friend);

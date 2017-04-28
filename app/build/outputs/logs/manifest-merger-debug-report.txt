@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:2:1-213:12
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:2:1-212:12
 	package
 		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:3:5-43
 		INJECTED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml
@@ -59,7 +59,7 @@ ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main
 	android:name
 		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:12:22-76
 application
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:14:5-212:21
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:14:5-211:19
 MERGED from [com.android.support:design:25.2.0] C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\build\intermediates\exploded-aar\com.android.support\design\25.2.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:transition:25.2.0] C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\build\intermediates\exploded-aar\com.android.support\transition\25.2.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services:10.2.0] C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\10.2.0\AndroidManifest.xml:5:5-20
@@ -414,15 +414,15 @@ ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main
 	android:name
 		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:200:19-68
 activity#edu.neu.madcourse.priyankabh.note2map.Note2MapNotesActivity
-ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:206:9-210:20
+ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:205:9-209:20
 	android:screenOrientation
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:207:13-49
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:206:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:208:13-54
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:207:13-54
 	android:theme
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:209:13-69
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:208:13-69
 	android:name
-		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:206:19-65
+		ADDED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml:205:19-65
 uses-sdk
 INJECTED from C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:multidex:1.0.1] C:\Users\priya\AndroidStudioProjects\NUMAD17S-PriyankaBH\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.1\AndroidManifest.xml:18:5-42

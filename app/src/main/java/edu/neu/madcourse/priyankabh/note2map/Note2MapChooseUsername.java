@@ -56,11 +56,12 @@ public class Note2MapChooseUsername extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
+
         childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 User user = dataSnapshot.getValue(User.class);
-                usernames.add(user.username);
+                usernames.add(user.username.toLowerCase());
                 Log.d("log users", usernames.toString().toLowerCase());
             }
 
@@ -87,12 +88,12 @@ public class Note2MapChooseUsername extends AppCompatActivity {
             public void onClick(View view) {
                 usernameEditText = (EditText) findViewById(R.id.n2m_choose_username_edit_text);
                 String username = usernameEditText.getText().toString();
-                if (usernames.contains(username) || username.equals("")) {
+                if (usernames.contains(username.toLowerCase()) || username.equals("")) {
                     errorTextView = (TextView) findViewById(R.id.n2m_choose_username_error);
                     errorTextView.setVisibility(View.VISIBLE);
                     usernameEditText.setText("");
                 } else {
-                    User user = new User(username);
+                    User user = new User(username, FirebaseInstanceId.getInstance().getToken());
                     mDatabase.child("users").child(FirebaseInstanceId.getInstance().getToken()).setValue(user);
                     Intent intent = new Intent(Note2MapChooseUsername.this, Note2MapMainActivity.class);
                     startActivity(intent);

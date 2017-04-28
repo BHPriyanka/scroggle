@@ -3,8 +3,6 @@ package edu.neu.madcourse.priyankabh.note2map;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,16 +10,13 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -30,9 +25,6 @@ import java.util.List;
 import edu.neu.madcourse.priyankabh.R;
 import edu.neu.madcourse.priyankabh.note2map.models.Note;
 import edu.neu.madcourse.priyankabh.note2map.models.User;
-
-import static edu.neu.madcourse.priyankabh.note2map.Note2MapChooseNoteType.NOTE_TYPE;
-import static edu.neu.madcourse.priyankabh.note2map.SelectEventTimeActivity.NOTE_TIME;
 
 public class Note2MapNotesActivity extends AppCompatActivity {
 
@@ -45,11 +37,14 @@ public class Note2MapNotesActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView mDrawerList;
     private ArrayList<String> drawerList;
+    private TextView errorTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.n2m_note_main);
+
+        errorTextView = (TextView) findViewById(R.id.n2m_addNote_error);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.n2m_drawer_layout_note);
         mDrawerList = (ListView) findViewById(R.id.n2m_left_drawer_note);
@@ -122,6 +117,10 @@ public class Note2MapNotesActivity extends AppCompatActivity {
         noteList = new ArrayList<>();
 
         noteList = currentUser.notes;
+        if(noteList == null || noteList.size() == 0){
+            errorTextView.setVisibility(View.VISIBLE);
+        }
+
         adapter = new Note2MapNotesAdaptor(this, noteList, currentUser);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);

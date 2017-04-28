@@ -2,9 +2,6 @@ package edu.neu.madcourse.priyankabh.note2map;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+
 import edu.neu.madcourse.priyankabh.R;
 import edu.neu.madcourse.priyankabh.note2map.models.Friend;
 import edu.neu.madcourse.priyankabh.note2map.models.User;
