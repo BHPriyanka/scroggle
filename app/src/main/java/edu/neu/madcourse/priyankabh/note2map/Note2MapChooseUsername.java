@@ -1,7 +1,12 @@
 package edu.neu.madcourse.priyankabh.note2map;
 
+import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -30,10 +35,40 @@ public class Note2MapChooseUsername extends AppCompatActivity {
     private ArrayList<String> usernames;
     private TextView errorTextView;
     private EditText usernameEditText;
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        IntentFilter intentFilter = new IntentFilter(Note2MapDetectNetworkActivity.NETWORK_AVAILABLE_ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                boolean isNetworkAvailable = intent.getBooleanExtra(Note2MapDetectNetworkActivity.IS_NETWORK_AVAILABLE, false);
+                String networkStatus = isNetworkAvailable ? "connected" : "disconnected";
+                Log.d("networkStatus",networkStatus);
+                if(networkStatus.equals("connected")){
+                    if(dialog!=null && dialog.isShowing()){
+                        dialog.cancel();
+                        dialog.dismiss();
+                        dialog.hide();
+                    }
+                } else {
+                    if(dialog == null){
+                        dialog = new Dialog(Note2MapChooseUsername.this);
+                        dialog.setContentView(R.layout.internet_connectivity);
+                        dialog.setCancelable(false);
+                        TextView text = (TextView) dialog.findViewById(R.id.internet_connection);
+                        text.setText("Internet Disconnected");
+                        dialog.show();
+                    } else if(dialog != null && !dialog.isShowing()){
+                        dialog.show();
+                    }
+                }
+            }
+        }, intentFilter);
+
         setContentView(R.layout.n2m_choose_username_activity);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         usernames = new ArrayList<String>();

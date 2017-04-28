@@ -31,8 +31,9 @@
         <activity android:name="edu.neu.madcourse.priyankabh.note2map.Note2MapMainActivity"
             android:allowBackup="true"
             android:icon="@mipmap/n2m_ic_launcher"
-            android:label="@string/app_name"
+            android:label="MAD17S-Note2Map"
             android:supportsRtl="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:taskAffinity=".note2map.Note2MapMainActivity">
             <intent-filter>
@@ -207,6 +208,18 @@
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+        <activity android:name=".FinalProjectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <receiver
+            android:name=".note2map.Note2MapDetectNetworkActivity"
+            android:enabled="true" >
+            <intent-filter>
+                <!-- Intent filters for broadcast receiver -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
 
     </application>
 </manifest>

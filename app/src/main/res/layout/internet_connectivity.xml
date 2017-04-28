@@ -14,7 +14,10 @@
         android:id="@+id/internet_connection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:layout_margin="4dp"
+        android:fontFamily="casual"
         android:padding="10dp"
-        android:layout_margin="4dp"/>
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        android:textAllCaps="true"/>
 </LinearLayout>

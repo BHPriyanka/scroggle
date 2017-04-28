@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -27,7 +26,6 @@ public class Note2MapNotesAdaptor extends RecyclerView.Adapter<Note2MapNotesAdap
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView owner;
         public TextView noteContent;
-        public RelativeLayout recyclerView;
         public TextView contents;
         public TextView ownerName;
 
@@ -66,8 +64,8 @@ public class Note2MapNotesAdaptor extends RecyclerView.Adapter<Note2MapNotesAdap
 
     public Note2MapNotesAdaptor(Context mContext, List<Note> noteList, User user) {
         this.mContext = mContext;
-        this.noteList = noteList;
         this.currentUser = user;
+        this.noteList = noteList;
     }
 
     @Override

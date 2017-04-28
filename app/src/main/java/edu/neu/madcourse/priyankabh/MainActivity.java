@@ -76,18 +76,13 @@ public class MainActivity extends Activity {
                 String networkStatus = isNetworkAvailable ? "connected" : "disconnected";
 
                 if(networkStatus.equals("connected")){
-                 //   Log.d("MainActivity","networkStatus :" +networkStatus +" "+dialog.isShowing()+" "+dialog);
-//                    text.setText("Internet connected");
                     if(dialog!=null && dialog.isShowing()){
-                     //   Log.d("MainActivity", "onReceive: ...................");
                         dialog.cancel();
                         dialog.dismiss();
                         dialog.hide();
                     }
                 } else {
-                  //  Log.d("MainActivity","networkStatus :" +networkStatus);
                     if(dialog == null){
-                    //    Log.d("MainActivity", "onReceive:d ");
                         dialog = new Dialog(MainActivity.this);
                         dialog.setContentView(R.layout.internet_connectivity);
                         dialog.setCancelable(false);
@@ -95,7 +90,6 @@ public class MainActivity extends Activity {
                         text.setText("Internet Disconnected");
                         dialog.show();
                     } else if(dialog != null && !dialog.isShowing()){
-                      //  Log.d("MainActivity", "onReceive:d.. ");
                         dialog.show();
                     }
                 }
@@ -236,6 +230,15 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(MainActivity.this, Note2MapMainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button finalProjectButton = (Button) findViewById(R.id.final_project_button);
+        finalProjectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, FinalProjectActivity.class);
                 startActivity(intent);
             }
         });
