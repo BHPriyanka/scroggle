@@ -66,9 +66,13 @@ public class SelectEventTimeActivity extends AppCompatActivity {
             String minuteS = "";
             if (hourOfDay < 10) {
                 hourS = "0" + hourOfDay;
+            }else {
+                hourS = hourS + hourOfDay;
             }
             if (minute < 10) {
                 minuteS = "0" + minute;
+            }else{
+                minuteS = minuteS + minute;
             }
             startTime.setText(new StringBuilder().append(hourS).append(" : ")
                     .append(minuteS));
