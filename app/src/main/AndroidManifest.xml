@@ -208,9 +208,14 @@
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+
         <activity android:name=".FinalProjectActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="edu.neu.madcourse.priyankabh.finalprojectactivity.FINALPROJECTACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
         <receiver
             android:name=".note2map.Note2MapDetectNetworkActivity"

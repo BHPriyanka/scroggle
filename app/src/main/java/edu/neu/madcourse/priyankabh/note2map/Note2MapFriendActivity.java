@@ -149,7 +149,7 @@ public class Note2MapFriendActivity extends AppCompatActivity {
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle(getTitle());
+                getSupportActionBar().setTitle("Note2Map");
             }
         };
 
