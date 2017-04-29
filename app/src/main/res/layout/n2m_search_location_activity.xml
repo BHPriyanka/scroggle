@@ -45,18 +45,23 @@
                 android:layout_height="250dp"
                 tools:context=".Note2MapSearchLocationActivity" />
         </LinearLayout>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Note:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:id="@+id/n2m_note_detail_location_activity"
+            android:fontFamily="casual"
+            android:textStyle="normal|bold"
+            android:textSize="18sp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.6"
             android:orientation="vertical">
+
+
 
                 <EditText
                     android:id="@+id/n2m_edit_note"
@@ -78,8 +83,8 @@
                     android:textStyle="normal|bold"
                     android:layout_marginTop="15dp"
                     android:textColor="@android:color/background_light"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"/>
 
-        </LinearLayout>
+                    </LinearLayout>
     </LinearLayout>
 </LinearLayout>

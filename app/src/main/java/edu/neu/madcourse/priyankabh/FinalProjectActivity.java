@@ -56,5 +56,32 @@ public class FinalProjectActivity extends AppCompatActivity {
                 mDialog.show();
             }
         });
+
+        Button appDescButton = (Button) findViewById(R.id.n2m_app_desc_button);
+        appDescButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //set up dialog
+                final Dialog mDialog = new Dialog(FinalProjectActivity.this);
+                mDialog.setTitle("Note2Map");
+                mDialog.setContentView(R.layout.n2m_final_project_ack);
+
+                //set up text
+                TextView text = (TextView) mDialog.findViewById(R.id.ack_project);
+                text.setText(R.string.note2map_app_description);
+
+                Button ok_button = (Button) mDialog.findViewById(R.id.ok_button);
+                ok_button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        if (mDialog != null)
+                            mDialog.dismiss();
+                    }
+                });
+                //now that the dialog is set up, it's time to show it
+                mDialog.show();
+            }
+        });
     }
 }

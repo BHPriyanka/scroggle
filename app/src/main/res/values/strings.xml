@@ -259,4 +259,33 @@ both sides in the larger game.
 
     </string>
 
+    <string name="note2map_app_description">
+        Place your note on your friend\'s map.
+        \n\
+        <b>Features:</b>
+        \n\
+        Note2Map is an app which allows you to put a location-based note on your friend/family member\'s map.
+        \n\
+        <b>Types of Notifications:</b>
+        \n\
+        <b>1.Event</b>
+        \n\
+        Ask your friend to attend an event on a given date and time at the chosen location. Your friend will receive
+        a notification when he walks past the location of the event.
+        \n\
+        <b>2. Reminder</b>
+        \n\
+        Remind your son to buy chicken from market on the way back home. Your son will receive a notification when he crosses the market
+        while driving back home.
+        \n\
+        <b>3. Direction</b>
+        \n\
+        Direct or instruct your friend to help him reach destination. Say if you want to show your friend how to get to Snell library,
+        you can add notes along the way from Ruggles station to Snell. When your friend get to Ruggles,
+        he gets a notification to go straight and take the second right, then when they get to the library,
+        they will get another note that you are on the fourth floor.
+        \n\
+        \n\
+        <b>Get Going!!</b>
+    </string>
 </resources>

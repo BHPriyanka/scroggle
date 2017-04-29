@@ -14,7 +14,6 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import edu.neu.madcourse.priyankabh.R;
 
-
 public class MessagingService extends FirebaseMessagingService {
     private static final String TAG = MessagingService.class.getSimpleName();
 

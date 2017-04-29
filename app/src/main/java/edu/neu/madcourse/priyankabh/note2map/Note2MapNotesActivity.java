@@ -32,6 +32,8 @@ import edu.neu.madcourse.priyankabh.R;
 import edu.neu.madcourse.priyankabh.note2map.models.Note;
 import edu.neu.madcourse.priyankabh.note2map.models.User;
 
+import static edu.neu.madcourse.priyankabh.note2map.Note2MapMainActivity.isNetworkAvailable;
+
 public class Note2MapNotesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -45,19 +47,20 @@ public class Note2MapNotesActivity extends AppCompatActivity {
     private ArrayList<String> drawerList;
     private TextView errorTextView;
     private Dialog dialog;
+    private BroadcastReceiver mybroadcast;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.n2m_note_main);
 
-        IntentFilter intentFilter = new IntentFilter(Note2MapDetectNetworkActivity.NETWORK_AVAILABLE_ACTION);
-        LocalBroadcastManager.getInstance(this).registerReceiver(new BroadcastReceiver() {
+        mybroadcast = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 boolean isNetworkAvailable = intent.getBooleanExtra(Note2MapDetectNetworkActivity.IS_NETWORK_AVAILABLE, false);
                 String networkStatus = isNetworkAvailable ? "connected" : "disconnected";
-                Log.d("networkStatus:Notes",networkStatus);
+
                 if(networkStatus.equals("connected")){
                     if(dialog!=null && dialog.isShowing()){
                         dialog.cancel();
@@ -77,7 +80,7 @@ public class Note2MapNotesActivity extends AppCompatActivity {
                     }
                 }
             }
-        }, intentFilter);
+        };
 
         errorTextView = (TextView) findViewById(R.id.n2m_addNote_error);
 
@@ -117,6 +120,7 @@ public class Note2MapNotesActivity extends AppCompatActivity {
                 homeIntent.addCategory( Intent.CATEGORY_HOME );
                 homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(homeIntent);
+                System.exit(0);
             }
         });
 
@@ -176,6 +180,30 @@ public class Note2MapNotesActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        IntentFilter intentFilter = new IntentFilter(Note2MapDetectNetworkActivity.NETWORK_AVAILABLE_ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(mybroadcast, intentFilter);
+        if (!isNetworkAvailable(getApplicationContext())) {
+            if(dialog == null){
+                dialog = new Dialog(Note2MapNotesActivity.this);
+                dialog.setContentView(R.layout.internet_connectivity);
+                dialog.setCancelable(false);
+                TextView text = (TextView) dialog.findViewById(R.id.internet_connection);
+                text.setText("Internet Disconnected");
+                dialog.show();
+            } else if(dialog != null && !dialog.isShowing()){
+                dialog.show();
+            }
+        }
+    }
+
+    public void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mybroadcast);
+    }
+
+    @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
@@ -213,5 +241,15 @@ public class Note2MapNotesActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.n2m_note_action_menu, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(homeIntent);
+        System.exit(0);
     }
 }

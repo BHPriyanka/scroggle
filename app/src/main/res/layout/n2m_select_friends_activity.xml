@@ -34,7 +34,7 @@
             android:divider="@color/material_blue_grey_800"
             android:dividerHeight="1dp"
             android:footerDividersEnabled="false"
-        android:layout_weight="0.9"/>
+            android:layout_weight="0.9"/>
 
         <Button
             android:id="@+id/n2m_select_friends_continue_button"

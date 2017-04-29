@@ -22,11 +22,6 @@ public class Note implements Serializable{
         return location;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-
     public Note(){
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
@@ -48,48 +43,24 @@ public class Note implements Serializable{
         return noteType;
     }
 
-    public void setNoteType(String noteType) {
-        this.noteType = noteType;
-    }
-
     public String getNoteDate() {
         return noteDate;
-    }
-
-    public void setNoteDate(String noteDate) {
-        this.noteDate = noteDate;
     }
 
     public String getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
     public String getStartTime() {
         return startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
     }
 
     public String getNoteReceived() {
         return noteReceived;
     }
 
-    public void setNoteReceived(String noteReceived) {
-        this.noteReceived = noteReceived;
-    }
-
     public String getOwner() {
         return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
     }
 
     public ArrayList<String> getTargetedUsers() {
@@ -100,21 +71,5 @@ public class Note implements Serializable{
         return noteId;
     }
 
-    public void setNoteId(String noteId) {
-        this.noteId = noteId;
-    }
-
-    public void setTargetedUsers(ArrayList<String> targetedUsers) {
-        this.targetedUsers = targetedUsers;
-
-    }
-
-    public ArrayList<NoteContent> getNoteContents() {
-        return noteContents;
-    }
-
-    public void setNoteContents(ArrayList<NoteContent> noteContents) {
-        this.noteContents = noteContents;
-    }
 }
 
