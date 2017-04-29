@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+import java.util.TimeZone;
 
 import edu.neu.madcourse.priyankabh.R;
 import edu.neu.madcourse.priyankabh.note2map.models.Note;
@@ -127,15 +128,19 @@ public class MyLocationService extends IntentService implements GoogleApiClient.
     public void onLocationChanged(Location location) {
         if (timer > 0) {
             mCurrentLocation = location;
+            Log.d("priyankamap", "Long: " + String.valueOf(mCurrentLocation.getLatitude()) + ", Lat: " + String.valueOf(mCurrentLocation.getLongitude()));
+            mDatabase.child("users").child(FirebaseInstanceId.getInstance().getToken()).child("coordinates").setValue(Integer.toString(timer) + ") Long: " + String.valueOf(mCurrentLocation.getLatitude()) + ", Lat: " + String.valueOf(mCurrentLocation.getLongitude()));
+            //Log.d("note", Integer.toString(listOfNotes.size()));
             checkDistance();
             timer--;
             try {
-                Thread.sleep(2000);                 //1000 milliseconds is one second.
+                Thread.sleep(6000);                 //1000 milliseconds is one second.
             } catch(InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
         } else {
             mDatabase.child("users").child(FirebaseInstanceId.getInstance().getToken()).child("notes").setValue(listOfNotes);
+            //Log.d("StoppingService", "");
             stopLocationUpdates();
             stopSelf();
         }
@@ -163,26 +168,47 @@ public class MyLocationService extends IntentService implements GoogleApiClient.
                     noteContent.noteReceived = "notReceived";
                 }
                 if (noteContent.noteReceived.equals("received")) {
+                    Log.d("note", "note received");
                     continue;
                 }
                 if( !note.targetedUsers.contains(FirebaseInstanceId.getInstance().getToken())) {
+                    Log.d("note", "you own this");
                     continue;
                 }
                 DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+                df.setTimeZone(TimeZone.getTimeZone("EST"));
                 Date startTime;
                 try {
                     int duration = Integer.parseInt(note.getDuration().substring(0, note.duration.indexOf(" ")));
                     startTime = df.parse(note.getNoteDate() + " " + note.getStartTime().replaceAll(" ", ""));
-                    Calendar cal = Calendar.getInstance(); // creates calendar
-                    Date currentTime = cal.getTime();
+                    Calendar cal;
+                    cal = Calendar.getInstance();  // creates calendar
+                    String month = new SimpleDateFormat("MM").format(cal.getTime()).toString();
+
+                    String day = new SimpleDateFormat("dd").format(cal.getTime()).toString();
+
+                    String year = new SimpleDateFormat("yy").format(cal.getTime()).toString();
+
+                    String hour = new SimpleDateFormat("HH").format(cal.getTime()).toString();
+
+                    String minute = new SimpleDateFormat("mm").format(cal.getTime()).toString();
+
+                    Date currentTime = df.parse( month + "/" + day + "/" + year + " " + hour + ":" + minute);
                     cal.setTime(startTime); // sets calendar time/date
                     cal.add(Calendar.HOUR_OF_DAY, duration); // adds one hour
                     Date endTime = cal.getTime();
                     String newDateString1 = df.format(startTime);
                     String newDateString2 = df.format(endTime);
                     String newDateString3 = df.format(currentTime);
+                    Log.d("startTime", newDateString1);
+                    Log.d("endTime", newDateString2);
+                    Log.d("currentTime", newDateString3);
 
+                    Log.d("priyankamap", "startTime:"+startTime);
+                    Log.d("priyankamap", "endTime:"+endTime);
+                    Log.d("priyankamap", "currentTime:"+currentTime);
                     if (currentTime.before(startTime) || currentTime.after(endTime)) {
+                        Log.d("priyankamap", "too late");
                         continue;
                     }
 
@@ -191,6 +217,7 @@ public class MyLocationService extends IntentService implements GoogleApiClient.
                 }
                 String latLongString[] = noteContent.getNoteCoordinates().split(",");
                 Double distance = distanceBetweenCoordinates(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(), Double.parseDouble(latLongString[0]),Double.parseDouble(latLongString[1]));
+                //Log.d("distance", Double.toString(distance));
                 if (distance < 0.15) {
                     sendNotification(listOfNotes.get(i).owner, note.noteType + ": \nOn " + note.getNoteDate() + " at " + note.getStartTime() + "\n" + noteContent.getNoteText());
                     noteContent.noteReceived = "received";
@@ -199,7 +226,9 @@ public class MyLocationService extends IntentService implements GoogleApiClient.
                 }
             }
         }
+        //mDatabase.child("users").child(FirebaseInstanceId.getInstance().getToken()).child("notes").setValue(listOfNotes);
     }
+
 
     private double distanceBetweenCoordinates(double lat1, double lon1, double lat2, double lon2) {
         double theta = lon1 - lon2;
